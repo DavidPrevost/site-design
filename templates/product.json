@@ -3,33 +3,96 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "eyebrow": { "type": "eyebrow", "settings": { "metafield": "custom.eyebrow", "text": "" } },
-        "title": { "type": "title", "settings": {} },
-        "rating": { "type": "rating", "settings": {} },
-        "price": { "type": "price", "settings": { "note": "" } },
-        "description": { "type": "description", "settings": {} },
-        "badges": { "type": "badges", "settings": {} },
-        "variant_picker": { "type": "variant_picker", "settings": {} },
-        "buy_buttons": { "type": "buy_buttons", "settings": { "show_quantity": true, "show_dynamic_checkout": true } },
+        "eyebrow": {
+          "type": "eyebrow",
+          "settings": {
+            "metafield": "custom.eyebrow",
+            "text": ""
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "rating": {
+          "type": "rating",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "note": ""
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "badges": {
+          "type": "badges",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity": true,
+            "show_dynamic_checkout": true
+          }
+        },
         "trust_line": {
           "type": "trust_line",
-          "settings": { "item_1": "100% natural ingredients", "item_2": "No parabens, silicones or sulfates" }
+          "settings": {
+            "item_1": "100% natural ingredients",
+            "item_2": "No parabens, silicones or sulfates"
+          }
         },
         "tab_features": {
           "type": "collapsible_tab",
-          "settings": { "heading": "Key features", "metafield": "custom.key_features", "content": "", "page": "", "use_legacy_tag": false, "open": true }
+          "settings": {
+            "heading": "Key features",
+            "metafield": "custom.key_features",
+            "content": "",
+            "page": "",
+            "use_legacy_tag": false,
+            "open": true
+          }
         },
         "tab_how": {
           "type": "collapsible_tab",
-          "settings": { "heading": "How to apply", "metafield": "custom.how_to_use", "content": "", "page": "", "use_legacy_tag": false, "open": false }
+          "settings": {
+            "heading": "How to apply",
+            "metafield": "custom.how_to_use",
+            "content": "",
+            "page": "",
+            "use_legacy_tag": false,
+            "open": false
+          }
         },
         "tab_ingredients": {
           "type": "collapsible_tab",
-          "settings": { "heading": "All ingredients", "metafield": "custom.ingredients_list", "content": "", "page": "", "use_legacy_tag": false, "open": false }
+          "settings": {
+            "heading": "All ingredients",
+            "metafield": "custom.ingredients_list",
+            "content": "",
+            "page": "",
+            "use_legacy_tag": false,
+            "open": false
+          }
         },
         "tab_legacy": {
           "type": "collapsible_tab",
-          "settings": { "heading": "Product details", "metafield": "", "content": "", "page": "", "use_legacy_tag": true, "open": false }
+          "settings": {
+            "heading": "Product details",
+            "metafield": "",
+            "content": "",
+            "page": "",
+            "use_legacy_tag": true,
+            "open": false
+          }
         },
         "tab_shipping": {
           "type": "collapsible_tab",
@@ -72,7 +135,7 @@
       "settings": {
         "eyebrow": "What’s inside",
         "heading": "Key ingredients",
-        "ingredients_page": "",
+        "ingredients_page": "ingredients",
         "link_label": "See all ingredients",
         "made_without_heading": "Made without",
         "color_scheme": "scheme-2",
@@ -113,5 +176,10 @@
       }
     }
   },
-  "order": ["main", "ingredients", "reviews", "recommendations"]
+  "order": [
+    "main",
+    "ingredients",
+    "reviews",
+    "recommendations"
+  ]
 }

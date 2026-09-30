@@ -51,3 +51,174 @@
     ></div>
   </div>
 {%- endif -%}
+
+{% stylesheet %}
+  /* The reviews widget injects its own CSS at the end of <head> and sets its
+     --reviews-* variables inline on <html>. Declaring the variables on the
+     wrapper and using two-class selectors lets the theme's styles win. */
+  .tc-reviews {
+    --reviews-text: var(--color-foreground);
+    --reviews-bg: transparent;
+    --reviews-star-color: var(--star-color);
+    --reviews-cta-bg: var(--color-button);
+    --reviews-cta-fg: var(--color-button-label);
+    --reviews-border-radius: var(--radius-button);
+  }
+
+  .tc-reviews .rv-widget {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body-family);
+  }
+
+  .tc-reviews .rv-header {
+    gap: 1rem 1.5rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .tc-reviews .rv-aggregate {
+    gap: 0.625rem;
+  }
+
+  .tc-reviews .rv-aggregate-text,
+  .tc-reviews .rv-muted,
+  .tc-reviews .rv-review-meta {
+    color: var(--color-muted);
+    opacity: 1;
+  }
+
+  .tc-reviews .rv-stars {
+    color: var(--star-color);
+  }
+
+  .tc-reviews--full .rv-header .rv-stars {
+    font-size: 1.25rem;
+  }
+
+  .tc-reviews .rv-cta-button {
+    min-height: 3rem;
+    padding: 0.75rem 1.5rem;
+    border: 1.5px solid var(--color-button);
+    border-radius: var(--radius-button);
+    background-color: var(--color-button);
+    color: var(--color-button-label);
+    font-size: 0.9375rem;
+    font-weight: var(--font-body-weight-bold);
+  }
+
+  .tc-reviews .rv-cta-button:hover {
+    opacity: 1;
+    background-color: color-mix(in srgb, var(--color-button) 86%, #000);
+  }
+
+  .tc-reviews .rv-cta-link,
+  .tc-reviews .rv-write-link {
+    color: var(--color-accent);
+    font-weight: var(--font-body-weight-bold);
+  }
+
+  .tc-reviews .rv-toggle {
+    font-weight: var(--font-body-weight-bold);
+  }
+
+  .tc-reviews .rv-review {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .tc-reviews .rv-review-title {
+    font-family: var(--font-heading-family);
+    font-weight: var(--font-heading-weight);
+    font-size: 1.25rem;
+  }
+
+  .tc-reviews .rv-review-body {
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .tc-reviews .rv-review-verified {
+    padding: 0.125rem 0.5rem;
+    border-radius: 999px;
+    background-color: #e4e8dc;
+    color: #3f4a35;
+    font-style: normal;
+    font-weight: var(--font-body-weight-bold);
+    font-size: 0.75rem;
+  }
+
+  .tc-reviews .rv-your-review-tag {
+    background-color: #ffebdb;
+    color: #7a3e2a;
+  }
+
+  .tc-reviews .rv-paused,
+  .tc-reviews .rv-campaign-closed,
+  .tc-reviews .rv-campaign-success {
+    border-radius: var(--radius-input);
+    background-color: var(--color-surface);
+  }
+
+  .tc-reviews .rv-campaign-submit {
+    border-radius: var(--radius-button);
+    background-color: var(--color-button);
+    color: var(--color-button-label);
+    font-weight: var(--font-body-weight-bold);
+  }
+
+  /* Write/edit review dialog (the widget appends it to <body>). */
+  body .rv-dialog {
+    border-radius: var(--radius-card);
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body-family);
+    box-shadow: 0 24px 60px -20px rgba(59, 46, 37, 0.45);
+  }
+
+  body .rv-dialog::backdrop {
+    background-color: rgba(59, 46, 37, 0.5);
+  }
+
+  body .rv-dialog-title {
+    font-family: var(--font-heading-family);
+    font-weight: var(--font-heading-weight);
+    font-size: 1.5rem;
+  }
+
+  body .rv-dialog-close {
+    color: var(--color-muted);
+  }
+
+  body .rv-dialog input[type='text'],
+  body .rv-dialog textarea {
+    padding: 0.75rem 1rem;
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-input);
+    background-color: #fff;
+    color: #3b2e25;
+  }
+
+  body .rv-dialog-stars input:checked ~ label,
+  body .rv-dialog-stars label:hover,
+  body .rv-dialog-stars label:hover ~ label {
+    color: var(--star-color);
+  }
+
+  body .rv-dialog .rv-cta-button {
+    min-height: 3rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-button);
+    background-color: var(--color-button);
+    color: var(--color-button-label);
+    font-weight: var(--font-body-weight-bold);
+  }
+
+  body .rv-dialog-error {
+    border: 0;
+    border-radius: var(--radius-input);
+    background-color: #ffebdb;
+    color: #7a3e2a;
+  }
+{% endstylesheet %}

@@ -1,0 +1,70 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": { "show_title": true, "eyebrow": "Know what’s inside", "width": "narrow", "color_scheme": "scheme-1", "padding_top": 72, "padding_bottom": 24 }
+    },
+    "list": {
+      "type": "ingredients-list",
+      "blocks": {
+        "magnesium": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Magnesium mineral",
+            "source": "Zechstein seabed, Netherlands",
+            "description": "The main component of our hydrating mineral compound. It absorbs moisture from the air and helps skin retain its natural oils.",
+            "icon": "mineral"
+          }
+        },
+        "shea": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Shea butter",
+            "source": "African shea tree nut",
+            "description": "Contains stearic and oleic acids, which are intensely moisturizing and help repair damaged skin.",
+            "icon": "drop"
+          }
+        },
+        "coconut": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Coconut oil",
+            "source": "Extra virgin and organic",
+            "description": "One of the best moisturizing oils for skin, and naturally antibacterial and antifungal.",
+            "icon": "drop"
+          }
+        },
+        "rice": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Rice bran oil",
+            "source": "Outer layer of rice",
+            "description": "A nut-free moisturizing alternative to nut oils, gentle on sensitive skin.",
+            "icon": "leaf"
+          }
+        },
+        "allantoin": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Allantoin",
+            "source": "Comfrey root",
+            "description": "Softens, protects and soothes skin while supporting healthy cell renewal.",
+            "icon": "sprout"
+          }
+        },
+        "sunflower": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Sunflower oil",
+            "source": "Sunflower seeds",
+            "description": "Rich in linoleic acid and vitamin E, nutrients and antioxidants that protect skin.",
+            "icon": "leaf"
+          }
+        }
+      },
+      "block_order": ["magnesium", "shea", "coconut", "rice", "allantoin", "sunflower"],
+      "settings": { "found_in_label": "Found in:", "color_scheme": "scheme-1", "padding_top": 24, "padding_bottom": 104 }
+    }
+  },
+  "order": ["main", "list"]
+}

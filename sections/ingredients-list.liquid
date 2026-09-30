@@ -1,0 +1,190 @@
+{%- liquid
+  assign entries = shop.metaobjects.ingredient.values
+  assign use_metaobjects = false
+  if entries.size > 0
+    assign use_metaobjects = true
+  endif
+-%}
+<section
+  class="section ingredients-list color-{{ section.settings.color_scheme }}"
+  style="--section-pt: {{ section.settings.padding_top }}px; --section-pb: {{ section.settings.padding_bottom }}px;"
+>
+  <div class="page-width">
+    {%- if use_metaobjects -%}
+      <ul class="ingredients-list__items" role="list">
+        {%- for ingredient in entries -%}
+          {%- liquid
+            assign handle = ingredient.system.handle
+            assign found_in = ''
+            for item in collections.all.products limit: 50
+              assign item_ingredients = item.metafields.custom.key_ingredients.value
+              for entry in item_ingredients
+                if entry.system.handle == handle
+                  assign link = '<a href="' | append: item.url | append: '">' | append: item.title | append: '</a>'
+                  if found_in == ''
+                    assign found_in = link
+                  else
+                    assign found_in = found_in | append: ', ' | append: link
+                  endif
+                endif
+              endfor
+            endfor
+            case ingredient.icon.value
+              when 'mineral'
+                assign circle = 'icon-circle--mist'
+              when 'drop'
+                assign circle = 'icon-circle--peach'
+              when 'sprout'
+                assign circle = 'icon-circle--blush'
+              else
+                assign circle = 'icon-circle--sage'
+            endcase
+          -%}
+          <li class="ingredients-list__item" id="{{ handle }}">
+            <div class="ingredients-list__media">
+              {%- if ingredient.image.value -%}
+                <span class="media-rounded ingredients-list__image">
+                  {{ ingredient.image.value | image_url: width: 600 | image_tag: loading: 'lazy', alt: '', widths: '300, 600', sizes: '12rem' }}
+                </span>
+              {%- else -%}
+                {%- assign icon_name = ingredient.icon.value | default: 'leaf' -%}
+                <span class="icon-circle {{ circle }} ingredients-list__icon">
+                  {%- render 'icon', name: icon_name, size: 30 -%}
+                </span>
+              {%- endif -%}
+            </div>
+            <div class="ingredients-list__body stack">
+              <h2 class="h3 ingredients-list__name">{{ ingredient.name.value | escape }}</h2>
+              {%- if ingredient.source.value != blank -%}
+                <p class="ingredients-list__source">{{ ingredient.source.value | escape }}</p>
+              {%- endif -%}
+              {%- if ingredient.description.value != blank -%}
+                <div class="rte">{{ ingredient.description | metafield_tag }}</div>
+              {%- endif -%}
+              {%- if found_in != '' -%}
+                <p class="text-small"><strong>{{ section.settings.found_in_label | escape }}</strong> {{ found_in }}</p>
+              {%- endif -%}
+            </div>
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- else -%}
+      <ul class="grid" role="list" style="--grid-desktop: 3;">
+        {%- for block in section.blocks -%}
+          {%- assign anchor = block.settings.name | handle -%}
+          <li {{ block.shopify_attributes }}>
+            {% render 'ingredient-card',
+              name: block.settings.name,
+              source: block.settings.source,
+              description: block.settings.description,
+              icon: block.settings.icon,
+              anchor: anchor
+            %}
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+</section>
+
+{% stylesheet %}
+  .ingredients-list__items {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ingredients-list__item {
+    display: grid;
+    grid-template-columns: 4rem minmax(0, 1fr);
+    gap: 1.25rem;
+    padding-block: 2rem;
+    border-top: 1px solid var(--color-border);
+    scroll-margin-top: 7rem;
+  }
+
+  .ingredients-list__item:target {
+    background-color: var(--color-surface);
+    border-radius: var(--radius-card);
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 750px) {
+    .ingredients-list__item {
+      grid-template-columns: 12rem minmax(0, 1fr);
+      gap: 2.5rem;
+    }
+  }
+
+  .ingredients-list__icon {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .ingredients-list__image {
+    display: block;
+    aspect-ratio: 1;
+  }
+
+  .ingredients-list__body {
+    --stack-gap: 0.625rem;
+    max-width: 44rem;
+  }
+
+  .ingredients-list__source {
+    font-size: 0.75rem;
+    font-weight: var(--font-body-weight-bold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .ingredients-list__name {
+    font-size: calc(var(--font-heading-scale) * clamp(1.5rem, 1.2rem + 1vw, 2rem));
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Ingredients list",
+  "class": "section-ingredients-list",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Lists every \"Ingredient\" entry (Content > Metaobjects) with a link id, so product pages can link straight to it. Blocks are used only when there are no entries yet."
+    },
+    { "type": "text", "id": "found_in_label", "label": "\"Found in\" label", "default": "Found in:" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 24 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 104 }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Name", "default": "Ingredient" },
+        { "type": "text", "id": "source", "label": "Source" },
+        { "type": "textarea", "id": "description", "label": "Description" },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "mineral", "label": "Mineral" },
+            { "value": "drop", "label": "Drop" },
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "sprout", "label": "Sprout" }
+          ],
+          "default": "leaf"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Ingredients list" }
+  ]
+}
+{% endschema %}

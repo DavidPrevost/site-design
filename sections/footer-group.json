@@ -31,16 +31,23 @@
           "type": "affiliates",
           "settings": {
             "heading": "Affiliates",
-            "terms_page": ""
+            "terms_page": "affiliate-terms"
           }
         }
       },
-      "block_order": ["brand", "shop", "learn", "affiliates"],
+      "block_order": [
+        "brand",
+        "shop",
+        "learn",
+        "affiliates"
+      ],
       "settings": {
         "color_scheme": "scheme-6",
         "show_payment_icons": true
       }
     }
   },
-  "order": ["footer"]
+  "order": [
+    "footer"
+  ]
 }

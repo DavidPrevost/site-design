@@ -40,6 +40,9 @@
       };
     </script>
     <script src="{{ 'theme.js' | asset_url }}" defer></script>
+    {%- if settings.reviews_enabled and settings.reviews_widget_url != blank -%}
+      <script src="{{ settings.reviews_widget_url }}" defer></script>
+    {%- endif -%}
 
     {% render 'structured-data' %}
 
@@ -50,6 +53,7 @@
     <a class="skip-link" href="#MainContent">{{ 'accessibility.skip_to_content' | t }}</a>
 
     {% sections 'header-group' %}
+    {% render 'discount-banner' %}
 
     <main id="MainContent" tabindex="-1">
       {{ content_for_layout }}

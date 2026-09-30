@@ -1,0 +1,193 @@
+{%- assign terms_url = section.settings.terms_page.url -%}
+<section
+  id="{{ section.settings.anchor_id | default: 'apply' | handle }}"
+  class="section affiliate-application color-{{ section.settings.color_scheme }}"
+  style="--section-pt: {{ section.settings.padding_top }}px; --section-pb: {{ section.settings.padding_bottom }}px;"
+>
+  <div class="page-width">
+    <div class="affiliate-application__card card card--bordered">
+      <div class="affiliate-application__intro stack">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {%- endif -%}
+        <h2 class="h2">{{ section.settings.heading }}</h2>
+        {%- if section.settings.text != blank -%}
+          <div class="rte">{{ section.settings.text }}</div>
+        {%- endif -%}
+        {%- if section.blocks.size > 0 -%}
+          <ul class="affiliate-application__points" role="list">
+            {%- for block in section.blocks -%}
+              <li {{ block.shopify_attributes }}>{% render 'icon', name: 'check', size: 20 %}<span>{{ block.settings.text | escape }}</span></li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </div>
+
+      {%- form 'contact', id: 'AffiliateApplication', class: 'affiliate-application__form' -%}
+        {%- if form.posted_successfully? -%}
+          <p class="form-message form-message--success affiliate-application__full" role="status">{{ 'affiliates.success' | t }}</p>
+        {%- else -%}
+          {%- if form.errors -%}
+            <div class="form-message form-message--error affiliate-application__full" role="alert">{{ form.errors | default_errors }}</div>
+          {%- endif -%}
+          <input type="hidden" name="contact[Form]" value="Affiliate application">
+          <div class="field">
+            <label class="field__label" for="Affiliate-name">{{ 'forms.name' | t }}</label>
+            <input class="input" id="Affiliate-name" type="text" name="contact[name]" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label class="field__label" for="Affiliate-email">{{ 'forms.email' | t }}</label>
+            <input class="input" id="Affiliate-email" type="email" name="contact[email]" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label class="field__label" for="Affiliate-platform">{{ 'affiliates.platform' | t }}</label>
+            <select class="input" id="Affiliate-platform" name="contact[Main platform]">
+              {%- assign platforms = section.settings.platforms | split: ',' -%}
+              {%- for platform in platforms -%}
+                <option>{{ platform | strip | escape }}</option>
+              {%- endfor -%}
+            </select>
+          </div>
+          <div class="field">
+            <label class="field__label" for="Affiliate-handle">{{ 'affiliates.handle' | t }}</label>
+            <input class="input" id="Affiliate-handle" type="text" name="contact[Handle or URL]" placeholder="@yourname" required>
+          </div>
+          {%- if section.settings.ask_audience -%}
+            <div class="field affiliate-application__full">
+              <label class="field__label" for="Affiliate-audience">{{ 'affiliates.audience' | t }}</label>
+              <input class="input" id="Affiliate-audience" type="text" name="contact[Audience size]">
+            </div>
+          {%- endif -%}
+          <div class="field affiliate-application__full">
+            <label class="field__label" for="Affiliate-why">{{ 'affiliates.why' | t }}</label>
+            <textarea class="input" id="Affiliate-why" name="contact[body]" rows="4"></textarea>
+          </div>
+          <label class="checkbox affiliate-application__full">
+            <input type="checkbox" name="contact[Agreed to program terms]" value="Yes" required>
+            <span>
+              {%- if terms_url != blank -%}
+                {{ 'affiliates.agree_html' | t: url: terms_url }}
+              {%- else -%}
+                {{ 'affiliates.agree_plain' | t }}
+              {%- endif -%}
+            </span>
+          </label>
+          <div class="affiliate-application__full affiliate-application__submit">
+            {%- if section.settings.note != blank -%}
+              <p class="text-small text-muted">{{ section.settings.note | escape }}</p>
+            {%- endif -%}
+            <button type="submit" class="button">{{ 'affiliates.submit' | t }}</button>
+          </div>
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .affiliate-application__card {
+    display: grid;
+    gap: 2.5rem;
+    padding: clamp(1.5rem, 4vw, 3.5rem);
+    border-radius: calc(var(--radius-card) * 1.4);
+  }
+
+  @media (min-width: 990px) {
+    .affiliate-application__card {
+      grid-template-columns: minmax(0, 22rem) minmax(0, 1fr);
+      gap: 4rem;
+    }
+  }
+
+  .affiliate-application__intro {
+    --stack-gap: 1.125rem;
+  }
+
+  .affiliate-application__points {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .affiliate-application__points li {
+    display: flex;
+    gap: 0.625rem;
+  }
+
+  .affiliate-application__points .icon {
+    color: #5e6b52;
+  }
+
+  .affiliate-application__form {
+    display: grid;
+    gap: 1.25rem 1.5rem;
+    align-content: start;
+  }
+
+  @media (min-width: 750px) {
+    .affiliate-application__form {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .affiliate-application__full {
+      grid-column: 1 / -1;
+    }
+  }
+
+  .affiliate-application__submit {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem 1.5rem;
+  }
+
+  .affiliate-application__submit p {
+    max-width: 24rem;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Affiliate application",
+  "class": "section-affiliate-application",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Applications arrive as contact form emails marked \"Affiliate application\". Approve an applicant by creating their affiliate account in the affiliate dashboard."
+    },
+    { "type": "text", "id": "anchor_id", "label": "Section link id", "default": "apply" },
+    { "type": "text", "id": "eyebrow", "label": "Label", "default": "Application" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Apply to join" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>It takes about two minutes. We’ll reply by email within [X] business days.</p>" },
+    { "type": "text", "id": "platforms", "label": "Platform choices", "info": "Separate with commas.", "default": "Instagram, TikTok, YouTube, Blog or website, Other" },
+    { "type": "checkbox", "id": "ask_audience", "label": "Ask for audience size", "default": false },
+    { "type": "page", "id": "terms_page", "label": "Program terms page" },
+    {
+      "type": "text",
+      "id": "note",
+      "label": "Note beside the button",
+      "default": "Applications go to our inbox. Once you’re approved, you get a login for your dashboard."
+    },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 48 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 96 }
+  ],
+  "blocks": [
+    {
+      "type": "point",
+      "name": "Checklist item",
+      "settings": [{ "type": "text", "id": "text", "label": "Text", "default": "Free to join" }]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Affiliate application",
+      "blocks": [{ "type": "point" }]
+    }
+  ]
+}
+{% endschema %}

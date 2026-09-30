@@ -26,23 +26,52 @@
       "blocks": {
         "natural": {
           "type": "item",
-          "settings": { "icon": "leaf", "icon_color": "#9E5439", "title": "100% natural", "text": "Plant and earth ingredients" }
+          "settings": {
+            "icon": "leaf",
+            "icon_color": "#9E5439",
+            "title": "100% natural",
+            "text": "Plant and earth ingredients"
+          }
         },
         "mineral": {
           "type": "item",
-          "settings": { "icon": "mineral", "icon_color": "#4A6470", "title": "Mineral enriched", "text": "Our magnesium mineral signature" }
+          "settings": {
+            "icon": "mineral",
+            "icon_color": "#4A6470",
+            "title": "Mineral enriched",
+            "text": "Our magnesium mineral signature"
+          }
         },
         "gentle": {
           "type": "item",
-          "settings": { "icon": "shield", "icon_color": "#9E5439", "title": "Gentle formulas", "text": "Hypoallergenic, nut-free option" }
+          "settings": {
+            "icon": "shield",
+            "icon_color": "#9E5439",
+            "title": "Gentle formulas",
+            "text": "Hypoallergenic, nut-free option"
+          }
         },
         "clean": {
           "type": "item",
-          "settings": { "icon": "check", "icon_color": "#6A5E4D", "title": "Clean labels", "text": "No parabens, sulfates, silicones" }
+          "settings": {
+            "icon": "check",
+            "icon_color": "#6A5E4D",
+            "title": "Clean labels",
+            "text": "No parabens, sulfates, silicones"
+          }
         }
       },
-      "block_order": ["natural", "mineral", "gentle", "clean"],
-      "settings": { "color_scheme": "scheme-2", "padding_top": 30, "padding_bottom": 30 }
+      "block_order": [
+        "natural",
+        "mineral",
+        "gentle",
+        "clean"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "padding_top": 30,
+        "padding_bottom": 30
+      }
     },
     "collection": {
       "type": "featured-collection",
@@ -64,18 +93,50 @@
     "compare": {
       "type": "product-compare",
       "blocks": {
-        "ingredients": { "type": "row", "settings": { "label": "Key ingredients", "metafield": "custom.key_ingredients" } },
-        "without": { "type": "row", "settings": { "label": "Made without", "metafield": "custom.made_without" } },
-        "feel": { "type": "row", "settings": { "label": "Feel", "metafield": "custom.feel" } },
-        "scent": { "type": "row", "settings": { "label": "Scent", "metafield": "custom.scent" } }
+        "ingredients": {
+          "type": "row",
+          "settings": {
+            "label": "Key ingredients",
+            "metafield": "custom.key_ingredients"
+          }
+        },
+        "without": {
+          "type": "row",
+          "settings": {
+            "label": "Made without",
+            "metafield": "custom.made_without"
+          }
+        },
+        "feel": {
+          "type": "row",
+          "settings": {
+            "label": "Feel",
+            "metafield": "custom.feel"
+          }
+        },
+        "scent": {
+          "type": "row",
+          "settings": {
+            "label": "Scent",
+            "metafield": "custom.scent"
+          }
+        }
       },
-      "block_order": ["ingredients", "without", "feel", "scent"],
+      "block_order": [
+        "ingredients",
+        "without",
+        "feel",
+        "scent"
+      ],
       "settings": {
         "anchor_id": "compare",
         "eyebrow": "Two creams, two skin types",
         "heading": "Which cream is right for you?",
         "text": "<p>A plain comparison, so you can choose the one your skin actually needs. Questions? Email us at info@teraclay.com.</p>",
-        "products": ["hypoallergenic-facial-cream", "advanced-hydration-facial-cream"],
+        "products": [
+          "hypoallergenic-facial-cream",
+          "advanced-hydration-facial-cream"
+        ],
         "color_scheme": "scheme-1",
         "padding_top": 16,
         "padding_bottom": 104
@@ -137,7 +198,12 @@
           }
         }
       },
-      "block_order": ["magnesium", "shea", "rice", "allantoin"],
+      "block_order": [
+        "magnesium",
+        "shea",
+        "rice",
+        "allantoin"
+      ],
       "settings": {
         "eyebrow": "Know what’s inside",
         "heading": "Ingredients with a story",
@@ -145,7 +211,7 @@
         "use_metaobjects": true,
         "limit": 4,
         "columns": 4,
-        "ingredients_page": "",
+        "ingredients_page": "ingredients",
         "link_label": "Explore all ingredients",
         "color_scheme": "scheme-1",
         "padding_top": 104,
@@ -157,18 +223,31 @@
       "blocks": {
         "link": {
           "type": "chip",
-          "settings": { "label": "Your link", "text": "promo.teraclay.com/<em>YOURNAME</em>" }
+          "settings": {
+            "label": "Your link",
+            "text": "promo.teraclay.com/<em>YOURNAME</em>"
+          }
         },
         "discount": {
           "type": "stat",
-          "settings": { "value": "10%", "label": "off for your audience" }
+          "settings": {
+            "value": "10%",
+            "label": "off for your audience"
+          }
         },
         "commission": {
           "type": "stat",
-          "settings": { "value": "[X]%", "label": "commission for you" }
+          "settings": {
+            "value": "[X]%",
+            "label": "commission for you"
+          }
         }
       },
-      "block_order": ["link", "discount", "commission"],
+      "block_order": [
+        "link",
+        "discount",
+        "commission"
+      ],
       "settings": {
         "affiliate_only": true,
         "eyebrow": "Affiliate program",
@@ -195,5 +274,14 @@
       }
     }
   },
-  "order": ["hero", "trust", "collection", "compare", "story", "ingredients", "affiliates", "newsletter"]
+  "order": [
+    "hero",
+    "trust",
+    "collection",
+    "compare",
+    "story",
+    "ingredients",
+    "affiliates",
+    "newsletter"
+  ]
 }

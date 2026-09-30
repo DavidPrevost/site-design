@@ -33,6 +33,31 @@
       {%- endif -%}
     </div>
 
+    {%- if section.settings.visual_style == 'product' -%}
+      <div class="hero__visual hero__visual--product">
+        <div class="hero__arch hero__arch--product">
+          {%- if featured != blank and featured.featured_media -%}
+            {{
+              featured.featured_media
+              | image_url: width: 900
+              | image_tag: loading: 'eager', alt: featured.featured_media.alt, widths: '450, 900', sizes: '(min-width: 990px) 30vw, 70vw'
+            }}
+          {%- endif -%}
+        </div>
+        {%- if section.settings.chip_1_text != blank -%}
+          <div class="hero__chip hero__chip--top">
+            <span class="hero__product-label">{{ section.settings.chip_1_label | escape }}</span>
+            <span class="hero__chip-text">{{ section.settings.chip_1_text }}</span>
+          </div>
+        {%- endif -%}
+        {%- if section.settings.chip_2_title != blank -%}
+          <div class="hero__chip hero__chip--bottom">
+            <span class="icon-circle icon-circle--peach">{% render 'icon', name: 'tag', size: 20 %}</span>
+            <span><strong>{{ section.settings.chip_2_title | escape }}</strong><br><span class="hero__chip-muted">{{ section.settings.chip_2_text | escape }}</span></span>
+          </div>
+        {%- endif -%}
+      </div>
+    {%- else -%}
     <div class="hero__visual">
       {%- if section.settings.show_arch -%}
         <div class="hero__arch" aria-hidden="true"></div>
@@ -75,6 +100,7 @@
         </a>
       {%- endif -%}
     </div>
+    {%- endif -%}
   </div>
 </section>
 
@@ -164,7 +190,76 @@
     font-weight: var(--font-body-weight-bold);
   }
 
+  .hero__visual--product {
+    display: flex;
+    justify-content: center;
+    min-height: 24rem;
+  }
+
+  .hero__arch--product {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    width: min(26rem, 80%);
+    height: auto;
+    aspect-ratio: 7 / 9;
+    overflow: hidden;
+  }
+
+  .hero__arch--product img {
+    width: 88%;
+    height: auto;
+    margin-bottom: 6%;
+    mix-blend-mode: multiply;
+  }
+
+  .hero__chip {
+    position: absolute;
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.875rem 1.125rem;
+    border-radius: calc(var(--radius-card) * 0.8);
+    background-color: #fff;
+    color: #3b2e25;
+    font-size: 0.875rem;
+    line-height: 1.4;
+    box-shadow: 0 18px 40px -20px rgba(59, 46, 37, 0.45);
+  }
+
+  .hero__chip--top {
+    top: 12%;
+    left: 0;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .hero__chip--bottom {
+    right: 0;
+    bottom: 10%;
+    align-items: center;
+    max-width: 16rem;
+  }
+
+  .hero__chip-text {
+    font-size: 1.0625rem;
+    font-weight: var(--font-body-weight-bold);
+  }
+
+  .hero__chip-text em {
+    font-style: normal;
+    color: #9e5439;
+  }
+
+  .hero__chip-muted {
+    color: #6a5e4d;
+  }
+
   @media (max-width: 749px) {
+    .hero__chip--bottom {
+      display: none;
+    }
+
     .hero__product {
       display: none;
     }
@@ -221,6 +316,16 @@
       "content": "Image"
     },
     {
+      "type": "select",
+      "id": "visual_style",
+      "label": "Visual",
+      "options": [
+        { "value": "photo", "label": "Photo with arch and product card" },
+        { "value": "product", "label": "Featured product in the arch" }
+      ],
+      "default": "photo"
+    },
+    {
       "type": "image_picker",
       "id": "image",
       "label": "Image",
@@ -245,6 +350,14 @@
     },
     { "type": "product", "id": "featured_product", "label": "Product" },
     { "type": "text", "id": "product_label", "label": "Card label", "default": "Where it began" },
+    {
+      "type": "header",
+      "content": "Callouts (product visual only)"
+    },
+    { "type": "text", "id": "chip_1_label", "label": "First callout label" },
+    { "type": "inline_richtext", "id": "chip_1_text", "label": "First callout text", "info": "Italic words use the accent color." },
+    { "type": "text", "id": "chip_2_title", "label": "Second callout title" },
+    { "type": "text", "id": "chip_2_text", "label": "Second callout text" },
     {
       "type": "header",
       "content": "Section"

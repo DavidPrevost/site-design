@@ -1,0 +1,52 @@
+{% doc %}
+  Banner shown after a shopper arrives through a discount link
+  (for example promo.teraclay.com/NAME, which redirects to /discount/NAME).
+  assets/discount-banner.js reads the applied code and reveals the banner.
+{% enddoc %}
+{%- if settings.discount_banner_enabled -%}
+  <discount-banner
+    class="discount-banner color-scheme-3"
+    hidden
+    data-amount="{{ settings.affiliates_discount_label | escape }}"
+    data-text-amount="{{ 'discount_banner.applied_html' | t: amount: '__AMOUNT__', code: '__CODE__' | escape }}"
+    data-text-plain="{{ 'discount_banner.applied_no_amount_html' | t: code: '__CODE__' | escape }}"
+  >
+    <div class="page-width discount-banner__inner" role="status">
+      <span class="discount-banner__icon">{% render 'icon', name: 'tag', size: 20 %}</span>
+      <p class="discount-banner__text" data-text></p>
+      <button type="button" class="icon-button" data-dismiss aria-label="{{ 'discount_banner.dismiss' | t }}">
+        {% render 'icon', name: 'close', size: 16 %}
+      </button>
+    </div>
+  </discount-banner>
+  <script src="{{ 'discount-banner.js' | asset_url }}" defer></script>
+{%- endif -%}
+
+{% stylesheet %}
+  .discount-banner {
+    display: block;
+    background-color: #ffebdb;
+    color: #3b2e25;
+  }
+
+  .discount-banner[hidden] {
+    display: none;
+  }
+
+  .discount-banner__inner {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 3rem;
+    font-size: 0.875rem;
+  }
+
+  .discount-banner__icon {
+    display: flex;
+    color: #9e5439;
+  }
+
+  .discount-banner__text {
+    flex-grow: 1;
+  }
+{% endstylesheet %}

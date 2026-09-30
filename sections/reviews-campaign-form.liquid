@@ -1,0 +1,66 @@
+{%- liquid
+  assign key = section.settings.key
+  if key == blank
+    assign key = page.metafields.custom.review_campaign.value
+  endif
+  if key == blank
+    assign key = page.handle
+  endif
+-%}
+{%- if settings.reviews_enabled -%}
+  <section
+    class="section reviews-campaign color-{{ section.settings.color_scheme }}"
+    style="--section-pt: {{ section.settings.padding_top }}px; --section-pb: {{ section.settings.padding_bottom }}px;"
+  >
+    <div class="page-width">
+      <div class="reviews-campaign__inner tc-reviews tc-reviews--campaign">
+        {%- if section.settings.form_type == 'feedback' -%}
+          <div data-campaign-feedback-form="{{ key | escape }}"></div>
+        {%- else -%}
+          <div data-campaign-form="{{ key | escape }}"></div>
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
+{%- endif -%}
+
+{% stylesheet %}
+  .reviews-campaign__inner {
+    max-width: 48rem;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Review campaign form",
+  "class": "section-reviews-campaign",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Shows a campaign form from the Teraclay reviews service. Create the campaign in the reviews dashboard first."
+    },
+    {
+      "type": "select",
+      "id": "form_type",
+      "label": "Form",
+      "options": [
+        { "value": "campaign", "label": "Campaign application" },
+        { "value": "feedback", "label": "Campaign feedback" }
+      ],
+      "default": "campaign"
+    },
+    {
+      "type": "text",
+      "id": "key",
+      "label": "Campaign slug or feedback key",
+      "info": "Leave blank to use the page's \"custom.review_campaign\" field, or the page's URL handle."
+    },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 24 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 104 }
+  ],
+  "presets": [
+    { "name": "Review campaign form" }
+  ]
+}
+{% endschema %}

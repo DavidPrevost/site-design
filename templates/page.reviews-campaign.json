@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": { "show_title": true, "eyebrow": "", "width": "narrow", "color_scheme": "scheme-1", "padding_top": 72, "padding_bottom": 24 }
+    },
+    "form": {
+      "type": "reviews-campaign-form",
+      "settings": { "form_type": "campaign", "key": "", "color_scheme": "scheme-1", "padding_top": 24, "padding_bottom": 104 }
+    }
+  },
+  "order": ["main", "form"]
+}

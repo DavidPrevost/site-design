@@ -1,0 +1,225 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "Teraclay affiliate program",
+        "heading": "Share what you love. Earn on every order.",
+        "text": "<p>Give your audience 10% off with your own link, and earn a commission whenever they shop.</p>",
+        "button_1_label": "Apply now",
+        "button_1_link": "#apply",
+        "button_2_label": "Affiliate login",
+        "button_2_link": "https://affiliates.teraclay.com/",
+        "visual_style": "product",
+        "image": "",
+        "image_position": "object-position: center center",
+        "show_arch": true,
+        "arch_color": "#FFEBDB",
+        "featured_product": "hypoallergenic-facial-cream",
+        "product_label": "",
+        "chip_1_label": "Your link",
+        "chip_1_text": "promo.teraclay.com/<em>YOURNAME</em>",
+        "chip_2_title": "10% off applied",
+        "chip_2_text": "for your followers at checkout",
+        "color_scheme": "scheme-1",
+        "padding_top": 80,
+        "padding_bottom": 96
+      }
+    },
+    "how": {
+      "type": "multicolumn",
+      "blocks": {
+        "apply": {
+          "type": "column",
+          "settings": {
+            "icon": "leaf",
+            "title": "Apply",
+            "text": "<p>Tell us about you and your audience. We review every application personally.</p>"
+          }
+        },
+        "share": {
+          "type": "column",
+          "settings": {
+            "icon": "tag",
+            "title": "Share your link",
+            "text": "<p>Your personal link applies your 10% code automatically, so followers never need to type it.</p>"
+          }
+        },
+        "earn": {
+          "type": "column",
+          "settings": {
+            "icon": "chart",
+            "title": "Earn",
+            "text": "<p>Track clicks, orders and earnings in your dashboard, and get paid [on your payout schedule].</p>"
+          }
+        }
+      },
+      "block_order": [
+        "apply",
+        "share",
+        "earn"
+      ],
+      "settings": {
+        "eyebrow": "How it works",
+        "heading": "Apply, share, earn",
+        "text": "",
+        "marker": "number",
+        "card_style": "surface",
+        "columns": 3,
+        "color_scheme": "scheme-2",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "benefits": {
+      "type": "multicolumn",
+      "blocks": {
+        "products": {
+          "type": "column",
+          "settings": {
+            "icon": "leaf",
+            "title": "Products you can stand behind",
+            "text": "<p>Simple, 100% natural, mineral-enriched skincare with clean labels your audience can read.</p>"
+          }
+        },
+        "discount": {
+          "type": "column",
+          "settings": {
+            "icon": "tag",
+            "title": "A real discount for them",
+            "text": "<p>10% off every order placed through your link, with no code to remember.</p>"
+          }
+        },
+        "dashboard": {
+          "type": "column",
+          "settings": {
+            "icon": "chart",
+            "title": "Everything in one dashboard",
+            "text": "<p>Your link, earnings and payouts in one place at affiliates.teraclay.com.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "products",
+        "discount",
+        "dashboard"
+      ],
+      "settings": {
+        "eyebrow": "",
+        "heading": "",
+        "text": "",
+        "marker": "icon",
+        "card_style": "plain",
+        "columns": 3,
+        "color_scheme": "scheme-1",
+        "padding_top": 96,
+        "padding_bottom": 48
+      }
+    },
+    "apply": {
+      "type": "affiliate-application",
+      "blocks": {
+        "free": {
+          "type": "point",
+          "settings": {
+            "text": "Free to join"
+          }
+        },
+        "link": {
+          "type": "point",
+          "settings": {
+            "text": "Personal link and discount code"
+          }
+        },
+        "dashboard": {
+          "type": "point",
+          "settings": {
+            "text": "Your own earnings dashboard"
+          }
+        }
+      },
+      "block_order": [
+        "free",
+        "link",
+        "dashboard"
+      ],
+      "settings": {
+        "anchor_id": "apply",
+        "eyebrow": "Application",
+        "heading": "Apply to join",
+        "text": "<p>It takes about two minutes. We’ll reply by email within [X] business days.</p>",
+        "platforms": "Instagram, TikTok, YouTube, Blog or website, Other",
+        "ask_audience": false,
+        "terms_page": "affiliate-terms",
+        "note": "Applications go to our inbox. Once you’re approved, you get a login for your dashboard.",
+        "color_scheme": "scheme-1",
+        "padding_top": 48,
+        "padding_bottom": 96
+      }
+    },
+    "faq": {
+      "type": "collapsible-content",
+      "blocks": {
+        "discount": {
+          "type": "question",
+          "settings": {
+            "heading": "How does my audience get the discount?",
+            "content": "<p>Your link takes them to the store with your code already applied: 10% off their order. They can also enter your code at checkout.</p>",
+            "page": "",
+            "open": true
+          }
+        },
+        "earnings": {
+          "type": "question",
+          "settings": {
+            "heading": "Where do I see my earnings?",
+            "content": "<p>In your affiliate dashboard at affiliates.teraclay.com, along with your link, orders and payouts.</p>",
+            "page": "",
+            "open": false
+          }
+        },
+        "payouts": {
+          "type": "question",
+          "settings": {
+            "heading": "When and how do I get paid?",
+            "content": "<p>[Your payout schedule and payment methods.]</p>",
+            "page": "",
+            "open": false
+          }
+        },
+        "combine": {
+          "type": "question",
+          "settings": {
+            "heading": "Can my code be combined with other discounts?",
+            "content": "<p>No. Affiliate codes can’t be combined with other discount codes.</p>",
+            "page": "",
+            "open": false
+          }
+        }
+      },
+      "block_order": [
+        "discount",
+        "earnings",
+        "payouts",
+        "combine"
+      ],
+      "settings": {
+        "eyebrow": "FAQ",
+        "heading": "Questions, answered",
+        "text": "<p>Something else? <a href=\"/pages/contact\" title=\"Contact\">Contact us</a>.</p>",
+        "layout": "side",
+        "faq_schema": true,
+        "color_scheme": "scheme-2",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "how",
+    "benefits",
+    "apply",
+    "faq"
+  ]
+}

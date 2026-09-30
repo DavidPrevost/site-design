@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": { "show_title": true, "eyebrow": "Affiliate program", "width": "narrow", "color_scheme": "scheme-1", "padding_top": 72, "padding_bottom": 104 }
+    }
+  },
+  "order": ["main"]
+}
