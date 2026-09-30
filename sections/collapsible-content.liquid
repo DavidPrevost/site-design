@@ -1,0 +1,134 @@
+<section
+  class="section collapsible-content color-{{ section.settings.color_scheme }}"
+  style="--section-pt: {{ section.settings.padding_top }}px; --section-pb: {{ section.settings.padding_bottom }}px;"
+>
+  <div class="page-width collapsible-content__grid collapsible-content__grid--{{ section.settings.layout }}">
+    {%- if section.settings.heading != blank or section.settings.text != blank -%}
+      <div class="collapsible-content__intro stack">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="eyebrow eyebrow--plain">{{ section.settings.eyebrow | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="h2">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}
+          <div class="rte">{{ section.settings.text }}</div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="collapsible-content__items">
+      {%- for block in section.blocks -%}
+        <details class="accordion" {% if block.settings.open %}open{% endif %} {{ block.shopify_attributes }}>
+          <summary class="collapsible-content__question">{{ block.settings.heading | escape }}</summary>
+          <div class="accordion__content rte">
+            {%- if block.settings.page != blank -%}
+              {{ block.settings.page.content }}
+            {%- else -%}
+              {{ block.settings.content }}
+            {%- endif -%}
+          </div>
+        </details>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{%- if section.settings.faq_schema and section.blocks.size > 0 -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {%- for block in section.blocks -%}
+          {%- if block.settings.page != blank -%}
+            {%- assign answer = block.settings.page.content -%}
+          {%- else -%}
+            {%- assign answer = block.settings.content -%}
+          {%- endif -%}
+          {
+            "@type": "Question",
+            "name": {{ block.settings.heading | json }},
+            "acceptedAnswer": { "@type": "Answer", "text": {{ answer | strip_html | strip | json }} }
+          }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    }
+  </script>
+{%- endif -%}
+
+{% stylesheet %}
+  .collapsible-content__grid {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .collapsible-content__intro {
+    --stack-gap: 0.875rem;
+  }
+
+  .collapsible-content__question {
+    font-size: 1.0625rem;
+  }
+
+  @media (min-width: 990px) {
+    .collapsible-content__grid--side {
+      grid-template-columns: minmax(0, 22rem) minmax(0, 1fr);
+      gap: 5rem;
+    }
+
+    .collapsible-content__grid--stacked {
+      max-width: 50rem;
+      margin-inline: auto;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Questions (FAQ)",
+  "class": "section-collapsible-content",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Label", "default": "FAQ" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Questions, answered" },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        { "value": "side", "label": "Heading beside questions" },
+        { "value": "stacked", "label": "Heading above questions" }
+      ],
+      "default": "side"
+    },
+    {
+      "type": "checkbox",
+      "id": "faq_schema",
+      "label": "Mark up as FAQ for search engines",
+      "default": true
+    },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-2" },
+    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 96 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 96 }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Question", "default": "Question" },
+        { "type": "richtext", "id": "content", "label": "Answer", "default": "<p>Answer.</p>" },
+        { "type": "page", "id": "page", "label": "Or use a page as the answer" },
+        { "type": "checkbox", "id": "open", "label": "Open by default", "default": false }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Questions (FAQ)",
+      "blocks": [{ "type": "question" }, { "type": "question" }, { "type": "question" }]
+    }
+  ]
+}
+{% endschema %}

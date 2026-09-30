@@ -1,0 +1,76 @@
+{
+  "sections": {
+    "intro": {
+      "type": "image-with-text",
+      "settings": {
+        "image": "",
+        "use_default_image": true,
+        "image_position": "right",
+        "eyebrow": "Our story",
+        "heading": "Straight from the <em>earth</em>.",
+        "text": "<p>Natural skincare imagined by Harrison, a materials science engineer whose hands were always close to the earth. His skin endured rock dust in summer and piercing windburn in winter. After reactions to synthetic products, he set out to care for his skin with the very earth he trekked across.</p>",
+        "link_label": "",
+        "link_url": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "chapters": {
+      "type": "multicolumn",
+      "blocks": {
+        "clays": {
+          "type": "column",
+          "settings": {
+            "icon": "leaf",
+            "title": "Natural clays",
+            "text": "<p>Across Europe and the Americas, a team of scientists analyzed clays. Some absorb oil, some remove dirt and toxins, and some nourish the skin with minerals.</p>"
+          }
+        },
+        "mineral": {
+          "type": "column",
+          "settings": {
+            "icon": "mineral",
+            "title": "The hydration mineral",
+            "text": "<p>Off the coast of the Netherlands, the team found a naturally occurring magnesium mineral that absorbs moisture from the air and helps skin hold on to it.</p>"
+          }
+        },
+        "tera": {
+          "type": "column",
+          "settings": {
+            "icon": "sprout",
+            "title": "Teraclay is born",
+            "text": "<p>The Ultra Mineral Facial Cleanser came first: it cleans away dirt and debris while our mineral solution keeps skin from drying out. “Tera” comes from <em>terra</em>, the earth.</p>"
+          }
+        }
+      },
+      "block_order": ["clays", "mineral", "tera"],
+      "settings": {
+        "eyebrow": "How it started",
+        "heading": "From the mountains to the lab",
+        "text": "",
+        "marker": "icon",
+        "card_style": "surface",
+        "columns": 3,
+        "color_scheme": "scheme-2",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": { "show_title": false, "eyebrow": "", "width": "narrow", "color_scheme": "scheme-1", "padding_top": 72, "padding_bottom": 72 }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "heading": "Connect with us for special offers",
+        "text": "<p>New products and subscriber-only offers, straight to your inbox.</p>",
+        "color_scheme": "scheme-3",
+        "padding_top": 88,
+        "padding_bottom": 88
+      }
+    }
+  },
+  "order": ["intro", "chapters", "main", "newsletter"]
+}

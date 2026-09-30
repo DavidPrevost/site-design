@@ -1,4 +1,199 @@
 {
-  "sections": {},
-  "order": []
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "Mineral enriched · 100% natural",
+        "heading": "Straight from the earth.",
+        "text": "<p>A face wash and two face creams, built on clays and minerals. Simple skincare, made by an engineer and adventurer who wanted nothing synthetic on his skin.</p>",
+        "button_1_label": "Shop all",
+        "button_1_link": "/collections/all",
+        "button_2_label": "Our story",
+        "button_2_link": "/pages/story",
+        "image": "",
+        "image_position": "object-position: center center",
+        "show_arch": true,
+        "arch_color": "#FFD6B3",
+        "featured_product": "ultra-mineral-facial-cleanser",
+        "product_label": "Where it began",
+        "color_scheme": "scheme-1",
+        "padding_top": 72,
+        "padding_bottom": 96
+      }
+    },
+    "trust": {
+      "type": "icon-row",
+      "blocks": {
+        "natural": {
+          "type": "item",
+          "settings": { "icon": "leaf", "icon_color": "#9E5439", "title": "100% natural", "text": "Plant and earth ingredients" }
+        },
+        "mineral": {
+          "type": "item",
+          "settings": { "icon": "mineral", "icon_color": "#4A6470", "title": "Mineral enriched", "text": "Our magnesium mineral signature" }
+        },
+        "gentle": {
+          "type": "item",
+          "settings": { "icon": "shield", "icon_color": "#9E5439", "title": "Gentle formulas", "text": "Hypoallergenic, nut-free option" }
+        },
+        "clean": {
+          "type": "item",
+          "settings": { "icon": "check", "icon_color": "#6A5E4D", "title": "Clean labels", "text": "No parabens, sulfates, silicones" }
+        }
+      },
+      "block_order": ["natural", "mineral", "gentle", "clean"],
+      "settings": { "color_scheme": "scheme-2", "padding_top": 30, "padding_bottom": 30 }
+    },
+    "collection": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Shop",
+        "heading": "The collection",
+        "text": "<p>Three products, made from minerals and plants. Nothing extra.</p>",
+        "collection": "skincare",
+        "products": [],
+        "max_products": 3,
+        "columns": 3,
+        "link_label": "Shop all",
+        "link_url": "/collections/all",
+        "color_scheme": "scheme-1",
+        "padding_top": 104,
+        "padding_bottom": 88
+      }
+    },
+    "compare": {
+      "type": "product-compare",
+      "blocks": {
+        "ingredients": { "type": "row", "settings": { "label": "Key ingredients", "metafield": "custom.key_ingredients" } },
+        "without": { "type": "row", "settings": { "label": "Made without", "metafield": "custom.made_without" } },
+        "feel": { "type": "row", "settings": { "label": "Feel", "metafield": "custom.feel" } },
+        "scent": { "type": "row", "settings": { "label": "Scent", "metafield": "custom.scent" } }
+      },
+      "block_order": ["ingredients", "without", "feel", "scent"],
+      "settings": {
+        "anchor_id": "compare",
+        "eyebrow": "Two creams, two skin types",
+        "heading": "Which cream is right for you?",
+        "text": "<p>A plain comparison, so you can choose the one your skin actually needs. Questions? Email us at info@teraclay.com.</p>",
+        "products": ["hypoallergenic-facial-cream", "advanced-hydration-facial-cream"],
+        "color_scheme": "scheme-1",
+        "padding_top": 16,
+        "padding_bottom": 104
+      }
+    },
+    "story": {
+      "type": "image-with-text",
+      "settings": {
+        "image": "",
+        "use_default_image": true,
+        "image_position": "left",
+        "eyebrow": "Our story",
+        "heading": "“Tera,” from <em>terra</em>: the earth.",
+        "text": "<p>After reactions to synthetic products, Harrison, a materials science engineer, set out to care for his skin with the very earth he trekked across. He and a team of scientists analyzed clays across Europe and the Americas.</p><p>Off the coast of the Netherlands they found a naturally occurring magnesium mineral that draws moisture from the air and helps skin hold on to it.</p>",
+        "link_label": "Read our story",
+        "link_url": "/pages/story",
+        "color_scheme": "scheme-2",
+        "padding_top": 104,
+        "padding_bottom": 104
+      }
+    },
+    "ingredients": {
+      "type": "ingredients-highlight",
+      "blocks": {
+        "magnesium": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Magnesium mineral",
+            "source": "Zechstein seabed, Netherlands",
+            "description": "The heart of our mineral signature. It helps skin retain moisture and its natural oils.",
+            "icon": "mineral"
+          }
+        },
+        "shea": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Shea butter",
+            "source": "African shea tree nut",
+            "description": "Stearic and oleic acids that deeply moisturize and help repair damaged skin.",
+            "icon": "drop"
+          }
+        },
+        "rice": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Rice bran oil",
+            "source": "Outer layer of rice",
+            "description": "A nut-free moisturizer, gentle enough for the most sensitive skin types.",
+            "icon": "leaf"
+          }
+        },
+        "allantoin": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Allantoin",
+            "source": "Comfrey root",
+            "description": "Softens, protects and soothes while supporting healthy skin renewal.",
+            "icon": "sprout"
+          }
+        }
+      },
+      "block_order": ["magnesium", "shea", "rice", "allantoin"],
+      "settings": {
+        "eyebrow": "Know what’s inside",
+        "heading": "Ingredients with a story",
+        "text": "<p>Every product page links its key ingredients here, so you can see where each one comes from and what it does.</p>",
+        "use_metaobjects": true,
+        "limit": 4,
+        "columns": 4,
+        "ingredients_page": "",
+        "link_label": "Explore all ingredients",
+        "color_scheme": "scheme-1",
+        "padding_top": 104,
+        "padding_bottom": 104
+      }
+    },
+    "affiliates": {
+      "type": "callout-band",
+      "blocks": {
+        "link": {
+          "type": "chip",
+          "settings": { "label": "Your link", "text": "promo.teraclay.com/<em>YOURNAME</em>" }
+        },
+        "discount": {
+          "type": "stat",
+          "settings": { "value": "10%", "label": "off for your audience" }
+        },
+        "commission": {
+          "type": "stat",
+          "settings": { "value": "[X]%", "label": "commission for you" }
+        }
+      },
+      "block_order": ["link", "discount", "commission"],
+      "settings": {
+        "affiliate_only": true,
+        "eyebrow": "Affiliate program",
+        "heading": "Love Teraclay? Share it and earn.",
+        "text": "<p>Your followers get 10% off with your personal link, and you earn a commission on every order it brings in.</p>",
+        "button_1_label": "Become an affiliate",
+        "button_1_link": "",
+        "button_2_label": "Affiliate login",
+        "button_2_link": "",
+        "box_color_scheme": "scheme-6",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 104
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "heading": "Connect with us for special offers",
+        "text": "<p>New products and subscriber-only offers, straight to your inbox.</p>",
+        "color_scheme": "scheme-3",
+        "padding_top": 88,
+        "padding_bottom": 88
+      }
+    }
+  },
+  "order": ["hero", "trust", "collection", "compare", "story", "ingredients", "affiliates", "newsletter"]
 }

@@ -1,0 +1,260 @@
+{%- liquid
+  assign featured = section.settings.featured_product
+  assign image = section.settings.image
+-%}
+<section
+  class="section hero color-{{ section.settings.color_scheme }}"
+  style="--section-pt: {{ section.settings.padding_top }}px; --section-pb: {{ section.settings.padding_bottom }}px; --arch-color: {{ section.settings.arch_color }};"
+>
+  <div class="page-width hero__grid">
+    <div class="hero__content stack">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="eyebrow eyebrow--rule">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h1 class="h-display">{{ section.settings.heading }}</h1>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <div class="lead rte">{{ section.settings.text }}</div>
+      {%- endif -%}
+      {%- if section.settings.button_1_label != blank or section.settings.button_2_label != blank -%}
+        <div class="cluster hero__buttons">
+          {%- if section.settings.button_1_label != blank -%}
+            <a href="{{ section.settings.button_1_link | default: routes.all_products_collection_url }}" class="button">
+              {{- section.settings.button_1_label | escape -}}
+            </a>
+          {%- endif -%}
+          {%- if section.settings.button_2_label != blank -%}
+            <a href="{{ section.settings.button_2_link | default: routes.root_url }}" class="button button--secondary">
+              {{- section.settings.button_2_label | escape -}}
+            </a>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="hero__visual">
+      {%- if section.settings.show_arch -%}
+        <div class="hero__arch" aria-hidden="true"></div>
+      {%- endif -%}
+      <div class="hero__image media-rounded">
+        {%- if image -%}
+          {{
+            image
+            | image_url: width: 1600
+            | image_tag:
+              loading: 'eager',
+              fetchpriority: 'high',
+              widths: '600, 900, 1200, 1600',
+              sizes: '(min-width: 990px) 50vw, 100vw',
+              style: section.settings.image_position
+          }}
+        {%- else -%}
+          <img
+            src="{{ 'hero-default.jpg' | asset_url }}"
+            alt="A climber on a sunlit terracotta rock face"
+            width="710"
+            height="392"
+            fetchpriority="high"
+          >
+        {%- endif -%}
+      </div>
+
+      {%- if featured != blank -%}
+        <a href="{{ featured.url }}" class="hero__product">
+          <span class="media-well media-well--contain media-well--blend hero__product-media" style="--media-ratio: 16 / 10;">
+            {%- if featured.featured_media -%}
+              {{ featured.featured_media | image_url: width: 400 | image_tag: loading: 'eager', alt: '', widths: '200, 400' }}
+            {%- endif -%}
+          </span>
+          {%- if section.settings.product_label != blank -%}
+            <span class="hero__product-label">{{ section.settings.product_label | escape }}</span>
+          {%- endif -%}
+          <span class="hero__product-title">{{ featured.title | escape }}</span>
+          <span class="hero__product-price">{% render 'price', product: featured, show_from: true, plain: true %}</span>
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .hero__grid {
+    display: grid;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .hero__content {
+    --stack-gap: 1.5rem;
+  }
+
+  .hero__buttons {
+    margin-top: 0.375rem;
+  }
+
+  .hero__visual {
+    position: relative;
+    min-height: 18rem;
+    padding: 0 0 1rem;
+  }
+
+  .hero__arch {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 62%;
+    height: 92%;
+    border-radius: 999px 999px var(--radius-card) var(--radius-card);
+    background-color: var(--arch-color);
+  }
+
+  .hero__image {
+    position: relative;
+    width: 88%;
+    margin-top: 12%;
+    aspect-ratio: 3 / 2;
+    box-shadow: 0 32px 60px -32px rgba(59, 46, 37, 0.55);
+  }
+
+  .hero__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero__product {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+    width: min(13rem, 46%);
+    padding: 0.875rem;
+    border-radius: calc(var(--radius-card) * 0.9);
+    background-color: #fff;
+    color: #3b2e25;
+    text-decoration: none;
+    box-shadow: 0 18px 40px -20px rgba(59, 46, 37, 0.45);
+  }
+
+  .hero__product-media {
+    --color-surface: #f4ebe1;
+    border-radius: calc(var(--radius-card) * 0.55);
+    margin-bottom: 0.25rem;
+  }
+
+  .hero__product-label {
+    font-size: 0.6875rem;
+    font-weight: var(--font-body-weight-bold);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #6a5e4d;
+  }
+
+  .hero__product-title {
+    font-family: var(--font-heading-family);
+    font-weight: var(--font-heading-weight);
+    line-height: 1.25;
+  }
+
+  .hero__product-price {
+    font-size: 0.875rem;
+    font-weight: var(--font-body-weight-bold);
+  }
+
+  @media (max-width: 749px) {
+    .hero__product {
+      display: none;
+    }
+
+    .hero__image {
+      width: 92%;
+    }
+  }
+
+  @media (min-width: 990px) {
+    .hero__grid {
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 4rem;
+    }
+
+    .hero__visual {
+      min-height: 33rem;
+    }
+
+    .hero__image {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 90%;
+      margin: 0;
+    }
+
+    .hero__product {
+      bottom: 2.25rem;
+      right: 1.5rem;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Hero",
+  "class": "section-hero",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Label", "default": "Mineral enriched · 100% natural" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Straight from the earth." },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>A face wash and two face creams, built on clays and minerals. Simple skincare, made by an engineer and adventurer who wanted nothing synthetic on his skin.</p>"
+    },
+    { "type": "text", "id": "button_1_label", "label": "First button label", "default": "Shop all" },
+    { "type": "url", "id": "button_1_link", "label": "First button link" },
+    { "type": "text", "id": "button_2_label", "label": "Second button label", "default": "Our story" },
+    { "type": "url", "id": "button_2_link", "label": "Second button link" },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "Landscape, at least 1600 px wide, without text in the photo. Without an image, the climbing photo from the old homepage is used."
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image crop focus",
+      "options": [
+        { "value": "object-position: center top", "label": "Top" },
+        { "value": "object-position: center center", "label": "Center" },
+        { "value": "object-position: center bottom", "label": "Bottom" }
+      ],
+      "default": "object-position: center center"
+    },
+    { "type": "checkbox", "id": "show_arch", "label": "Show arch shape behind the image", "default": true },
+    { "type": "color", "id": "arch_color", "label": "Arch color", "default": "#FFD6B3" },
+    {
+      "type": "header",
+      "content": "Featured product card"
+    },
+    { "type": "product", "id": "featured_product", "label": "Product" },
+    { "type": "text", "id": "product_label", "label": "Card label", "default": "Where it began" },
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 72 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 96 }
+  ],
+  "presets": [
+    { "name": "Hero" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,70 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": { "show_title": true, "eyebrow": "", "width": "narrow", "color_scheme": "scheme-1", "padding_top": 72, "padding_bottom": 24 }
+    },
+    "questions": {
+      "type": "collapsible-content",
+      "blocks": {
+        "natural": {
+          "type": "question",
+          "settings": {
+            "heading": "Are your products really 100% natural?",
+            "content": "<p>Yes. Our formulas use plant and earth ingredients, with no parabens, silicones or sulfates. Every product page lists its full ingredients.</p>",
+            "page": "",
+            "open": true
+          }
+        },
+        "which_cream": {
+          "type": "question",
+          "settings": {
+            "heading": "Which face cream should I choose?",
+            "content": "<p>The Hypoallergenic Facial Cream is for sensitive skin: it’s nut free and fragrance free. The Advanced Hydration Facial Cream is richer, for dry to normal skin. See the <a href=\"/#compare\" title=\"Compare our creams\">side-by-side comparison</a>.</p>",
+            "page": "",
+            "open": false
+          }
+        },
+        "nut_free": {
+          "type": "question",
+          "settings": {
+            "heading": "Is the Hypoallergenic Facial Cream nut free?",
+            "content": "<p>Yes. It uses rice bran oil instead of nut oils, and it’s fragrance free.</p>",
+            "page": "",
+            "open": false
+          }
+        },
+        "shipping": {
+          "type": "question",
+          "settings": {
+            "heading": "How long does shipping take?",
+            "content": "<p>[Your shipping times and regions.]</p>",
+            "page": "",
+            "open": false
+          }
+        },
+        "returns": {
+          "type": "question",
+          "settings": {
+            "heading": "Can I return a product?",
+            "content": "<p>See our <a href=\"/policies/refund-policy\" title=\"Refund Policy\">Refund Policy</a>, or email info@teraclay.com and we’ll help.</p>",
+            "page": "",
+            "open": false
+          }
+        }
+      },
+      "block_order": ["natural", "which_cream", "nut_free", "shipping", "returns"],
+      "settings": {
+        "eyebrow": "",
+        "heading": "",
+        "text": "",
+        "layout": "stacked",
+        "faq_schema": true,
+        "color_scheme": "scheme-1",
+        "padding_top": 24,
+        "padding_bottom": 104
+      }
+    }
+  },
+  "order": ["main", "questions"]
+}

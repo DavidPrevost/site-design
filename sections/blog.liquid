@@ -1,35 +1,56 @@
-{% comment %}
-  This section is used in the blog template to render the blog page listing all
-  articles within a blog.
-
-  https://shopify.dev/docs/storefronts/themes/architecture/templates/blog
-{% endcomment %}
-
-<h1>{{ blog.title }}</h1>
-
-{% paginate blog.articles by 5 %}
-  {% for article in blog.articles %}
-    <div>
-      {% if article.image %}
-        {{ article.image | image_url: width: 1000 | image_tag }}
-      {% endif %}
-      <h2>
-        {{ article.title | link_to: article.url }}
-      </h2>
-      {% assign date = article.published_at | time_tag: format: 'date' %}
-      <p>{{ 'blog.article_metadata_html' | t: date: date, author: article.author }}</p>
-      <p>{{ article.excerpt }}</p>
+<section class="section color-{{ section.settings.color_scheme }}" style="--section-pt: 72px; --section-pb: 104px;">
+  <div class="page-width">
+    <div class="section-header">
+      <h1 class="h1">{{ blog.title | escape }}</h1>
     </div>
-  {% endfor %}
+    {%- paginate blog.articles by 9 -%}
+      <ul class="grid" role="list" style="--grid-desktop: 3;">
+        {%- for article in blog.articles -%}
+          <li>
+            <a href="{{ article.url }}" class="article-card">
+              {%- if article.image -%}
+                <span class="media-rounded article-card__image">
+                  {{ article.image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '400, 600, 900', sizes: '(min-width: 990px) 33vw, 100vw' }}
+                </span>
+              {%- endif -%}
+              <span class="text-small text-muted">{{ article.published_at | time_tag: format: 'date' }}</span>
+              <span class="h3">{{ article.title | escape }}</span>
+              {%- if article.excerpt != blank -%}
+                <span class="text-muted">{{ article.excerpt | strip_html | truncatewords: 24 }}</span>
+              {%- endif -%}
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+      {% render 'pagination', paginate: paginate %}
+    {%- endpaginate -%}
+  </div>
+</section>
 
-  {%- if paginate.pages > 1 -%}
-    {{- paginate | default_pagination -}}
-  {%- endif -%}
-{% endpaginate %}
+{% stylesheet %}
+  .article-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .article-card__image {
+    aspect-ratio: 3 / 2;
+    margin-bottom: 0.375rem;
+  }
+
+  .article-card:hover .h3 {
+    text-decoration: underline;
+  }
+{% endstylesheet %}
 
 {% schema %}
 {
-  "name": "t:general.blog",
-  "settings": []
+  "name": "Blog posts",
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
+  ]
 }
 {% endschema %}

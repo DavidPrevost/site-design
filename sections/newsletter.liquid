@@ -1,0 +1,54 @@
+<section
+  class="section newsletter color-{{ section.settings.color_scheme }}"
+  style="--section-pt: {{ section.settings.padding_top }}px; --section-pb: {{ section.settings.padding_bottom }}px;"
+>
+  <div class="page-width newsletter__inner stack">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="h2">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+    {%- if section.settings.text != blank -%}
+      <div class="rte newsletter__text">{{ section.settings.text }}</div>
+    {%- endif -%}
+    {% render 'newsletter-form', form_id: section.id %}
+  </div>
+</section>
+
+{% stylesheet %}
+  .newsletter__inner {
+    align-items: center;
+    max-width: 40rem;
+    text-align: center;
+    --stack-gap: 1.125rem;
+  }
+
+  .newsletter__text {
+    font-size: 1.125rem;
+    color: var(--color-muted);
+  }
+
+  .newsletter .newsletter-form {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "class": "section-newsletter",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Sign-ups are saved as customers who accept email marketing."
+    },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Connect with us for special offers" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>New products and subscriber-only offers, straight to your inbox.</p>" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-3" },
+    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 88 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 88 }
+  ],
+  "presets": [
+    { "name": "Newsletter" }
+  ]
+}
+{% endschema %}

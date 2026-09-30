@@ -1,0 +1,169 @@
+<section
+  class="section multicolumn color-{{ section.settings.color_scheme }}"
+  style="--section-pt: {{ section.settings.padding_top }}px; --section-pb: {{ section.settings.padding_bottom }}px;"
+>
+  <div class="page-width">
+    {%- if section.settings.eyebrow != blank or section.settings.heading != blank -%}
+      <div class="section-header">
+        <div class="section-header__text">
+          {%- if section.settings.eyebrow != blank -%}
+            <p class="eyebrow eyebrow--plain">{{ section.settings.eyebrow | escape }}</p>
+          {%- endif -%}
+          {%- if section.settings.heading != blank -%}
+            <h2 class="h2">{{ section.settings.heading }}</h2>
+          {%- endif -%}
+          {%- if section.settings.text != blank -%}
+            <div class="lead rte">{{ section.settings.text }}</div>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endif -%}
+
+    <ul
+      class="grid multicolumn__list multicolumn__list--{{ section.settings.card_style }}"
+      role="list"
+      style="--grid-desktop: {{ section.settings.columns }};"
+    >
+      {%- for block in section.blocks -%}
+        <li class="multicolumn__item" {{ block.shopify_attributes }}>
+          {%- case section.settings.marker -%}
+            {%- when 'number' -%}
+              <span class="multicolumn__number" aria-hidden="true">{{ forloop.index }}</span>
+            {%- when 'icon' -%}
+              {%- liquid
+                case block.settings.icon
+                  when 'mineral', 'chart'
+                    assign circle = 'icon-circle--mist'
+                  when 'tag', 'drop'
+                    assign circle = 'icon-circle--peach'
+                  when 'sprout'
+                    assign circle = 'icon-circle--blush'
+                  else
+                    assign circle = 'icon-circle--sage'
+                endcase
+              -%}
+              <span class="icon-circle {{ circle }}">{% render 'icon', name: block.settings.icon, size: 24 %}</span>
+          {%- endcase -%}
+          {%- if block.settings.title != blank -%}
+            <h3 class="h3">{{ block.settings.title | escape }}</h3>
+          {%- endif -%}
+          {%- if block.settings.text != blank -%}
+            <div class="rte multicolumn__text">{{ block.settings.text }}</div>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% stylesheet %}
+  .multicolumn__item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+  }
+
+  .multicolumn__list--surface .multicolumn__item,
+  .multicolumn__list--bordered .multicolumn__item {
+    padding: clamp(1.5rem, 3vw, 2.125rem);
+    border-radius: var(--radius-card);
+  }
+
+  .multicolumn__list--surface .multicolumn__item {
+    background-color: var(--color-surface);
+  }
+
+  .multicolumn__list--bordered .multicolumn__item {
+    border: 1px solid var(--color-border);
+    background-color: color-mix(in srgb, var(--color-background) 25%, #fff);
+  }
+
+  .multicolumn__number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.25rem;
+    height: 3.25rem;
+    border-radius: 50%;
+    background-color: var(--color-button);
+    color: var(--color-button-label);
+    font-family: var(--font-heading-family);
+    font-weight: var(--font-heading-weight);
+    font-size: 1.375rem;
+  }
+
+  .multicolumn__text {
+    color: color-mix(in srgb, var(--color-foreground) 88%, var(--color-background));
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Columns",
+  "class": "section-multicolumn",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Label" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Columns" },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    {
+      "type": "select",
+      "id": "marker",
+      "label": "Column marker",
+      "options": [
+        { "value": "number", "label": "Numbers" },
+        { "value": "icon", "label": "Icons" },
+        { "value": "none", "label": "None" }
+      ],
+      "default": "icon"
+    },
+    {
+      "type": "select",
+      "id": "card_style",
+      "label": "Column style",
+      "options": [
+        { "value": "plain", "label": "Plain" },
+        { "value": "surface", "label": "Filled card" },
+        { "value": "bordered", "label": "Outlined card" }
+      ],
+      "default": "plain"
+    },
+    { "type": "range", "id": "columns", "label": "Columns on desktop", "min": 2, "max": 4, "step": 1, "default": 3 },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 96 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 96 }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Column",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "mineral", "label": "Mineral" },
+            { "value": "shield", "label": "Shield" },
+            { "value": "check", "label": "Check" },
+            { "value": "drop", "label": "Drop" },
+            { "value": "sprout", "label": "Sprout" },
+            { "value": "tag", "label": "Tag" },
+            { "value": "chart", "label": "Chart" },
+            { "value": "mail", "label": "Mail" }
+          ],
+          "default": "leaf"
+        },
+        { "type": "text", "id": "title", "label": "Title", "default": "Column" },
+        { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Describe something here.</p>" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Columns",
+      "blocks": [{ "type": "column" }, { "type": "column" }, { "type": "column" }]
+    }
+  ]
+}
+{% endschema %}

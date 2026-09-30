@@ -1,0 +1,138 @@
+<section
+  class="section image-with-text color-{{ section.settings.color_scheme }}"
+  style="--section-pt: {{ section.settings.padding_top }}px; --section-pb: {{ section.settings.padding_bottom }}px;"
+>
+  <div class="page-width image-with-text__grid image-with-text__grid--{{ section.settings.image_position }}">
+    <div class="image-with-text__media media-rounded">
+      {%- if section.settings.image -%}
+        {{
+          section.settings.image
+          | image_url: width: 1400
+          | image_tag: loading: 'lazy', widths: '500, 800, 1100, 1400', sizes: '(min-width: 990px) 50vw, 100vw'
+        }}
+      {%- elsif section.settings.use_default_image -%}
+        <img
+          src="{{ 'story-default.jpg' | asset_url }}"
+          alt="A person doing a handstand on a rock ledge above a fjord"
+          width="1200"
+          height="400"
+          loading="lazy"
+        >
+      {%- else -%}
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    </div>
+    <div class="image-with-text__content stack">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="eyebrow eyebrow--plain">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="h2">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <div class="rte image-with-text__text">{{ section.settings.text }}</div>
+      {%- endif -%}
+      {%- if section.settings.link_label != blank -%}
+        <a href="{{ section.settings.link_url | default: routes.root_url }}" class="link-arrow image-with-text__link">
+          {{- section.settings.link_label | escape -}}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .image-with-text__grid {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .image-with-text__media {
+    aspect-ratio: 5 / 4;
+    background-color: var(--color-surface);
+  }
+
+  .image-with-text__media .placeholder-svg {
+    width: 100%;
+    height: 100%;
+    fill: rgba(var(--color-foreground-rgb), 0.2);
+  }
+
+  .image-with-text__content {
+    --stack-gap: 1.375rem;
+  }
+
+  .image-with-text__content .h2 em {
+    font-style: normal;
+    color: var(--color-accent);
+  }
+
+  .image-with-text__text {
+    font-size: 1.125rem;
+    line-height: 1.65;
+  }
+
+  .image-with-text__link {
+    color: inherit;
+  }
+
+  @media (min-width: 990px) {
+    .image-with-text__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 5rem;
+    }
+
+    .image-with-text__grid--right .image-with-text__media {
+      order: 2;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Image with text",
+  "class": "section-image-with-text",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    {
+      "type": "checkbox",
+      "id": "use_default_image",
+      "label": "Use the fjord photo when no image is picked",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image position on desktop",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    { "type": "text", "id": "eyebrow", "label": "Label", "default": "Our story" },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Italic words are shown in the accent color.",
+      "default": "“Tera,” from <em>terra</em>: the earth."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Share the story behind your products.</p>"
+    },
+    { "type": "text", "id": "link_label", "label": "Link label", "default": "Read our story" },
+    { "type": "url", "id": "link_url", "label": "Link" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-2" },
+    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 104 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 104 }
+  ],
+  "presets": [
+    { "name": "Image with text" }
+  ]
+}
+{% endschema %}

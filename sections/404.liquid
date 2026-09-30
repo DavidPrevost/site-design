@@ -1,23 +1,33 @@
-{% comment %}
-  This section is used in the 404 template to render page shown when customers
-  enter an invalid store URL.
+<section class="section color-{{ section.settings.color_scheme }}" style="--section-pt: 120px; --section-pb: 120px;">
+  <div class="page-width not-found stack">
+    {% render 'icon-mark', class: 'not-found__mark' %}
+    <h1 class="h1">{{ '404.title' | t }}</h1>
+    <p class="lead">{{ '404.not_found' | t }}</p>
+    <div class="cluster">
+      <a href="{{ routes.all_products_collection_url }}" class="button">{{ '404.back_to_shopping' | t }}</a>
+      <button type="button" class="button button--secondary" data-open-search>{{ 'search.title' | t }}</button>
+    </div>
+  </div>
+</section>
 
-  https://shopify.dev/docs/storefronts/themes/architecture/templates/404
-{% endcomment %}
+{% stylesheet %}
+  .not-found {
+    align-items: center;
+    text-align: center;
+  }
 
-<h1>{{ '404.title' | t }}</h1>
-
-<p>
-  {{ '404.not_found' | t }}
-</p>
-
-<a href="{{ routes.all_products_collection_url }}">
-  {{ '404.back_to_shopping' | t }}
-</a>
+  .not-found__mark {
+    width: 5rem;
+    height: auto;
+    margin-bottom: 0.5rem;
+  }
+{% endstylesheet %}
 
 {% schema %}
 {
-  "name": "t:general.404",
-  "settings": []
+  "name": "Page not found",
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
+  ]
 }
 {% endschema %}

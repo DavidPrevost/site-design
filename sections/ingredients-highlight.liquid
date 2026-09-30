@@ -1,0 +1,135 @@
+{%- liquid
+  assign use_metaobjects = false
+  if section.settings.use_metaobjects and shop.metaobjects.ingredient.values.size > 0
+    assign use_metaobjects = true
+  endif
+  assign page_url = section.settings.ingredients_page.url
+-%}
+<section
+  class="section ingredients-highlight color-{{ section.settings.color_scheme }}"
+  style="--section-pt: {{ section.settings.padding_top }}px; --section-pb: {{ section.settings.padding_bottom }}px;"
+>
+  <div class="page-width">
+    <div class="section-header section-header--center">
+      <div class="section-header__text">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="h2">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}
+          <div class="lead rte">{{ section.settings.text }}</div>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <ul class="grid grid--scroll-mobile" role="list" style="--grid-desktop: {{ section.settings.columns }};">
+      {%- if use_metaobjects -%}
+        {%- for ingredient in shop.metaobjects.ingredient.values limit: section.settings.limit -%}
+          {%- liquid
+            assign url = blank
+            if page_url != blank
+              assign url = page_url | append: '#' | append: ingredient.system.handle
+            endif
+          -%}
+          <li>
+            {% render 'ingredient-card',
+              name: ingredient.name.value,
+              source: ingredient.source.value,
+              description: ingredient.description.value,
+              icon: ingredient.icon.value,
+              image: ingredient.image.value,
+              url: url
+            %}
+          </li>
+        {%- endfor -%}
+      {%- else -%}
+        {%- for block in section.blocks -%}
+          <li {{ block.shopify_attributes }}>
+            {% render 'ingredient-card',
+              name: block.settings.name,
+              source: block.settings.source,
+              description: block.settings.description,
+              icon: block.settings.icon
+            %}
+          </li>
+        {%- endfor -%}
+      {%- endif -%}
+    </ul>
+
+    {%- if page_url != blank and section.settings.link_label != blank -%}
+      <div class="ingredients-highlight__footer">
+        <a href="{{ page_url }}" class="button button--secondary">{{ section.settings.link_label | escape }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% stylesheet %}
+  .ingredients-highlight__footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 2.5rem;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Ingredients",
+  "class": "section-ingredients-highlight",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Label", "default": "Know what’s inside" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Ingredients with a story" },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Every product page links its key ingredients here, so you can see where each one comes from and what it does.</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_metaobjects",
+      "label": "Show ingredients from Custom data",
+      "info": "Uses the \"Ingredient\" entries under Content > Metaobjects. Otherwise the blocks below are shown.",
+      "default": true
+    },
+    { "type": "range", "id": "limit", "label": "Maximum ingredients", "min": 2, "max": 8, "step": 1, "default": 4 },
+    { "type": "range", "id": "columns", "label": "Columns on desktop", "min": 2, "max": 4, "step": 1, "default": 4 },
+    { "type": "page", "id": "ingredients_page", "label": "Ingredients page" },
+    { "type": "text", "id": "link_label", "label": "Button label", "default": "Explore all ingredients" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 104 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 104 }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Name", "default": "Ingredient" },
+        { "type": "text", "id": "source", "label": "Source" },
+        { "type": "textarea", "id": "description", "label": "Description" },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "mineral", "label": "Mineral" },
+            { "value": "drop", "label": "Drop" },
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "sprout", "label": "Sprout" }
+          ],
+          "default": "leaf"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ingredients",
+      "blocks": [{ "type": "ingredient" }, { "type": "ingredient" }, { "type": "ingredient" }, { "type": "ingredient" }]
+    }
+  ]
+}
+{% endschema %}

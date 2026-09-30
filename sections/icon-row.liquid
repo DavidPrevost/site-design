@@ -1,0 +1,117 @@
+<div
+  class="section icon-row color-{{ section.settings.color_scheme }}"
+  style="--section-pt: {{ section.settings.padding_top }}px; --section-pb: {{ section.settings.padding_bottom }}px;"
+>
+  <ul class="page-width icon-row__list" role="list">
+    {%- for block in section.blocks -%}
+      <li class="icon-row__item" {{ block.shopify_attributes }}>
+        <span class="icon-circle icon-circle--cream icon-row__icon" style="--icon-circle-fg: {{ block.settings.icon_color }};">
+          {%- render 'icon', name: block.settings.icon, size: 22 -%}
+        </span>
+        <span class="icon-row__text">
+          <span class="icon-row__title">{{ block.settings.title | escape }}</span>
+          {%- if block.settings.text != blank -%}
+            <span class="icon-row__subtitle">{{ block.settings.text | escape }}</span>
+          {%- endif -%}
+        </span>
+      </li>
+    {%- endfor -%}
+  </ul>
+</div>
+
+{% stylesheet %}
+  .icon-row__list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.125rem 1rem;
+    margin-block: 0;
+    list-style: none;
+  }
+
+  @media (min-width: 990px) {
+    .icon-row__list {
+      grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+      gap: 2rem;
+    }
+  }
+
+  .icon-row__item {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+  }
+
+  .icon-row__icon {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .icon-row__text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  .icon-row__title {
+    font-size: 0.9375rem;
+    font-weight: var(--font-body-weight-bold);
+    line-height: 1.3;
+  }
+
+  .icon-row__subtitle {
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+  }
+
+  @media (max-width: 749px) {
+    .icon-row__subtitle {
+      display: none;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Icon row",
+  "class": "section-icon-row",
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-2" },
+    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 80, "step": 2, "unit": "px", "default": 30 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 80, "step": 2, "unit": "px", "default": 30 }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "mineral", "label": "Mineral" },
+            { "value": "shield", "label": "Shield" },
+            { "value": "check", "label": "Check" },
+            { "value": "drop", "label": "Drop" },
+            { "value": "sprout", "label": "Sprout" },
+            { "value": "tag", "label": "Tag" },
+            { "value": "mail", "label": "Mail" }
+          ],
+          "default": "leaf"
+        },
+        { "type": "color", "id": "icon_color", "label": "Icon color", "default": "#9E5439" },
+        { "type": "text", "id": "title", "label": "Title", "default": "100% natural" },
+        { "type": "text", "id": "text", "label": "Text", "default": "Plant and earth ingredients" }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Icon row",
+      "blocks": [{ "type": "item" }, { "type": "item" }, { "type": "item" }, { "type": "item" }]
+    }
+  ]
+}
+{% endschema %}

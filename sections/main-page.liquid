@@ -1,0 +1,59 @@
+<section
+  class="section main-page color-{{ section.settings.color_scheme }}"
+  style="--section-pt: {{ section.settings.padding_top }}px; --section-pb: {{ section.settings.padding_bottom }}px;"
+>
+  <div class="page-width">
+    <div class="main-page__inner main-page__inner--{{ section.settings.width }} stack">
+      {%- if section.settings.show_title -%}
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="eyebrow eyebrow--rule">{{ section.settings.eyebrow | escape }}</p>
+        {%- endif -%}
+        <h1 class="h1">{{ page.title | escape }}</h1>
+      {%- endif -%}
+      {%- if page.content != blank -%}
+        <div class="rte main-page__content">{{ page.content }}</div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .main-page__inner {
+    --stack-gap: 1.5rem;
+  }
+
+  .main-page__inner--narrow {
+    max-width: 48rem;
+  }
+
+  .main-page__content {
+    font-size: 1.0625rem;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Page content",
+  "class": "section-main-page",
+  "settings": [
+    { "type": "checkbox", "id": "show_title", "label": "Show page title", "default": true },
+    { "type": "text", "id": "eyebrow", "label": "Label above title" },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Width",
+      "options": [
+        { "value": "narrow", "label": "Narrow" },
+        { "value": "full", "label": "Full" }
+      ],
+      "default": "narrow"
+    },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 72 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 72 }
+  ],
+  "presets": [
+    { "name": "Page content" }
+  ]
+}
+{% endschema %}

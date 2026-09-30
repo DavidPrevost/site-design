@@ -32,11 +32,10 @@
     transform: translate(-50%, -50%);
   }
   .custom-section__content {
-    display: grid;
-    grid-template-columns: var(--content-grid);
-  }
-  .custom-section__content > * {
-    grid-column: 2;
+    width: 100%;
+    max-width: calc(var(--page-width) + var(--page-margin) * 2);
+    margin-inline: auto;
+    padding: 3rem var(--page-margin);
   }
 {% endstylesheet %}
 

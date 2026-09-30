@@ -1,0 +1,203 @@
+{%- liquid
+  assign show = true
+  if section.settings.affiliate_only and settings.affiliates_enabled == false
+    assign show = false
+  endif
+  assign button_1_link = section.settings.button_1_link
+  if button_1_link == blank and settings.affiliates_page != blank
+    assign button_1_link = settings.affiliates_page.url
+  endif
+  assign button_2_link = section.settings.button_2_link | default: settings.affiliates_portal_url
+-%}
+{%- if show -%}
+  <section
+    class="section callout-band color-{{ section.settings.color_scheme }}"
+    style="--section-pt: {{ section.settings.padding_top }}px; --section-pb: {{ section.settings.padding_bottom }}px;"
+  >
+    <div class="page-width">
+      <div class="callout-band__box color-{{ section.settings.box_color_scheme }}">
+        <div class="callout-band__content stack">
+          {%- if section.settings.eyebrow != blank -%}
+            <p class="eyebrow">{{ section.settings.eyebrow | escape }}</p>
+          {%- endif -%}
+          {%- if section.settings.heading != blank -%}
+            <h2 class="h2">{{ section.settings.heading }}</h2>
+          {%- endif -%}
+          {%- if section.settings.text != blank -%}
+            <div class="rte callout-band__text">{{ section.settings.text }}</div>
+          {%- endif -%}
+          <div class="cluster">
+            {%- if section.settings.button_1_label != blank and button_1_link != blank -%}
+              <a href="{{ button_1_link }}" class="button">{{ section.settings.button_1_label | escape }}</a>
+            {%- endif -%}
+            {%- if section.settings.button_2_label != blank and button_2_link != blank -%}
+              <a href="{{ button_2_link }}" class="button button--secondary">{{ section.settings.button_2_label | escape }}</a>
+            {%- endif -%}
+          </div>
+        </div>
+
+        {%- if section.blocks.size > 0 -%}
+          <div class="callout-band__aside">
+            {%- for block in section.blocks -%}
+              {%- case block.type -%}
+                {%- when 'chip' -%}
+                  <div class="callout-band__chip" {{ block.shopify_attributes }}>
+                    <span class="callout-band__chip-label">{{ block.settings.label | escape }}</span>
+                    <span class="callout-band__chip-text">{{ block.settings.text }}</span>
+                  </div>
+                {%- when 'stat' -%}
+                  <div class="callout-band__stat" {{ block.shopify_attributes }}>
+                    <span class="callout-band__stat-value">{{ block.settings.value | escape }}</span>
+                    <span class="callout-band__stat-label">{{ block.settings.label | escape }}</span>
+                  </div>
+              {%- endcase -%}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
+{%- endif -%}
+
+{% stylesheet %}
+  .callout-band__box {
+    display: grid;
+    gap: 2rem;
+    padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 5vw, 4.5rem);
+    border-radius: calc(var(--radius-card) * 1.4);
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+
+  @media (min-width: 990px) {
+    .callout-band__box {
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+      align-items: center;
+      gap: 4rem;
+    }
+  }
+
+  .callout-band__content {
+    --stack-gap: 1.125rem;
+  }
+
+  .callout-band__text {
+    font-size: 1.125rem;
+    color: var(--color-muted);
+  }
+
+  .callout-band__aside {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.875rem;
+  }
+
+  .callout-band__chip,
+  .callout-band__stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+    padding: 1.125rem 1.25rem;
+    border-radius: calc(var(--radius-card) * 0.8);
+    background-color: var(--color-surface);
+  }
+
+  .callout-band__chip {
+    grid-column: 1 / -1;
+  }
+
+  .callout-band__chip-label {
+    font-size: 0.75rem;
+    font-weight: var(--font-body-weight-bold);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .callout-band__chip-text {
+    font-size: 1.25rem;
+    font-weight: var(--font-body-weight-bold);
+    overflow-wrap: anywhere;
+  }
+
+  .callout-band__chip-text em {
+    font-style: normal;
+    color: var(--color-accent);
+  }
+
+  .callout-band__stat-value {
+    font-family: var(--font-heading-family);
+    font-weight: var(--font-heading-weight);
+    font-size: 1.875rem;
+    line-height: 1;
+    color: var(--color-accent);
+  }
+
+  .callout-band__stat-label {
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Callout band",
+  "class": "section-callout-band",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "affiliate_only",
+      "label": "Hide when the affiliate program is turned off",
+      "info": "Theme settings > Affiliate program.",
+      "default": true
+    },
+    { "type": "text", "id": "eyebrow", "label": "Label", "default": "Affiliate program" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Love Teraclay? Share it and earn." },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Your followers get 10% off with your personal link, and you earn a commission on every order it brings in.</p>"
+    },
+    { "type": "text", "id": "button_1_label", "label": "First button label", "default": "Become an affiliate" },
+    { "type": "url", "id": "button_1_link", "label": "First button link", "info": "Defaults to the \"Become an affiliate\" page." },
+    { "type": "text", "id": "button_2_label", "label": "Second button label", "default": "Affiliate login" },
+    { "type": "url", "id": "button_2_link", "label": "Second button link", "info": "Defaults to the affiliate dashboard." },
+    { "type": "color_scheme", "id": "box_color_scheme", "label": "Box color scheme", "default": "scheme-6" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Section color scheme", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 104 }
+  ],
+  "blocks": [
+    {
+      "type": "chip",
+      "name": "Highlight",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Your link" },
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "label": "Text",
+          "info": "Italic words are shown in the accent color.",
+          "default": "promo.teraclay.com/<em>YOURNAME</em>"
+        }
+      ]
+    },
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        { "type": "text", "id": "value", "label": "Value", "default": "10%" },
+        { "type": "text", "id": "label", "label": "Label", "default": "off for your audience" }
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [
+    {
+      "name": "Callout band",
+      "blocks": [{ "type": "chip" }, { "type": "stat" }]
+    }
+  ]
+}
+{% endschema %}

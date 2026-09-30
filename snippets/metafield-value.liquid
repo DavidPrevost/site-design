@@ -5,6 +5,7 @@
 
   @param {object} resource - A product, collection, page or shop
   @param {string} key - "namespace.key"
+  @param {boolean} [inline] - Join lists with commas instead of a bulleted list
 
   @example
   {% render 'metafield-value', resource: product, key: 'custom.how_to_use' %}
@@ -22,11 +23,22 @@
     {%- when 'single_line_text_field' -%}
       {{ field.value | escape }}
     {%- when 'list.single_line_text_field' -%}
-      <ul>
-        {%- for item in field.value -%}
-          <li>{{ item | escape }}</li>
-        {%- endfor -%}
-      </ul>
+      {%- if inline -%}
+        {{ field.value | join: ', ' | escape }}
+      {%- else -%}
+        <ul>
+          {%- for item in field.value -%}
+            <li>{{ item | escape }}</li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    {%- when 'list.metaobject_reference' -%}
+      {%- for entry in field.value -%}
+        {{- entry.name.value | default: entry.title.value | escape -}}
+        {%- unless forloop.last %}, {% endunless -%}
+      {%- endfor -%}
+    {%- when 'metaobject_reference' -%}
+      {{- field.value.name.value | default: field.value.title.value | escape -}}
     {%- else -%}
       {{ field | metafield_tag }}
   {%- endcase -%}

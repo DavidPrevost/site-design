@@ -1,0 +1,118 @@
+<section
+  class="section rich-text color-{{ section.settings.color_scheme }}"
+  style="--section-pt: {{ section.settings.padding_top }}px; --section-pb: {{ section.settings.padding_bottom }}px;"
+>
+  <div class="page-width">
+    <div class="rich-text__inner stack rich-text__inner--{{ section.settings.alignment }}">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'eyebrow' -%}
+            <p class="eyebrow" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</p>
+          {%- when 'heading' -%}
+            <h2 class="{{ block.settings.size }}" {{ block.shopify_attributes }}>{{ block.settings.heading }}</h2>
+          {%- when 'text' -%}
+            <div class="rte rich-text__text" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+          {%- when 'buttons' -%}
+            <div class="cluster rich-text__buttons" {{ block.shopify_attributes }}>
+              {%- if block.settings.button_1_label != blank -%}
+                <a href="{{ block.settings.button_1_link | default: routes.root_url }}" class="button">{{ block.settings.button_1_label | escape }}</a>
+              {%- endif -%}
+              {%- if block.settings.button_2_label != blank -%}
+                <a href="{{ block.settings.button_2_link | default: routes.root_url }}" class="button button--secondary">{{ block.settings.button_2_label | escape }}</a>
+              {%- endif -%}
+            </div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .rich-text__inner {
+    max-width: 48rem;
+    --stack-gap: 1.25rem;
+  }
+
+  .rich-text__inner--center {
+    align-items: center;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .rich-text__inner--center .rich-text__buttons {
+    justify-content: center;
+  }
+
+  .rich-text__text {
+    font-size: 1.125rem;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Rich text",
+  "class": "section-rich-text",
+  "settings": [
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "center"
+    },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 80 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 80 }
+  ],
+  "blocks": [
+    {
+      "type": "eyebrow",
+      "name": "Label",
+      "settings": [{ "type": "text", "id": "text", "label": "Text", "default": "Label" }]
+    },
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Talk about your brand" },
+        {
+          "type": "select",
+          "id": "size",
+          "label": "Size",
+          "options": [
+            { "value": "h-display", "label": "Extra large" },
+            { "value": "h1", "label": "Large" },
+            { "value": "h2", "label": "Medium" },
+            { "value": "h3", "label": "Small" }
+          ],
+          "default": "h2"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [{ "type": "richtext", "id": "text", "label": "Text", "default": "<p>Share information about your brand.</p>" }]
+    },
+    {
+      "type": "buttons",
+      "name": "Buttons",
+      "settings": [
+        { "type": "text", "id": "button_1_label", "label": "First button label", "default": "Shop all" },
+        { "type": "url", "id": "button_1_link", "label": "First button link" },
+        { "type": "text", "id": "button_2_label", "label": "Second button label" },
+        { "type": "url", "id": "button_2_link", "label": "Second button link" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Rich text",
+      "blocks": [{ "type": "heading" }, { "type": "text" }, { "type": "buttons" }]
+    }
+  ]
+}
+{% endschema %}
