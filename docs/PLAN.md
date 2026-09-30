@@ -14,14 +14,93 @@ Shopify theme editor (colors, fonts, images, layouts). It must also integrate tw
 - A dev store `teraclay-dev.myshopify.com` exists (used by the affiliates dev stack). Test the theme there first.
 
 Decisions: build on **Shopify's Skeleton starter theme**; the owner **mirrors the repos to GitHub**; **mockup first**. The extras
-are the **FAQ page, Ingredients page and Sets/bundles product layout**, with no blog. Assumptions: a non-Plus plan (checkout is
-branded in Shopify's checkout editor, not the theme), and install through Shopify's GitHub integration.
-Work happens on branch `claude/exciting-fermat-q82ml7` in `DavidPrevost/site-design`, which is currently empty.
+are the **FAQ page and Ingredients page**, with no blog (the Sets/bundles layout was dropped in rev 2). Assumptions: a non-Plus plan
+(checkout is branded in Shopify's checkout editor, not the theme), and install through Shopify's GitHub integration.
+Work happens on branch `claude/exciting-fermat-q82ml7` in `DavidPrevost/site-design`. Commit `3a27b4e` holds `docs/PLAN.md` and
+the v1 mockup source in `design/mockup/`.
+
+## Rebrand changes (owner feedback on mockup v1, 2026-09-30)
+- **New logo symbol:** `teraclay-mark-color.eps`, four stacked rounded bars ("strata"). Its colors are the owner's **exact brand
+  RGB values**, which replace the naive CMYK conversions:
+  - top: **Denim #4A6470**
+  - middle, widest: **Taupe #877161**
+  - third: **Terracotta #CC8062**
+  - bottom, shortest: **Peach #FFD6B3**
+  - Geometry, in the viewBox `0 0 2753 2058`, top to bottom:
+    - bar 1: x 262 w 2228
+    - bar 2: x 0 w 2752
+    - bar 3: x 262 w 2228
+    - bar 4: x 590 w 1573
+    - every bar is h 426 with rx 213, at y 0 / 544 / 1088 / 1632
+  - The header shows **symbol + "Teraclay" in the heading font** (owner's choice); a finished logo image can replace it later.
+- **New packaging:**
+  - face creams in **tan airless pump bottles**
+  - face wash in a **medium-amber bottle with a black pump head**
+  - No photos yet (the shoot hasn't happened), so product imagery uses simple flat illustrations of the new packaging, labelled
+    as placeholders.
+- **Lineup:** Hypoallergenic Facial Cream, Advanced Hydration Facial Cream and Ultra Mineral Facial Cleanser (the face wash).
+  Current names.
+- **No multi-step routines, sets or "steps".** Drop "Shop by step", "Complete your routine", "Get the full set", "Step 1 · Cleanse"
+  and the Sets & routines tiles and links. Keep cross-recommendations, but honest (e.g. "Also from Teraclay … use it alongside
+  this cream, or on its own").
+- **Fonts:** Quicksand is out. Keep **Jost + Karla** (default) and **Josefin Sans + Work Sans** as the two candidates. In the
+  theme these are just two font dropdowns (Theme settings → Typography), so the owner can switch any time, even after launch.
+- **Texture:** removed entirely.
+- **Brand direction:** modern, clean and straightforward, like the products.
+
+## Mockup v2: revise the canvas https://claude.ai/artifact/4DsvqU1NP9VTZPr2xjiZ5U
+Work in `<scratchpad>/canvas/project/`. The owner's unsaved Home edits were experiments and are to be ignored.
+If a publish is refused, read the named file and re-apply the v2 changes on top of it.
+1. **Assets:**
+   - Write `mark.svg` (4 rects above) and flat illustrations `bottle-cream-tan.svg` (tan airless pump, slim cylinder, tan
+     actuator, small label bearing the mark) and `bottle-wash-amber.svg` (amber Boston-round with black pump and cream label).
+   - Upload them with `Artifact` `asset:true`.
+   - The two creams share the tan bottle; they're told apart only by a thin label accent (peach vs denim).
+2. **Palette swap in all 6 boards:** a scripted hex replacement to the exact values.
+   - Re-derive the accessible shades from the new terracotta and denim, then verify every text/background pair with a small
+     WCAG contrast script (≥4.5:1 text, ≥3:1 large/UI):
+     - Kiln, about #9E5439: white on it is 5.8, and it reads 5.1 on cream
+     - denim-ink for text on mist
+     - mist/peach-light tints
+   - Stars use Kiln or a ≥3:1 terracotta shade. The new #CC8062 is 2.8:1 on cream, so it's for decoration only.
+3. **Logo:** replace the old navy PNG in every header and footer with the inline mark SVG + "Teraclay" in `{{hf}}`. In the footer
+   it sits on Umber.
+4. **Product imagery:** swap every old jar/bottle photo for the new illustrations.
+   - Keep the lifestyle photos (climber, fjord) and the cream-texture swatch.
+   - Add a canvas sticky note: "Product images are placeholder illustrations of the new packaging until the photoshoot."
+5. **Remove routine content and rework the IA:**
+   - Nav: Shop all · Face Wash · Face Creams · Ingredients · Our Story.
+   - Footer Shop column: Face Wash · Face Creams · Shop all. Remove Coconut Charcoal and Complete Sets.
+   - **Home:** replace "Shop by step" with an honest **"Which cream is right for you?"** comparison. Hypoallergenic suits sensitive
+     skin (nut and fragrance free, rice bran oil); Advanced Hydration suits dry to normal skin (shea, coconut, sodium hyaluronate).
+     Both are real facts from the product pages. "Best sellers" becomes **"The collection"** (3 products).
+   - **Product (desktop and mobile):** "Complete your routine" becomes **"Also from Teraclay"**, showing the other cream + the face
+     wash with honest one-liners. Remove the sets tile and all "Step" labels. Sizes become placeholders, e.g. "[Size]" pump
+     variants; current prices are shown as stand-ins.
+   - **HomeMobile:** remove the Shop-by-step tiles and add a compact cream comparison.
+   - Finally, grep all boards for `Step|routine|set|Set` and clean up whatever is left.
+6. **Fonts:**
+   - The `fonts` tweak enum on every board becomes `["Jost + Karla","Josefin Sans + Work Sans"]`.
+   - Drop Quicksand/Nunito from the Google Fonts link.
+   - Remove the `texture` tweak, `.speckle` CSS and `class="{{tex}}"`.
+7. **New board `Type.dc.html` "Font comparison":** the two pairings side by side (1440×~1500), showing the same hero headline,
+   section heading, product card, body paragraph, buttons and nav in each. Place it below the style guide (x 0, y ≈ 3360).
+8. **Style guide:**
+   - brand color cards with the exact values, labelled "from your logo file"
+   - a logo section (mark on cream, sand and umber; minimum size note)
+   - a packaging swatch row (tan, amber, black pump)
+   - an updated product-card component
+9. **Canvas index and sources:**
+   - Title note becomes "design direction v2". Add the Type board to `boards`/`order` and the sticky note.
+   - Publish only the changed files.
+   - Copy the updated sources to `design/mockup/`, commit and push to the branch.
+   - Do not render or screenshot the canvas to verify it (the Design type asks for no self-checks); the owner reviews it.
 
 ## Phase 0: owner actions (in parallel, none blocking)
 - ~~Mirror the repos~~ (done).
-- Optionally send the brand hex values. Otherwise use the naive CMYK→RGB conversions:
-  #FFD1B5 peach · #CD6E5A terracotta · #786B58 taupe · #366677 dusty denim.
+- ~~Brand hex values~~: taken from the logo EPS (see Rebrand changes).
+- Final font choice (Jost + Karla vs Josefin Sans + Work Sans). It isn't blocking, because the theme ships both as editor options.
+- Product photoshoot of the new packaging. `docs/product-photography.md` gives the specs.
 
 ## Phase 1: design mockup (for approval, no theme code yet)
 - A private HTML artifact showing:
@@ -32,7 +111,7 @@ Work happens on branch `claude/exciting-fermat-q82ml7` in `DavidPrevost/site-des
   - a product page, including a styled reviews block and stars
   - a mobile view
 - Iterate until approved. Save the approved design as tokens: the source for `settings_data.json` defaults.
-  Keep the mockup source in `design/mockup.html`.
+  Keep the mockup source in `design/mockup/`. v1 is done; v2 is described above.
 
 ## Phase 2: scaffold
 - Copy Shopify/skeleton-theme into the repo root. Keep its license notice.
@@ -48,9 +127,14 @@ Work happens on branch `claude/exciting-fermat-q82ml7` in `DavidPrevost/site-des
   - button style and radius, page width, spacing
   - logo, favicon and social links
   - a Reviews group: widget URL, star color, show stars on cards
+- **Defaults:** the exact brand palette from the logo, plus the verified accessible derivatives. Fonts default to `jost_n5` headings
+  and `karla_n4` body. `docs/customizing.md` shows the one-step switch to `josefin_sans_n6` + `work_sans_n4`.
+- **Logo (`snippets/logo.liquid`):** if a logo image is set in the theme settings, show it. Otherwise render the inline mark SVG
+  (`snippets/icon-mark.liquid`) + `shop.name` in the heading font. Settings: logo image, logo width, show name text.
+  The mark is also used for the favicon default and the password page.
 - `snippets/css-variables.liquid` emits the settings as CSS custom properties.
 - `assets/base.css` uses only those tokens. That is the single place for changing colors and fonts.
-- A subtle optional "clay texture" background setting (image or CSS noise) per color scheme.
+- No texture setting (owner declined it).
 
 ## Phase 4: core theme
 - **`layout/`:** `theme.liquid` and `password.liquid`.
@@ -154,8 +238,14 @@ Work happens on branch `claude/exciting-fermat-q82ml7` in `DavidPrevost/site-des
   - `templates/page.ingredients.json` renders all ingredients.
   - A product metafield `custom.key_ingredients` (list of ingredient references) drives a PDP block that links to anchors on
     the ingredients page.
-- **Sets/bundles:** `templates/product.set.json`. A `custom.set_contents` (list of product references) metafield drives a
-  "What's inside" section with a per-item card and a "value vs. buying separately" line.
+- **Honest cross-sell, no routines or sets:**
+  - `sections/product-recommendations.liquid`:
+    - manual product picks, falling back to Shopify's related/complementary recommendations
+    - default heading "Also from Teraclay"
+    - an optional per-product one-liner from a `custom.pairing_note` metafield
+  - `sections/product-compare.liquid`: 2–3 picked products, with attribute rows as blocks. The home preset is "Which cream is
+    right for you?".
+  - No template, preset or default copy uses "step", "routine" or "set" language.
 - Metafield and metaobject definitions are created by the owner in Admin → Settings → Custom data. Exact steps go in the docs.
 
 ## Phase 8: docs and hand-off (`docs/`)
@@ -170,6 +260,14 @@ Work happens on branch `claude/exciting-fermat-q82ml7` in `DavidPrevost/site-des
     When fixed, **add `https://www.teraclay.com` to the reviews service's `STOREFRONT_ORIGIN`**, or the widget shows
     "Reviews Unavailable". Then re-test a `promo.teraclay.com/CODE` link end to end.
 - `repo-mirroring.md`: the GitHub mirroring steps given in chat.
+- `product-photography.md`, specs for the upcoming shoot:
+  - square or 4:5, at least 2000 px, one consistent warm-neutral backdrop or transparent cut-outs
+  - shot list: front, label/back, pump detail, texture swatch, in-hand scale, lifestyle
+- `design/placeholders/`: the packaging illustrations as PNG/SVG. They can go up as temporary product images until the photos exist.
+- Launch checklist additions:
+  - update menus (Online Store → Navigation) to the new, simpler structure
+  - update product variants and sizes for the airless pumps
+  - retire the Charcoal and Sets collections, with URL redirects if they had traffic
 
 ## Verification
 - `npx shopify theme check` passes with zero errors, locally and in the GitHub Action.

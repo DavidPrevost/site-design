@@ -6,32 +6,32 @@
       "h": 3500,
       "title": "Become an affiliate — desktop",
       "w": 1440,
-      "x": 4560,
-      "y": 0
+      "x": 0,
+      "y": 5740
     },
     "Home.dc.html": {
-      "h": 4400,
+      "h": 5000,
       "title": "Home — desktop",
       "w": 1440,
       "x": 1520,
       "y": 0
     },
     "HomeMobile.dc.html": {
-      "h": 4900,
+      "h": 5300,
       "title": "Home — mobile",
       "w": 390,
-      "x": 6080,
+      "x": 4560,
       "y": 0
     },
     "Main.dc.html": {
-      "h": 3240,
+      "h": 4100,
       "title": "Style guide",
       "w": 1440,
       "x": 0,
       "y": 0
     },
     "Product.dc.html": {
-      "h": 4000,
+      "h": 4100,
       "is_interactive": true,
       "title": "Product — desktop",
       "w": 1440,
@@ -39,12 +39,19 @@
       "y": 0
     },
     "ProductMobile.dc.html": {
-      "h": 4100,
+      "h": 4300,
       "is_interactive": true,
       "title": "Product — mobile",
       "w": 390,
-      "x": 6550,
+      "x": 5030,
       "y": 0
+    },
+    "Type.dc.html": {
+      "x": 0,
+      "y": 4220,
+      "w": 1440,
+      "h": 1400,
+      "title": "Font comparison"
     }
   },
   "createdOnFiles": {
@@ -58,15 +65,24 @@
   "notes": {
     "title": {
       "kind": "title1",
-      "maxW": 6940,
-      "text": "Teraclay theme — design direction v1",
+      "maxW": 5420,
+      "text": "Teraclay theme — design direction v2",
       "w": 240,
       "x": 0,
       "y": -300
+    },
+    "placeholders": {
+      "x": 5500,
+      "y": 0,
+      "w": 380,
+      "text": "Product images are placeholder illustrations of the new packaging (tan airless pumps for the creams, amber bottle with black pump for the face wash) until the photoshoot. Prices are current prices, used as stand-ins; sizes are placeholders.",
+      "fill": "orange",
+      "size": "m"
     }
   },
   "order": [
     "Main.dc.html",
+    "Type.dc.html",
     "Home.dc.html",
     "Product.dc.html",
     "Affiliates.dc.html",

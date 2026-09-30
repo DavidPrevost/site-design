@@ -8,160 +8,152 @@
 <body>
 <x-dc>
 <helmet>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&amp;family=Karla:wght@400;500;700&amp;family=Quicksand:wght@500;600;700&amp;family=Nunito+Sans:wght@400;600;700&amp;family=Josefin+Sans:wght@400;600;700&amp;family=Work+Sans:wght@400;500;600&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&amp;family=Karla:wght@400;500;700&amp;family=Josefin+Sans:wght@400;600;700&amp;family=Work+Sans:wght@400;500;600&amp;display=swap">
 <style>
-body{margin:0;background:#FBF5EE}
-a{color:#A9503E}a:hover{color:#8A3F30}
+body{margin:0;background:#FBF6F0}
+a{color:#9E5439}a:hover{color:#86452E}
 button{font:inherit;cursor:pointer}
-input{font:inherit}
-button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid #366677;outline-offset:2px}
-.speckle{background-image:radial-gradient(circle at 30% 40%,rgba(106,94,77,.16) 0.8px,transparent 1.5px),radial-gradient(circle at 70% 25%,rgba(169,80,62,.12) 0.9px,transparent 1.6px),radial-gradient(circle at 45% 80%,rgba(106,94,77,.10) 0.7px,transparent 1.4px);background-size:17px 19px,29px 23px,41px 37px}
+input,select,textarea{font:inherit}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid #4A6470;outline-offset:2px}
 </style>
 </helmet>
-<div style="width: 1440px; height: 4400px; display: flex; flex-direction: column; background-color: #FBF5EE; color: #3B2E25; font-family: {{bf}}">
-
-<div style="height: 40px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background-color: #3B2E25; color: #FBF5EE; font-size: 13px; letter-spacing: 0.04em">Mineral-enriched, 100% natural skincare, straight from the earth</div>
-
-<header style="height: 88px; flex-shrink: 0; box-sizing: border-box; padding: 0 120px; display: flex; align-items: center; justify-content: space-between; background-color: #FBF5EE; border-bottom: 1px solid #EADBCB">
-<a href="#" aria-label="Teraclay home" style="display: flex"><img src="/_blob/403b7136a2294aec116647b7cc64b56c" alt="Teraclay" style="height: 34px; width: auto"></a>
+<div style="width: 1440px; height: 5000px; display: flex; flex-direction: column; background-color: #FBF6F0; color: #3B2E25; font-family: {{bf}}">
+<div style="height: 40px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background-color: #3B2E25; color: #FBF6F0; font-size: 13px; letter-spacing: 0.04em">Mineral-enriched, 100% natural skincare, straight from the earth</div>
+<header style="height: 88px; flex-shrink: 0; box-sizing: border-box; padding: 0 120px; display: flex; align-items: center; justify-content: space-between; background-color: #FBF6F0; border-bottom: 1px solid #E8DCCF">
+<a href="#" aria-label="Teraclay home" style="display: flex; text-decoration: none; width: 260px"><span style="display: inline-flex; align-items: center; gap: 11px"><svg width="40" height="30" viewBox="0 0 2753 2058" aria-hidden="true" style="flex-shrink: 0"><rect x="262" y="0" width="2228" height="426" rx="213" fill="#4A6470"></rect><rect x="0" y="544" width="2752" height="426" rx="213" fill="#877161"></rect><rect x="262" y="1088" width="2228" height="426" rx="213" fill="#CC8062"></rect><rect x="590" y="1632" width="1573" height="426" rx="213" fill="#FFD6B3"></rect></svg><span style="font-family: {{hf}}; font-weight: {{hw}}; font-size: 27px; letter-spacing: -0.01em; color: #3B2E25">Teraclay</span></span></a>
 <nav aria-label="Main" style="display: flex; align-items: center; gap: 36px; font-size: 15px; font-weight: 500">
-<a href="#" style="color: #3B2E25; text-decoration: none">Skincare</a>
-<a href="#" style="color: #3B2E25; text-decoration: none">Charcoal</a>
-<a href="#" style="color: #3B2E25; text-decoration: none">Nourish</a>
-<a href="#" style="color: #3B2E25; text-decoration: none">Hydrate</a>
+<a href="#" style="color: #3B2E25; text-decoration: none">Shop all</a>
+<a href="#" style="color: #3B2E25; text-decoration: none">Face Wash</a>
+<a href="#" style="color: #3B2E25; text-decoration: none">Face Creams</a>
 <a href="#" style="color: #3B2E25; text-decoration: none">Ingredients</a>
 <a href="#" style="color: #3B2E25; text-decoration: none">Our Story</a>
 </nav>
-<div style="display: flex; align-items: center; gap: 8px">
-<button type="button" aria-label="Search" style="width: 44px; height: 44px; border: 0; border-radius: 50%; background-color: transparent; color: #3B2E25; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg></button>
+<div style="display: flex; align-items: center; justify-content: flex-end; gap: 8px; width: 260px">
+<button type="button" aria-label="Search" style="width: 44px; height: 44px; border-radius: 50%; color: #3B2E25; display: flex; align-items: center; justify-content: center; border: 0; background-color: transparent"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg></button>
 <a href="#" aria-label="Account" style="width: 44px; height: 44px; border-radius: 50%; color: #3B2E25; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"></path></svg></a>
-<a href="#" aria-label="Cart, 2 items" style="position: relative; width: 44px; height: 44px; border-radius: 50%; color: #3B2E25; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 13H6L5 8z"></path><path d="M9 8V6a3 3 0 0 1 6 0v2"></path></svg><span style="position: absolute; top: 4px; right: 2px; min-width: 18px; height: 18px; border-radius: 999px; background-color: #A9503E; color: #FFFFFF; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center">2</span></a>
+<a href="#" aria-label="Cart" style="width: 44px; height: 44px; border-radius: 50%; color: #3B2E25; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 13H6L5 8z"></path><path d="M9 8V6a3 3 0 0 1 6 0v2"></path></svg></a>
 </div>
 </header>
-
-<section class="{{tex}}" style="flex-shrink: 0; box-sizing: border-box; padding: 72px 120px 96px; display: flex; align-items: center; gap: 64px; background-color: #FBF5EE">
+<section style="flex-shrink: 0; box-sizing: border-box; padding: 72px 120px 96px; display: flex; align-items: center; gap: 64px; background-color: #FBF6F0">
 <div style="width: 500px; flex-shrink: 0; display: flex; flex-direction: column; gap: 26px">
-<div style="display: flex; align-items: center; gap: 10px; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #A9503E"><span style="width: 28px; height: 2px; background-color: #CD6E5A"></span>Mineral enriched · 100% natural</div>
+<div style="display: flex; align-items: center; gap: 10px; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #9E5439"><span style="width: 28px; height: 2px; background-color: #CC8062"></span>Mineral enriched · 100% natural</div>
 <h1 style="margin: 0; font-family: {{hf}}; font-weight: {{hw}}; font-size: 76px; line-height: 1.0; letter-spacing: -0.025em">Straight from the earth.</h1>
-<p style="margin: 0; font-size: 19px; line-height: 1.6; color: #6A5E4D">Natural skincare built on clays and minerals, created by an engineer and adventurer whose skin endured rock dust in summer and windburn in winter.</p>
+<p style="margin: 0; font-size: 19px; line-height: 1.6; color: #6A5E4D">A face wash and two face creams, built on clays and minerals. Simple skincare, made by an engineer and adventurer who wanted nothing synthetic on his skin.</p>
 <div style="display: flex; align-items: center; gap: 14px; margin-top: 6px">
-<a href="#" style="border-radius: 999px; padding: 17px 32px; background-color: #A9503E; color: #FFFFFF; font-weight: 700; font-size: 16px; text-decoration: none">Shop skincare</a>
+<a href="#" style="border-radius: 999px; padding: 17px 32px; background-color: #9E5439; color: #FFFFFF; font-weight: 700; font-size: 16px; text-decoration: none">Shop all</a>
 <a href="#" style="border: 1.5px solid #3B2E25; border-radius: 999px; padding: 15.5px 30px; color: #3B2E25; font-weight: 700; font-size: 16px; text-decoration: none">Our story</a>
 </div>
 </div>
 <div style="flex-grow: 1; position: relative; height: 540px">
-<div style="position: absolute; right: 0; top: 0; width: 400px; height: 500px; border-radius: 200px 200px 28px 28px; background-color: #FFD1B5"></div>
-<div style="position: absolute; right: 64px; top: 56px; width: 120px; height: 120px; border-radius: 50%; border: 1.5px solid #CD6E5A"></div>
+<div style="position: absolute; right: 0; top: 0; width: 400px; height: 500px; border-radius: 200px 200px 28px 28px; background-color: #FFD6B3"></div>
 <img src="/_blob/dac0e208f8e20fbd68ad7256f07d1e4b" alt="A climber on a sunlit terracotta rock face" style="position: absolute; left: 0; bottom: 0; width: 600px; height: 400px; object-fit: cover; border-radius: 28px; box-shadow: 0 32px 60px -32px rgba(59, 46, 37, 0.55)">
 <a href="#" style="position: absolute; right: 24px; bottom: 36px; width: 210px; box-sizing: border-box; padding: 14px; border-radius: 20px; background-color: #FFFFFF; text-decoration: none; color: #3B2E25; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 18px 40px -20px rgba(59, 46, 37, 0.45)">
-<div style="height: 120px; border-radius: 12px; background-color: #F6ECE1; overflow: hidden"><img src="/_blob/c3d9ebd11f01e87bcb6109d43fea8aad" alt="Ultra Mineral Facial Cleanser bottle" style="width: 182px; height: 120px; object-fit: cover; mix-blend-mode: multiply"></div>
+<div style="height: 130px; border-radius: 12px; background-color: #F4EBE1; display: flex; align-items: center; justify-content: center"><img src="/_blob/b23ff3e1bbe8ee4f06549707fc6e0c3b" alt="Illustration of the Ultra Mineral Facial Cleanser in an amber pump bottle" style="width: 104px; height: 130px; object-fit: contain"></div>
 <div style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; color: #6A5E4D">Where it began</div>
 <div style="font-family: {{hf}}; font-weight: {{hw}}; font-size: 16px; line-height: 1.25">Ultra Mineral Facial Cleanser</div>
 <div style="font-size: 14px; font-weight: 700">$24.00</div>
 </a>
 </div>
 </section>
-
-<div style="flex-shrink: 0; box-sizing: border-box; padding: 30px 120px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; background-color: #F3E6D8">
-<div style="display: flex; align-items: center; gap: 14px"><div style="width: 48px; height: 48px; flex-shrink: 0; border-radius: 50%; background-color: #FBF5EE; color: #A9503E; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-14 15-15-1 10-7 15-15 15z"></path><path d="M5 19l7-7"></path></svg></div><div style="display: flex; flex-direction: column; gap: 2px"><div style="font-weight: 700; font-size: 15px">100% natural</div><div style="font-size: 13px; color: #6A5E4D">Plant and earth ingredients</div></div></div>
-<div style="display: flex; align-items: center; gap: 14px"><div style="width: 48px; height: 48px; flex-shrink: 0; border-radius: 50%; background-color: #FBF5EE; color: #366677; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l8.2 4.75v9.5L12 21.5l-8.2-4.75v-9.5z"></path><path d="M12 8l3.5 2v4L12 16l-3.5-2v-4z"></path></svg></div><div style="display: flex; flex-direction: column; gap: 2px"><div style="font-weight: 700; font-size: 15px">Mineral enriched</div><div style="font-size: 13px; color: #6A5E4D">Our magnesium mineral signature</div></div></div>
-<div style="display: flex; align-items: center; gap: 14px"><div style="width: 48px; height: 48px; flex-shrink: 0; border-radius: 50%; background-color: #FBF5EE; color: #A9503E; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.5-7-10V5l7-2.5L19 5v6c0 5.5-7 10-7 10z"></path></svg></div><div style="display: flex; flex-direction: column; gap: 2px"><div style="font-weight: 700; font-size: 15px">Gentle formulas</div><div style="font-size: 13px; color: #6A5E4D">Hypoallergenic, nut-free options</div></div></div>
-<div style="display: flex; align-items: center; gap: 14px"><div style="width: 48px; height: 48px; flex-shrink: 0; border-radius: 50%; background-color: #FBF5EE; color: #6A5E4D; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></div><div style="display: flex; flex-direction: column; gap: 2px"><div style="font-weight: 700; font-size: 15px">Clean labels</div><div style="font-size: 13px; color: #6A5E4D">No parabens, sulfates, silicones</div></div></div>
-</div>
-
-<section style="flex-shrink: 0; box-sizing: border-box; padding: 104px 120px 88px; display: flex; flex-direction: column; gap: 40px; background-color: #FBF5EE">
+<div style="flex-shrink: 0; box-sizing: border-box; padding: 30px 120px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; background-color: #F2E7DC"><div style="display: flex; align-items: center; gap: 14px"><div style="width: 48px; height: 48px; flex-shrink: 0; border-radius: 50%; background-color: #FBF6F0; color: #9E5439; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-14 15-15-1 10-7 15-15 15z"></path><path d="M5 19l7-7"></path></svg></div><div style="display: flex; flex-direction: column; gap: 2px"><div style="font-weight: 700; font-size: 15px">100% natural</div><div style="font-size: 13px; color: #6A5E4D">Plant and earth ingredients</div></div></div><div style="display: flex; align-items: center; gap: 14px"><div style="width: 48px; height: 48px; flex-shrink: 0; border-radius: 50%; background-color: #FBF6F0; color: #4A6470; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l8.2 4.75v9.5L12 21.5l-8.2-4.75v-9.5z"></path><path d="M12 8l3.5 2v4L12 16l-3.5-2v-4z"></path></svg></div><div style="display: flex; flex-direction: column; gap: 2px"><div style="font-weight: 700; font-size: 15px">Mineral enriched</div><div style="font-size: 13px; color: #6A5E4D">Our magnesium mineral signature</div></div></div><div style="display: flex; align-items: center; gap: 14px"><div style="width: 48px; height: 48px; flex-shrink: 0; border-radius: 50%; background-color: #FBF6F0; color: #9E5439; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.5-7-10V5l7-2.5L19 5v6c0 5.5-7 10-7 10z"></path></svg></div><div style="display: flex; flex-direction: column; gap: 2px"><div style="font-weight: 700; font-size: 15px">Gentle formulas</div><div style="font-size: 13px; color: #6A5E4D">Hypoallergenic, nut-free option</div></div></div><div style="display: flex; align-items: center; gap: 14px"><div style="width: 48px; height: 48px; flex-shrink: 0; border-radius: 50%; background-color: #FBF6F0; color: #6A5E4D; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></div><div style="display: flex; flex-direction: column; gap: 2px"><div style="font-weight: 700; font-size: 15px">Clean labels</div><div style="font-size: 13px; color: #6A5E4D">No parabens, sulfates, silicones</div></div></div></div>
+<section style="flex-shrink: 0; box-sizing: border-box; padding: 104px 120px 88px; display: flex; flex-direction: column; gap: 40px; background-color: #FBF6F0">
 <div style="display: flex; align-items: flex-end; justify-content: space-between">
 <div style="display: flex; flex-direction: column; gap: 12px">
-<div style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #A9503E">Shop</div>
-<h2 style="margin: 0; font-family: {{hf}}; font-weight: {{hw}}; font-size: 48px; line-height: 1.1; letter-spacing: -0.015em">Our best sellers</h2>
+<div style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #9E5439">Shop</div>
+<h2 style="margin: 0; font-family: {{hf}}; font-weight: {{hw}}; font-size: 48px; line-height: 1.1; letter-spacing: -0.015em">The collection</h2>
+<p style="margin: 0; font-size: 18px; color: #6A5E4D">Three products, made from minerals and plants. Nothing extra.</p>
 </div>
-<a href="#" style="font-weight: 700; font-size: 16px">Shop all skincare →</a>
+<a href="#" style="font-weight: 700; font-size: 16px">Shop all →</a>
 </div>
 <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px">
 <sc-for list="{{products}}" as="p" hint-placeholder-count="3">
 <div style="display: flex; flex-direction: column; gap: 16px">
-<a href="#" style="position: relative; display: block; height: 380px; border-radius: 22px; background-color: #F6ECE1; overflow: hidden">
-<img src="{{p.img}}" alt="{{p.alt}}" style="width: 100%; height: 380px; object-fit: cover; mix-blend-mode: multiply">
+<a href="#" style="position: relative; display: flex; align-items: center; justify-content: center; height: 400px; border-radius: 22px; background-color: #F4EBE1; overflow: hidden">
+<img src="{{p.img}}" alt="{{p.alt}}" style="width: 300px; height: 375px; object-fit: contain">
 <span style="position: absolute; left: 16px; top: 16px; padding: 6px 12px; border-radius: 999px; background-color: #FFFFFF; color: #3B2E25; font-size: 12px; font-weight: 700">{{p.tag}}</span>
 </a>
 <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px">
 <div style="display: flex; flex-direction: column; gap: 6px">
 <a href="#" style="font-family: {{hf}}; font-weight: {{hw}}; font-size: 21px; line-height: 1.25; color: #3B2E25; text-decoration: none">{{p.name}}</a>
-<div style="font-size: 14px; color: #6A5E4D">{{p.sizes}}</div>
+<div style="font-size: 14px; color: #6A5E4D">{{p.sub}}</div>
 <div style="font-size: 16px; font-weight: 700">{{p.price}}</div>
 </div>
-<button type="button" aria-label="Quick add {{p.name}}" style="flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid #D9C6B2; background-color: #FFFFFF; color: #3B2E25; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button>
+<button type="button" aria-label="Quick add {{p.name}}" style="flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid #D8C8B8; background-color: #FFFFFF; color: #3B2E25; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button>
 </div>
 </div>
 </sc-for>
 </div>
 </section>
-
-<section style="flex-shrink: 0; box-sizing: border-box; padding: 0 120px 104px; display: flex; flex-direction: column; gap: 32px; background-color: #FBF5EE">
-<h2 style="margin: 0; font-family: {{hf}}; font-weight: {{hw}}; font-size: 36px; letter-spacing: -0.01em">Shop by step</h2>
-<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px">
-<a href="#" style="height: 320px; box-sizing: border-box; border-radius: 22px; background-color: #FFE6D6; overflow: hidden; position: relative; text-decoration: none; color: #3B2E25; display: flex; flex-direction: column; justify-content: space-between; padding: 26px">
-<div style="display: flex; flex-direction: column; gap: 6px; position: relative"><div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #7A3A2C">Step 1</div><div style="font-family: {{hf}}; font-weight: {{hw}}; font-size: 26px">Cleansers &amp; toners</div></div>
-<img src="/_blob/157eefe0f03f7a67390198ec5317af56" alt="" style="position: absolute; right: -30px; bottom: -20px; width: 250px; height: 250px; object-fit: cover; mix-blend-mode: multiply">
-<div style="font-weight: 700; font-size: 14px; position: relative">Shop now →</div>
-</a>
-<a href="#" style="height: 320px; box-sizing: border-box; border-radius: 22px; background-color: #F4D8CF; overflow: hidden; position: relative; text-decoration: none; color: #3B2E25; display: flex; flex-direction: column; justify-content: space-between; padding: 26px">
-<div style="display: flex; flex-direction: column; gap: 6px; position: relative"><div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #7A3A2C">Step 2</div><div style="font-family: {{hf}}; font-weight: {{hw}}; font-size: 26px">Masks &amp; scrubs</div></div>
-<img src="/_blob/bc807da16ebc0a97f0dff79409b26ebe" alt="" style="position: absolute; right: -20px; bottom: -10px; width: 240px; height: 240px; object-fit: cover; mix-blend-mode: multiply">
-<div style="font-weight: 700; font-size: 14px; position: relative">Shop now →</div>
-</a>
-<a href="#" style="height: 320px; box-sizing: border-box; border-radius: 22px; background-color: #EFE2D3; overflow: hidden; position: relative; text-decoration: none; color: #3B2E25; display: flex; flex-direction: column; justify-content: space-between; padding: 26px">
-<div style="display: flex; flex-direction: column; gap: 6px; position: relative"><div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #6A5E4D">Step 3</div><div style="font-family: {{hf}}; font-weight: {{hw}}; font-size: 26px">Creams</div></div>
-<img src="/_blob/6dbd85d602b35e0ead72ae57cdd84436" alt="" style="position: absolute; right: -24px; bottom: -6px; width: 250px; height: 250px; object-fit: cover; mix-blend-mode: multiply">
-<div style="font-weight: 700; font-size: 14px; position: relative">Shop now →</div>
-</a>
-<a href="#" style="height: 320px; box-sizing: border-box; border-radius: 22px; background-color: #DDE7E8; overflow: hidden; position: relative; text-decoration: none; color: #22343B; display: flex; flex-direction: column; justify-content: space-between; padding: 26px">
-<div style="display: flex; flex-direction: column; gap: 6px; position: relative"><div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #274C59">Save</div><div style="font-family: {{hf}}; font-weight: {{hw}}; font-size: 26px">Sets &amp; routines</div></div>
-<img src="/_blob/0499fc3f6df34dbfca1fbbf93ebac04a" alt="" style="position: absolute; right: 70px; bottom: -14px; width: 170px; height: 170px; object-fit: cover; mix-blend-mode: multiply">
-<img src="/_blob/c3d9ebd11f01e87bcb6109d43fea8aad" alt="" style="position: absolute; right: -40px; bottom: -4px; width: 220px; height: 220px; object-fit: cover; mix-blend-mode: multiply">
-<div style="font-weight: 700; font-size: 14px; position: relative">Build your routine →</div>
-</a>
+<section style="flex-shrink: 0; box-sizing: border-box; padding: 16px 120px 104px; display: flex; flex-direction: column; gap: 36px; background-color: #FBF6F0">
+<div style="display: flex; flex-direction: column; gap: 12px; max-width: 720px">
+<div style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #9E5439">Two creams, two skin types</div>
+<h2 style="margin: 0; font-family: {{hf}}; font-weight: {{hw}}; font-size: 44px; line-height: 1.1; letter-spacing: -0.015em">Which cream is right for you?</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #6A5E4D">A plain comparison, so you can choose the one your skin actually needs. Questions? Email us at info@teraclay.com.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px">
+<div style="box-sizing: border-box; padding: 36px; border-radius: 26px; background-color: #FFFFFF; border: 1px solid #E8DCCF; display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; align-items: center; gap: 24px">
+<div style="width: 150px; height: 170px; flex-shrink: 0; border-radius: 20px; background-color: #F4EBE1; display: flex; align-items: center; justify-content: center"><img src="/_blob/9ed027266f63a8b5d14180e67aef2879" alt="" style="width: 136px; height: 170px; object-fit: contain"></div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #6A5E4D">Best for</div>
+<div style="font-family: {{hf}}; font-weight: {{hw}}; font-size: 30px; line-height: 1.1; color: #3B2E25">Sensitive skin</div>
+<div style="font-size: 16px; color: #4A3B30">Hypoallergenic Facial Cream</div>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; border-bottom: 1px solid #E8DCCF"><div style="display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 16px; padding: 14px 0; border-top: 1px solid #E8DCCF; font-size: 15px; line-height: 1.5"><div style="font-weight: 700">Key ingredients</div><div style="color: #4A3B30">Rice bran oil, plant-based emulsifiers</div></div><div style="display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 16px; padding: 14px 0; border-top: 1px solid #E8DCCF; font-size: 15px; line-height: 1.5"><div style="font-weight: 700">Made without</div><div style="color: #4A3B30">Nuts, fragrance, parabens, silicones, sulfates</div></div><div style="display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 16px; padding: 14px 0; border-top: 1px solid #E8DCCF; font-size: 15px; line-height: 1.5"><div style="font-weight: 700">Feel</div><div style="color: #4A3B30">Absorbs quickly, no greasy finish</div></div><div style="display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 16px; padding: 14px 0; border-top: 1px solid #E8DCCF; font-size: 15px; line-height: 1.5"><div style="font-weight: 700">Scent</div><div style="color: #4A3B30">None (fragrance free)</div></div></div>
+<a href="#" style="align-self: flex-start; border: 1.5px solid #3B2E25; border-radius: 999px; padding: 12px 24px; color: #3B2E25; font-weight: 700; font-size: 15px; text-decoration: none">View Hypoallergenic cream</a>
+</div>
+<div style="box-sizing: border-box; padding: 36px; border-radius: 26px; background-color: #FFFFFF; border: 1px solid #E8DCCF; display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; align-items: center; gap: 24px">
+<div style="width: 150px; height: 170px; flex-shrink: 0; border-radius: 20px; background-color: #F4EBE1; display: flex; align-items: center; justify-content: center"><img src="/_blob/f2aec54eb19f933f939c8462a4a0b1f1" alt="" style="width: 136px; height: 170px; object-fit: contain"></div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #6A5E4D">Best for</div>
+<div style="font-family: {{hf}}; font-weight: {{hw}}; font-size: 30px; line-height: 1.1; color: #3B2E25">Dry to normal skin</div>
+<div style="font-size: 16px; color: #4A3B30">Advanced Hydration Facial Cream</div>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; border-bottom: 1px solid #E8DCCF"><div style="display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 16px; padding: 14px 0; border-top: 1px solid #E8DCCF; font-size: 15px; line-height: 1.5"><div style="font-weight: 700">Key ingredients</div><div style="color: #4A3B30">Shea butter, coconut oil, olive squalene, sodium hyaluronate, allantoin</div></div><div style="display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 16px; padding: 14px 0; border-top: 1px solid #E8DCCF; font-size: 15px; line-height: 1.5"><div style="font-weight: 700">Made without</div><div style="color: #4A3B30">Silicones, parabens, GMOs</div></div><div style="display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 16px; padding: 14px 0; border-top: 1px solid #E8DCCF; font-size: 15px; line-height: 1.5"><div style="font-weight: 700">Feel</div><div style="color: #4A3B30">Rich moisture for dry, cold-weather skin</div></div><div style="display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 16px; padding: 14px 0; border-top: 1px solid #E8DCCF; font-size: 15px; line-height: 1.5"><div style="font-weight: 700">Scent</div><div style="color: #4A3B30">Light coconut essence</div></div></div>
+<a href="#" style="align-self: flex-start; border: 1.5px solid #3B2E25; border-radius: 999px; padding: 12px 24px; color: #3B2E25; font-weight: 700; font-size: 15px; text-decoration: none">View Advanced Hydration cream</a>
+</div>
 </div>
 </section>
-
-<section class="{{tex}}" style="flex-shrink: 0; box-sizing: border-box; padding: 104px 120px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 80px; align-items: center; background-color: #F3E6D8">
+<section style="flex-shrink: 0; box-sizing: border-box; padding: 104px 120px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 80px; align-items: center; background-color: #F2E7DC">
 <img src="/_blob/10e9cf42d0c7c49acd39309acc75d559" alt="A person doing a handstand on a rock ledge above a fjord" style="width: 100%; height: 460px; object-fit: cover; border-radius: 28px">
 <div style="display: flex; flex-direction: column; gap: 22px">
 <div style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #3B2E25">Our story</div>
-<h2 style="margin: 0; font-family: {{hf}}; font-weight: {{hw}}; font-size: 48px; line-height: 1.1; letter-spacing: -0.015em">“Tera,” from <em style="font-style: normal; color: #A9503E">terra</em>: the earth.</h2>
+<h2 style="margin: 0; font-family: {{hf}}; font-weight: {{hw}}; font-size: 48px; line-height: 1.1; letter-spacing: -0.015em">“Tera,” from <em style="font-style: normal; color: #9E5439">terra</em>: the earth.</h2>
 <p style="margin: 0; font-size: 18px; line-height: 1.65; color: #4A3B30">After reactions to synthetic products, Harrison, a materials science engineer, set out to care for his skin with the very earth he trekked across. He and a team of scientists analyzed clays across Europe and the Americas.</p>
 <p style="margin: 0; font-size: 18px; line-height: 1.65; color: #4A3B30">Off the coast of the Netherlands they found a naturally occurring magnesium mineral that draws moisture from the air and helps skin hold on to it.</p>
 <a href="#" style="font-weight: 700; font-size: 16px; color: #3B2E25">Read our story →</a>
 </div>
 </section>
-
-<section style="flex-shrink: 0; box-sizing: border-box; padding: 104px 120px; display: flex; flex-direction: column; gap: 44px; background-color: #FBF5EE">
+<section style="flex-shrink: 0; box-sizing: border-box; padding: 104px 120px; display: flex; flex-direction: column; gap: 44px; background-color: #FBF6F0">
 <div style="display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center">
-<div style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #A9503E">Know what’s inside</div>
+<div style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #9E5439">Know what’s inside</div>
 <h2 style="margin: 0; font-family: {{hf}}; font-weight: {{hw}}; font-size: 48px; line-height: 1.1; letter-spacing: -0.015em">Ingredients with a story</h2>
-<p style="margin: 0; max-width: 620px; font-size: 18px; line-height: 1.6; color: #6A5E4D">Every product page links its key ingredients here, so shoppers can see where each one comes from and what it does.</p>
+<p style="margin: 0; max-width: 620px; font-size: 18px; line-height: 1.6; color: #6A5E4D">Every product page links its key ingredients here, so you can see where each one comes from and what it does.</p>
 </div>
 <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px">
-<div style="padding: 30px 28px; border-radius: 22px; background-color: #FFFFFF; border: 1px solid #EADBCB; display: flex; flex-direction: column; gap: 14px">
-<div style="width: 52px; height: 52px; border-radius: 50%; background-color: #DDE7E8; color: #366677; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l8.2 4.75v9.5L12 21.5l-8.2-4.75v-9.5z"></path><path d="M12 8l3.5 2v4L12 16l-3.5-2v-4z"></path></svg></div>
+<div style="padding: 30px 28px; border-radius: 22px; background-color: #FFFFFF; border: 1px solid #E8DCCF; display: flex; flex-direction: column; gap: 12px">
+<div style="width: 50px; height: 50px; border-radius: 50%; background-color: #E1E8EB; color: #4A6470; display: flex; align-items: center; justify-content: center"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l8.2 4.75v9.5L12 21.5l-8.2-4.75v-9.5z"></path><path d="M12 8l3.5 2v4L12 16l-3.5-2v-4z"></path></svg></div>
 <div style="font-family: {{hf}}; font-weight: {{hw}}; font-size: 22px">Magnesium mineral</div>
 <div style="font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; color: #6A5E4D">Zechstein seabed, Netherlands</div>
 <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #4A3B30">The heart of our mineral signature. It helps skin retain moisture and its natural oils.</p>
 </div>
-<div style="padding: 30px 28px; border-radius: 22px; background-color: #FFFFFF; border: 1px solid #EADBCB; display: flex; flex-direction: column; gap: 14px">
-<div style="width: 52px; height: 52px; border-radius: 50%; background-color: #FFE6D6; color: #A9503E; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"></path></svg></div>
+<div style="padding: 30px 28px; border-radius: 22px; background-color: #FFFFFF; border: 1px solid #E8DCCF; display: flex; flex-direction: column; gap: 12px">
+<div style="width: 50px; height: 50px; border-radius: 50%; background-color: #FFEBDB; color: #9E5439; display: flex; align-items: center; justify-content: center"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"></path></svg></div>
 <div style="font-family: {{hf}}; font-weight: {{hw}}; font-size: 22px">Shea butter</div>
 <div style="font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; color: #6A5E4D">African shea tree nut</div>
 <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #4A3B30">Stearic and oleic acids that deeply moisturize and help repair damaged skin.</p>
 </div>
-<div style="padding: 30px 28px; border-radius: 22px; background-color: #FFFFFF; border: 1px solid #EADBCB; display: flex; flex-direction: column; gap: 14px">
-<div style="width: 52px; height: 52px; border-radius: 50%; background-color: #E3E7D9; color: #5E6B52; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-14 15-15-1 10-7 15-15 15z"></path><path d="M5 19l7-7"></path></svg></div>
+<div style="padding: 30px 28px; border-radius: 22px; background-color: #FFFFFF; border: 1px solid #E8DCCF; display: flex; flex-direction: column; gap: 12px">
+<div style="width: 50px; height: 50px; border-radius: 50%; background-color: #E4E8DC; color: #5E6B52; display: flex; align-items: center; justify-content: center"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-14 15-15-1 10-7 15-15 15z"></path><path d="M5 19l7-7"></path></svg></div>
 <div style="font-family: {{hf}}; font-weight: {{hw}}; font-size: 22px">Rice bran oil</div>
 <div style="font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; color: #6A5E4D">Outer layer of rice</div>
 <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #4A3B30">A nut-free moisturizer, gentle enough for the most sensitive skin types.</p>
 </div>
-<div style="padding: 30px 28px; border-radius: 22px; background-color: #FFFFFF; border: 1px solid #EADBCB; display: flex; flex-direction: column; gap: 14px">
-<div style="width: 52px; height: 52px; border-radius: 50%; background-color: #F4D8CF; color: #A9503E; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21V11"></path><path d="M12 11c0-4 3-7 7-7 0 4-3 7-7 7z"></path><path d="M12 14c0-3-2.5-5.5-6-5.5 0 3 2.5 5.5 6 5.5z"></path></svg></div>
+<div style="padding: 30px 28px; border-radius: 22px; background-color: #FFFFFF; border: 1px solid #E8DCCF; display: flex; flex-direction: column; gap: 12px">
+<div style="width: 50px; height: 50px; border-radius: 50%; background-color: #F5DDD3; color: #9E5439; display: flex; align-items: center; justify-content: center"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21V11"></path><path d="M12 11c0-4 3-7 7-7 0 4-3 7-7 7z"></path><path d="M12 14c0-3-2.5-5.5-6-5.5 0 3 2.5 5.5 6 5.5z"></path></svg></div>
 <div style="font-family: {{hf}}; font-weight: {{hw}}; font-size: 22px">Allantoin</div>
 <div style="font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; color: #6A5E4D">Comfrey root</div>
 <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #4A3B30">Softens, protects and soothes while supporting healthy skin renewal.</p>
@@ -169,100 +161,71 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid #3666
 </div>
 <div style="display: flex; justify-content: center"><a href="#" style="border: 1.5px solid #3B2E25; border-radius: 999px; padding: 14px 28px; color: #3B2E25; font-weight: 700; font-size: 15px; text-decoration: none">Explore all ingredients</a></div>
 </section>
-
-<div style="flex-shrink: 0; box-sizing: border-box; padding: 0 120px 104px; background-color: #FBF5EE">
-<div style="box-sizing: border-box; padding: 64px 72px; border-radius: 32px; background-color: #3B2E25; color: #FBF5EE; display: flex; align-items: center; justify-content: space-between; gap: 64px">
+<div style="flex-shrink: 0; box-sizing: border-box; padding: 0 120px 104px; background-color: #FBF6F0">
+<div style="box-sizing: border-box; padding: 64px 72px; border-radius: 32px; background-color: #3B2E25; color: #FBF6F0; display: flex; align-items: center; justify-content: space-between; gap: 64px">
 <div style="display: flex; flex-direction: column; gap: 18px; max-width: 600px">
-<div style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #FFD1B5">Affiliate program</div>
+<div style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #FFD6B3">Affiliate program</div>
 <h2 style="margin: 0; font-family: {{hf}}; font-weight: {{hw}}; font-size: 44px; line-height: 1.1; letter-spacing: -0.015em">Love Teraclay? Share it and earn.</h2>
 <p style="margin: 0; font-size: 18px; line-height: 1.6; color: #E9DCCD">Your followers get 10% off with your personal link, and you earn a commission on every order it brings in.</p>
 <div style="display: flex; gap: 14px; margin-top: 6px">
-<a href="#" style="border-radius: 999px; padding: 15px 28px; background-color: #FFD1B5; color: #3B2E25; font-weight: 700; font-size: 15px; text-decoration: none">Become an affiliate</a>
-<a href="#" style="border: 1.5px solid #E9DCCD; border-radius: 999px; padding: 13.5px 26px; color: #FBF5EE; font-weight: 700; font-size: 15px; text-decoration: none">Affiliate login</a>
+<a href="#" style="border-radius: 999px; padding: 15px 28px; background-color: #FFD6B3; color: #3B2E25; font-weight: 700; font-size: 15px; text-decoration: none">Become an affiliate</a>
+<a href="#" style="border: 1.5px solid #E9DCCD; border-radius: 999px; padding: 13.5px 26px; color: #FBF6F0; font-weight: 700; font-size: 15px; text-decoration: none">Affiliate login</a>
 </div>
 </div>
 <div style="width: 380px; flex-shrink: 0; display: flex; flex-direction: column; gap: 14px">
 <div style="padding: 20px 22px; border-radius: 18px; background-color: #4A3B30; display: flex; flex-direction: column; gap: 8px">
-<div style="font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; color: #D9C6B2">Your link</div>
-<div style="font-size: 20px; font-weight: 700; color: #FFFFFF">promo.teraclay.com/<span style="color: #FFD1B5">YOURNAME</span></div>
+<div style="font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; color: #D8C8B8">Your link</div>
+<div style="font-size: 20px; font-weight: 700; color: #FFFFFF">promo.teraclay.com/<span style="color: #FFD6B3">YOURNAME</span></div>
 </div>
 <div style="display: flex; gap: 14px">
-<div style="flex-grow: 1; padding: 18px 20px; border-radius: 18px; background-color: #4A3B30; display: flex; flex-direction: column; gap: 4px"><div style="font-family: {{hf}}; font-weight: {{hw}}; font-size: 30px; color: #FFD1B5">10%</div><div style="font-size: 13px; color: #E9DCCD">off for your audience</div></div>
-<div style="flex-grow: 1; padding: 18px 20px; border-radius: 18px; background-color: #4A3B30; display: flex; flex-direction: column; gap: 4px"><div style="font-family: {{hf}}; font-weight: {{hw}}; font-size: 30px; color: #FFD1B5">[X]%</div><div style="font-size: 13px; color: #E9DCCD">commission for you</div></div>
+<div style="flex-grow: 1; padding: 18px 20px; border-radius: 18px; background-color: #4A3B30; display: flex; flex-direction: column; gap: 4px"><div style="font-family: {{hf}}; font-weight: {{hw}}; font-size: 30px; color: #FFD6B3">10%</div><div style="font-size: 13px; color: #E9DCCD">off for your audience</div></div>
+<div style="flex-grow: 1; padding: 18px 20px; border-radius: 18px; background-color: #4A3B30; display: flex; flex-direction: column; gap: 4px"><div style="font-family: {{hf}}; font-weight: {{hw}}; font-size: 30px; color: #FFD6B3">[X]%</div><div style="font-size: 13px; color: #E9DCCD">commission for you</div></div>
 </div>
 </div>
 </div>
 </div>
-
-<section class="{{tex}}" style="flex-shrink: 0; box-sizing: border-box; padding: 88px 120px; display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center; background-color: #FFD1B5">
+<section style="flex-shrink: 0; box-sizing: border-box; padding: 88px 120px; display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center; background-color: #FFD6B3">
 <h2 style="margin: 0; font-family: {{hf}}; font-weight: {{hw}}; font-size: 44px; line-height: 1.1; letter-spacing: -0.015em">Connect with us for special offers</h2>
-<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #4A3B30">New products, routines and subscriber-only offers, straight to your inbox.</p>
-<div style="display: flex; gap: 10px; width: 520px; margin-top: 8px">
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #4A3B30">New products and subscriber-only offers, straight to your inbox.</p>
+<form style="display: flex; gap: 10px; width: 520px; margin-top: 8px">
 <label for="home-email" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Email address</label>
-<input id="home-email" type="email" placeholder="Your email address" style="flex-grow: 1; min-width: 0; box-sizing: border-box; height: 54px; padding: 0 22px; border-radius: 999px; border: 1.5px solid #E8A98C; background-color: #FFF8F2; color: #3B2E25; font-size: 16px">
+<input id="home-email" type="email" placeholder="Your email address" style="flex-grow: 1; min-width: 0; box-sizing: border-box; height: 54px; padding: 0 22px; border-radius: 999px; border: 1.5px solid #E3A987; background-color: #FFF8F2; color: #3B2E25; font-size: 16px">
 <button type="button" style="border: 0; border-radius: 999px; padding: 0 28px; height: 54px; background-color: #3B2E25; color: #FFF8F2; font-weight: 700; font-size: 16px">Subscribe</button>
-</div>
+</form>
 </section>
-
 <footer style="flex-grow: 1; box-sizing: border-box; padding: 72px 120px 40px; display: flex; flex-direction: column; gap: 56px; background-color: #3B2E25; color: #E9DCCD">
 <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 40px">
 <div style="grid-column: span 2; display: flex; flex-direction: column; gap: 18px; padding-right: 48px">
-<img src="/_blob/403b7136a2294aec116647b7cc64b56c" alt="Teraclay" style="height: 32px; width: 121px; filter: brightness(0) invert(1); opacity: 0.94">
+<span style="display: inline-flex; align-items: center; gap: 11px"><svg width="40" height="30" viewBox="0 0 2753 2058" aria-hidden="true" style="flex-shrink: 0"><rect x="262" y="0" width="2228" height="426" rx="213" fill="#4A6470"></rect><rect x="0" y="544" width="2752" height="426" rx="213" fill="#877161"></rect><rect x="262" y="1088" width="2228" height="426" rx="213" fill="#CC8062"></rect><rect x="590" y="1632" width="1573" height="426" rx="213" fill="#FFD6B3"></rect></svg><span style="font-family: {{hf}}; font-weight: {{hw}}; font-size: 26px; letter-spacing: -0.01em; color: #FBF6F0">Teraclay</span></span>
 <p style="margin: 0; font-size: 15px; line-height: 1.6">Mineral-enriched natural skincare, straight from the earth.</p>
 <div style="font-size: 14px; line-height: 1.7">info@teraclay.com<br>73 Carol Place, Wayne, NJ 07470</div>
-<div style="display: flex; gap: 10px">
-<a href="#" aria-label="Instagram" style="width: 40px; height: 40px; border-radius: 50%; border: 1px solid #6A5E4D; color: #E9DCCD; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="0.6" fill="currentColor"></circle></svg></a>
-<a href="#" aria-label="Facebook" style="width: 40px; height: 40px; border-radius: 50%; border: 1px solid #6A5E4D; color: #E9DCCD; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M14.5 21v-8h2.7l.4-3.2h-3.1V7.8c0-.9.3-1.6 1.6-1.6h1.6V3.4c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4.1v2.4H8.6V13h2.7v8"></path></svg></a>
-<a href="#" aria-label="X" style="width: 40px; height: 40px; border-radius: 50%; border: 1px solid #6A5E4D; color: #E9DCCD; display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 4l16 16M20 4L4 20"></path></svg></a>
 </div>
-</div>
-<div style="display: flex; flex-direction: column; gap: 12px; font-size: 15px">
-<div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #FFD1B5">Shop</div>
-<a href="#" style="color: #E9DCCD; text-decoration: none">Ultra Mineral</a>
-<a href="#" style="color: #E9DCCD; text-decoration: none">Advanced Hydration</a>
-<a href="#" style="color: #E9DCCD; text-decoration: none">Coconut Charcoal</a>
-<a href="#" style="color: #E9DCCD; text-decoration: none">Complete Sets</a>
-</div>
-<div style="display: flex; flex-direction: column; gap: 12px; font-size: 15px">
-<div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #FFD1B5">Learn</div>
-<a href="#" style="color: #E9DCCD; text-decoration: none">Our Story</a>
-<a href="#" style="color: #E9DCCD; text-decoration: none">Ingredients</a>
-<a href="#" style="color: #E9DCCD; text-decoration: none">FAQ</a>
-<a href="#" style="color: #E9DCCD; text-decoration: none">Contact</a>
-</div>
-<div style="display: flex; flex-direction: column; gap: 12px; font-size: 15px">
-<div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #FFD1B5">Affiliates</div>
-<a href="#" style="color: #E9DCCD; text-decoration: none">Become an affiliate</a>
-<a href="#" style="color: #E9DCCD; text-decoration: none">Affiliate login</a>
-<a href="#" style="color: #E9DCCD; text-decoration: none">Program terms</a>
-</div>
+<div style="display: flex; flex-direction: column; gap: 12px; font-size: 15px"><div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #FFD6B3">Shop</div><a href="#" style="color: #E9DCCD; text-decoration: none">Face Wash</a><a href="#" style="color: #E9DCCD; text-decoration: none">Face Creams</a><a href="#" style="color: #E9DCCD; text-decoration: none">Shop all</a></div>
+<div style="display: flex; flex-direction: column; gap: 12px; font-size: 15px"><div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #FFD6B3">Learn</div><a href="#" style="color: #E9DCCD; text-decoration: none">Our Story</a><a href="#" style="color: #E9DCCD; text-decoration: none">Ingredients</a><a href="#" style="color: #E9DCCD; text-decoration: none">FAQ</a><a href="#" style="color: #E9DCCD; text-decoration: none">Contact</a></div>
+<div style="display: flex; flex-direction: column; gap: 12px; font-size: 15px"><div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #FFD6B3">Affiliates</div><a href="#" style="color: #E9DCCD; text-decoration: none">Become an affiliate</a><a href="#" style="color: #E9DCCD; text-decoration: none">Affiliate login</a><a href="#" style="color: #E9DCCD; text-decoration: none">Program terms</a></div>
 </div>
 <div style="margin-top: auto; padding-top: 28px; border-top: 1px solid #5A4A3E; display: flex; justify-content: space-between; font-size: 13px; color: #CBB9A6">
 <div>© 2026 Teraclay</div>
 <div style="display: flex; gap: 24px"><a href="#" style="color: #CBB9A6">Privacy Policy</a><a href="#" style="color: #CBB9A6">Refund Policy</a><a href="#" style="color: #CBB9A6">Terms of Service</a></div>
 </div>
 </footer>
-
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"fonts":{"editor":"enum","options":["Jost + Karla","Quicksand + Nunito Sans","Josefin Sans + Work Sans"],"default":"Jost + Karla","section":"Look"},"texture":{"editor":"boolean","default":true,"section":"Look"},"$preview":{"width":1440,"height":4400}}'>
+<script type="text/x-dc" data-dc-script data-props='{"fonts":{"editor":"enum","options":["Jost + Karla","Josefin Sans + Work Sans"],"default":"Jost + Karla","section":"Look"},"$preview":{"width":1440,"height":5000}}'>
 class Component extends DCLogic {
   renderVals() {
     const pairs = {
-      'Jost + Karla': ["'Jost', ui-sans-serif, system-ui, sans-serif", "'Karla', ui-sans-serif, system-ui, sans-serif", 500],
-      'Quicksand + Nunito Sans': ["'Quicksand', ui-sans-serif, system-ui, sans-serif", "'Nunito Sans', ui-sans-serif, system-ui, sans-serif", 600],
-      'Josefin Sans + Work Sans': ["'Josefin Sans', ui-sans-serif, system-ui, sans-serif", "'Work Sans', ui-sans-serif, system-ui, sans-serif", 600]
+      'Jost + Karla': ["'Jost', ui-sans-serif, system-ui, sans-serif", "'Karla', ui-sans-serif, system-ui, sans-serif", 500, 'Jost', 'Karla'],
+      'Josefin Sans + Work Sans': ["'Josefin Sans', ui-sans-serif, system-ui, sans-serif", "'Work Sans', ui-sans-serif, system-ui, sans-serif", 600, 'Josefin Sans', 'Work Sans']
     };
     const p = pairs[this.props.fonts] || pairs['Jost + Karla'];
-    return {
-      hf: p[0], bf: p[1], hw: p[2],
-      tex: this.props.texture === false ? '' : 'speckle',
-      products: [
-        { name: 'Hypoallergenic Facial Cream', tag: 'Sensitive skin', sizes: '4.5 oz or 2.2 oz jar', price: 'From $26.00', img: '/_blob/68dcd40259f4bee7dc13107ad3c92c59', alt: 'Hypoallergenic Facial Cream jar' },
-        { name: 'Advanced Hydration Facial Cream', tag: 'Dry to normal skin', sizes: '4.5 oz or 2.2 oz jar', price: 'From $26.00', img: '/_blob/6dbd85d602b35e0ead72ae57cdd84436', alt: 'Advanced Hydration Facial Cream jar' },
-        { name: 'Ultra Mineral Facial Cleanser', tag: 'All skin types', sizes: '8.4 oz bottle', price: '$24.00', img: '/_blob/c3d9ebd11f01e87bcb6109d43fea8aad', alt: 'Ultra Mineral Facial Cleanser bottle' }
-      ]
-    };
+    const base = { hf: p[0], bf: p[1], hw: p[2], hName: p[3], bName: p[4], stars: [1, 2, 3, 4, 5] };
+    base.products = [
+      { name: 'Hypoallergenic Facial Cream', tag: 'Sensitive skin', sub: 'Airless pump · nut and fragrance free', price: 'From $26.00', img: '/_blob/9ed027266f63a8b5d14180e67aef2879', alt: 'Illustration of the Hypoallergenic Facial Cream in a tan airless pump bottle' },
+      { name: 'Advanced Hydration Facial Cream', tag: 'Dry to normal skin', sub: 'Airless pump · light coconut essence', price: 'From $26.00', img: '/_blob/f2aec54eb19f933f939c8462a4a0b1f1', alt: 'Illustration of the Advanced Hydration Facial Cream in a tan airless pump bottle' },
+      { name: 'Ultra Mineral Facial Cleanser', tag: 'Face wash', sub: 'Amber pump bottle · all skin types', price: '$24.00', img: '/_blob/b23ff3e1bbe8ee4f06549707fc6e0c3b', alt: 'Illustration of the Ultra Mineral Facial Cleanser in an amber bottle with a black pump' }
+    ];
+    return base;
   }
 }
 </script>
