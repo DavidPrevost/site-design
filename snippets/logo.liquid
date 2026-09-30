@@ -1,0 +1,74 @@
+{% doc %}
+  Renders the shop logo: the uploaded logo image when one is set in theme
+  settings, otherwise the strata symbol. The shop name is shown beside it
+  when "Show shop name next to the logo" is on.
+
+  @param {string} [class] - Extra classes for the link
+  @param {number} [scale] - Size multiplier relative to the logo height setting (default 1)
+
+  @example
+  {% render 'logo', class: 'header__logo' %}
+{% enddoc %}
+{%- liquid
+  assign scale = scale | default: 1
+  assign logo_height = settings.logo_height | times: scale | round
+-%}
+<a
+  href="{{ routes.root_url }}"
+  class="logo {{ class }}"
+  style="--logo-h: {{ logo_height }}px;"
+  {% unless settings.show_wordmark %}
+    aria-label="{{ shop.name | escape }}"
+  {% endunless %}
+>
+  {%- if settings.logo -%}
+    {%- assign logo_width = settings.logo.aspect_ratio | times: logo_height | round -%}
+    {{
+      settings.logo
+      | image_url: width: 600
+      | image_tag:
+        class: 'logo__image',
+        width: logo_width,
+        height: logo_height,
+        alt: '',
+        loading: 'eager',
+        widths: '150, 300, 450, 600'
+    }}
+  {%- else -%}
+    {% render 'icon-mark', class: 'logo__mark' %}
+  {%- endif -%}
+  {%- if settings.show_wordmark -%}
+    <span class="logo__wordmark">{{ shop.name }}</span>
+  {%- endif -%}
+</a>
+
+{% stylesheet %}
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(var(--logo-h) * 0.38);
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .logo__mark {
+    height: var(--logo-h);
+    width: auto;
+    flex-shrink: 0;
+  }
+
+  .logo__image {
+    height: var(--logo-h);
+    width: auto;
+  }
+
+  .logo__wordmark {
+    font-family: var(--font-heading-family);
+    font-style: var(--font-heading-style);
+    font-weight: var(--font-heading-weight);
+    font-size: calc(var(--logo-h) * 0.9);
+    line-height: 1;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+  }
+{% endstylesheet %}

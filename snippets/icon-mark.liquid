@@ -1,0 +1,23 @@
+{% doc %}
+  The Teraclay strata symbol (four stacked bars in the brand colors).
+
+  @param {string} [class] - Extra classes for the <svg>
+  @param {string} [label] - Accessible label; the symbol is hidden from assistive tech when omitted
+
+  @example
+  {% render 'icon-mark', class: 'logo__mark' %}
+{% enddoc %}
+<svg
+  class="icon-mark {{ class }}"
+  viewBox="0 0 2753 2058"
+  {% if label != blank %}
+    role="img" aria-label="{{ label | escape }}"
+  {% else %}
+    aria-hidden="true" focusable="false"
+  {% endif %}
+>
+  <rect x="262" y="0" width="2228" height="426" rx="213" fill="#4A6470"/>
+  <rect x="0" y="544" width="2752" height="426" rx="213" fill="#877161"/>
+  <rect x="262" y="1088" width="2228" height="426" rx="213" fill="#CC8062"/>
+  <rect x="590" y="1632" width="1573" height="426" rx="213" fill="#FFD6B3"/>
+</svg>

@@ -1,0 +1,78 @@
+{% doc %}
+  JSON-LD structured data.
+  - Product pages: Shopify's generated Product data, or a Product entry with
+    aggregateRating when the product has the standard reviews.rating and
+    reviews.rating_count metafields (so Google can show review stars).
+  - Home page: Organization with logo and social profiles.
+{% enddoc %}
+{%- if request.page_type == 'product' -%}
+  {%- liquid
+    assign rating = product.metafields.reviews.rating.value
+    assign rating_count = product.metafields.reviews.rating_count.value | default: 0
+  -%}
+  {%- if rating != blank and rating_count > 0 -%}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": {{ product.title | json }},
+        "url": {{ request.origin | append: product.url | json }},
+        "description": {{ product.description | strip_html | strip | truncate: 500 | json }},
+        "brand": { "@type": "Brand", "name": {{ product.vendor | json }} },
+        {%- if product.featured_image %}
+          "image": [{{ product.featured_image | image_url: width: 1200 | prepend: 'https:' | json }}],
+        {%- endif %}
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": {{ rating.rating | json }},
+          "bestRating": {{ rating.scale_max | json }},
+          "worstRating": {{ rating.scale_min | json }},
+          "reviewCount": {{ rating_count | json }}
+        },
+        "offers": [
+          {%- for variant in product.variants -%}
+            {
+              "@type": "Offer",
+              "sku": {{ variant.sku | json }},
+              "price": {{ variant.price | divided_by: 100.0 | json }},
+              "priceCurrency": {{ cart.currency.iso_code | json }},
+              "availability": "https://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
+              "url": {{ request.origin | append: variant.url | json }}
+            }{% unless forloop.last %},{% endunless %}
+          {%- endfor -%}
+        ]
+      }
+    </script>
+  {%- else -%}
+    <script type="application/ld+json">
+      {{ product | structured_data }}
+    </script>
+  {%- endif -%}
+{%- endif -%}
+
+{%- if request.page_type == 'index' -%}
+  {%- liquid
+    assign social_links = ''
+    assign social_keys = 'instagram,facebook,tiktok,youtube,x,pinterest' | split: ','
+    for key in social_keys
+      assign setting_key = 'social_' | append: key | append: '_link'
+      assign link = settings[setting_key]
+      if link != blank
+        assign social_links = social_links | append: link | append: '|'
+      endif
+    endfor
+    assign social_links = social_links | split: '|'
+  -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": {{ shop.name | json }},
+      "url": {{ request.origin | json }},
+      {%- if settings.logo %}
+        "logo": {{ settings.logo | image_url: width: 600 | prepend: 'https:' | json }},
+      {%- endif %}
+      "sameAs": {{ social_links | json }}
+    }
+  </script>
+{%- endif -%}

@@ -1,18 +1,77 @@
+{% doc %}
+  Outputs @font-face rules and the theme's CSS custom properties: fonts,
+  layout tokens and one class per color scheme (`.color-scheme-1`, ...).
+  The first scheme is also applied to :root as the page default.
+{% enddoc %}
+
+{%- liquid
+  assign heading_font = settings.type_heading_font
+  assign body_font = settings.type_body_font
+  assign body_font_bold = body_font | font_modify: 'weight', 'bold'
+  assign body_font_italic = body_font | font_modify: 'style', 'italic'
+  assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
+
+  case settings.button_shape
+    when 'pill'
+      assign button_radius = '999px'
+    when 'rounded'
+      assign button_radius = '12px'
+    else
+      assign button_radius = '0px'
+  endcase
+-%}
+
 {% style %}
-  {% # Loads all font variantions with display: swap %}
-  {{ settings.type_primary_font | font_face: font_display: 'swap' }}
-  {{ settings.type_primary_font | font_modify: 'weight', 'bold' | font_face: font_display: 'swap' }}
-  {{ settings.type_primary_font | font_modify: 'weight', 'bold' | font_modify: 'style', 'italic' | font_face: font_display: 'swap' }}
-  {{ settings.type_primary_font | font_modify: 'style', 'italic' | font_face: font_display: 'swap' }}
+  {{ heading_font | font_face: font_display: 'swap' }}
+  {{ body_font | font_face: font_display: 'swap' }}
+  {{ body_font_bold | font_face: font_display: 'swap' }}
+  {{ body_font_italic | font_face: font_display: 'swap' }}
+  {{ body_font_bold_italic | font_face: font_display: 'swap' }}
 
   :root {
-    --font-primary--family: {{ settings.type_primary_font.family }}, {{ settings.type_primary_font.fallback_families }};
-    --font-primary--style: {{ settings.type_primary_font.style }};
-    --font-primary--weight: {{ settings.type_primary_font.weight }};
+    --font-heading-family: {{ heading_font.family }}, {{ heading_font.fallback_families }};
+    --font-heading-style: {{ heading_font.style }};
+    --font-heading-weight: {{ heading_font.weight }};
+    --font-heading-scale: {{ settings.heading_scale | divided_by: 100.0 }};
+
+    --font-body-family: {{ body_font.family }}, {{ body_font.fallback_families }};
+    --font-body-style: {{ body_font.style }};
+    --font-body-weight: {{ body_font.weight }};
+    --font-body-weight-bold: {{ body_font_bold.weight | default: 700 }};
+    --font-body-scale: {{ settings.body_scale | divided_by: 100.0 }};
+
     --page-width: {{ settings.max_page_width }};
     --page-margin: {{ settings.min_page_margin }}px;
-    --color-background: {{ settings.background_color }};
-    --color-foreground: {{ settings.foreground_color }};
-    --style-border-radius-inputs: {{ settings.input_corner_radius }}px;
+
+    --radius-button: {{ button_radius }};
+    --radius-card: {{ settings.card_radius }}px;
+    --radius-input: {{ settings.input_radius }}px;
+
+    --logo-height: {{ settings.logo_height }}px;
+    --star-color: {{ settings.reviews_star_color }};
+    --focus-color: #4A6470;
   }
+
+  {% for scheme in settings.color_schemes %}
+    {%- liquid
+      assign s = scheme.settings
+      if forloop.first
+        assign selector = ':root, .color-' | append: scheme.id
+      else
+        assign selector = '.color-' | append: scheme.id
+      endif
+    -%}
+    {{ selector }} {
+      --color-background: {{ s.background }};
+      --color-background-rgb: {{ s.background.red }}, {{ s.background.green }}, {{ s.background.blue }};
+      --color-surface: {{ s.surface }};
+      --color-foreground: {{ s.text }};
+      --color-foreground-rgb: {{ s.text.red }}, {{ s.text.green }}, {{ s.text.blue }};
+      --color-muted: {{ s.text_muted }};
+      --color-accent: {{ s.accent }};
+      --color-button: {{ s.button }};
+      --color-button-label: {{ s.button_label }};
+      --color-border: {{ s.border }};
+    }
+  {% endfor %}
 {% endstyle %}

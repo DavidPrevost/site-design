@@ -1,12 +1,90 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
-  "current": {}
+  "current": {
+    "color_schemes": {
+      "scheme-1": {
+        "settings": {
+          "background": "#FBF6F0",
+          "surface": "#F4EBE1",
+          "text": "#3B2E25",
+          "text_muted": "#6A5E4D",
+          "accent": "#9E5439",
+          "button": "#9E5439",
+          "button_label": "#FFFFFF",
+          "border": "#E8DCCF"
+        }
+      },
+      "scheme-2": {
+        "settings": {
+          "background": "#F2E7DC",
+          "surface": "#FBF6F0",
+          "text": "#3B2E25",
+          "text_muted": "#6A5E4D",
+          "accent": "#9E5439",
+          "button": "#9E5439",
+          "button_label": "#FFFFFF",
+          "border": "#D8C8B8"
+        }
+      },
+      "scheme-3": {
+        "settings": {
+          "background": "#FFD6B3",
+          "surface": "#FFEBDB",
+          "text": "#3B2E25",
+          "text_muted": "#4A3B30",
+          "accent": "#3B2E25",
+          "button": "#3B2E25",
+          "button_label": "#FFF8F2",
+          "border": "#E3A987"
+        }
+      },
+      "scheme-4": {
+        "settings": {
+          "background": "#F5DDD3",
+          "surface": "#FBF6F0",
+          "text": "#3B2E25",
+          "text_muted": "#4A3B30",
+          "accent": "#3B2E25",
+          "button": "#9E5439",
+          "button_label": "#FFFFFF",
+          "border": "#E3BFB2"
+        }
+      },
+      "scheme-5": {
+        "settings": {
+          "background": "#E1E8EB",
+          "surface": "#FFFFFF",
+          "text": "#22343B",
+          "text_muted": "#33474F",
+          "accent": "#33474F",
+          "button": "#4A6470",
+          "button_label": "#FFFFFF",
+          "border": "#C5D2D7"
+        }
+      },
+      "scheme-6": {
+        "settings": {
+          "background": "#3B2E25",
+          "surface": "#4A3B30",
+          "text": "#FBF6F0",
+          "text_muted": "#E9DCCD",
+          "accent": "#FFD6B3",
+          "button": "#FFD6B3",
+          "button_label": "#3B2E25",
+          "border": "#5A4A3E"
+        }
+      },
+      "scheme-7": {
+        "settings": {
+          "background": "#FFFFFF",
+          "surface": "#F4EBE1",
+          "text": "#3B2E25",
+          "text_muted": "#6A5E4D",
+          "accent": "#9E5439",
+          "button": "#9E5439",
+          "button_label": "#FFFFFF",
+          "border": "#E8DCCF"
+        }
+      }
+    }
+  }
 }
