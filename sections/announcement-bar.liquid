@@ -1,0 +1,83 @@
+{%- if section.blocks.size > 0 -%}
+  <div class="announcement-bar color-{{ section.settings.color_scheme }}">
+    <div class="page-width announcement-bar__inner">
+      {%- for block in section.blocks -%}
+        <p class="announcement-bar__message" {{ block.shopify_attributes }}>
+          {%- if block.settings.link != blank -%}
+            <a href="{{ block.settings.link }}">{{ block.settings.text | escape }}</a>
+          {%- else -%}
+            {{ block.settings.text | escape }}
+          {%- endif -%}
+        </p>
+      {%- endfor -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% stylesheet %}
+  .announcement-bar {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-size: 0.8125rem;
+    letter-spacing: 0.04em;
+  }
+
+  .announcement-bar__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem 2rem;
+    min-height: 2.5rem;
+    padding-block: 0.5rem;
+    text-align: center;
+  }
+
+  .announcement-bar a {
+    color: inherit;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "class": "section-announcement",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-6"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "Announcement",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Mineral-enriched, 100% natural skincare, straight from the earth"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "presets": [
+    {
+      "name": "Announcement bar",
+      "blocks": [{ "type": "announcement" }]
+    }
+  ]
+}
+{% endschema %}

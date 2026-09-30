@@ -1,0 +1,61 @@
+{% doc %}
+  Renders a product or variant price, with the sale compare-at price and unit
+  price when present.
+
+  @param {product} product - The product
+  @param {variant} [variant] - A specific variant (defaults to the selected or first available)
+  @param {boolean} [show_from] - Show "From $X" when variant prices differ (for product cards)
+  @param {boolean} [plain] - Output only the price text, no markup
+
+  @example
+  {% render 'price', product: product, show_from: true %}
+{% enddoc %}
+{%- liquid
+  if variant == blank
+    assign variant = product.selected_or_first_available_variant
+  endif
+
+  if show_from and product.price_varies
+    assign price = product.price_min
+    assign compare_at = product.compare_at_price_min
+  else
+    assign price = variant.price
+    assign compare_at = variant.compare_at_price
+  endif
+
+  assign money_price = price | money
+  if show_from and product.price_varies
+    assign price_text = 'product.from_price_html' | t: price: money_price
+  else
+    assign price_text = money_price
+  endif
+
+  assign on_sale = false
+  if compare_at > price
+    assign on_sale = true
+  endif
+-%}
+{%- if plain -%}
+  {{- price_text -}}
+{%- else -%}
+  <span class="price{% if on_sale %} price--sale{% endif %}" data-price>
+    {%- if on_sale -%}
+      <span class="visually-hidden">{{ 'product.sale_price' | t }}</span>
+    {%- endif -%}
+    <span class="price__current">{{ price_text }}</span>
+    {%- if on_sale -%}
+      <span class="visually-hidden">{{ 'product.regular_price' | t }}</span>
+      <s class="price__compare">{{ compare_at | money }}</s>
+    {%- endif -%}
+    {%- if variant.unit_price_measurement -%}
+      <span class="price__unit">
+        <span class="visually-hidden">{{ 'product.unit_price' | t }}</span>
+        {{- variant.unit_price | money }}/
+        {%- if variant.unit_price_measurement.reference_value != 1 -%}
+          {{- variant.unit_price_measurement.reference_value -}}
+        {%- endif -%}
+        {{ variant.unit_price_measurement.reference_unit }}
+      </span>
+    {%- endif -%}
+  </span>
+{%- endif -%}

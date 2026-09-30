@@ -1,22 +1,32 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "type": "header",
-  "name": "t:general.header",
+  "name": "Header group",
   "sections": {
+    "announcement": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement-1": {
+          "type": "announcement",
+          "settings": {
+            "text": "Mineral-enriched, 100% natural skincare, straight from the earth",
+            "link": ""
+          }
+        }
+      },
+      "block_order": ["announcement-1"],
+      "settings": {
+        "color_scheme": "scheme-6"
+      }
+    },
     "header": {
       "type": "header",
-      "settings": {}
+      "settings": {
+        "menu": "main-menu",
+        "customer_account_menu": "customer-account-main-menu",
+        "color_scheme": "scheme-1",
+        "sticky": true
+      }
     }
   },
-  "order": [
-    "header"
-  ],
+  "order": ["announcement", "header"]
 }

@@ -1,0 +1,35 @@
+{% doc %}
+  Email sign-up form. Subscribers are saved as customers tagged "newsletter"
+  with email marketing consent.
+
+  @param {string} form_id - Unique id for the form on the page
+  @param {string} [button_class] - Extra classes for the submit button
+
+  @example
+  {% render 'newsletter-form', form_id: 'FooterNewsletter' %}
+{% enddoc %}
+{%- form 'customer', id: form_id, class: 'newsletter-form' -%}
+  <input type="hidden" name="contact[tags]" value="newsletter">
+  {%- if form.posted_successfully? -%}
+    <p class="form-message form-message--success" role="status">{{ 'newsletter.success' | t }}</p>
+  {%- else -%}
+    {%- if form.errors -%}
+      <div class="form-message form-message--error" role="alert">{{ form.errors | default_errors }}</div>
+    {%- endif -%}
+    <div class="inline-form inline-form--stack-mobile">
+      <label for="{{ form_id }}-email" class="visually-hidden">{{ 'newsletter.label' | t }}</label>
+      <input
+        id="{{ form_id }}-email"
+        type="email"
+        name="contact[email]"
+        class="input input--pill"
+        placeholder="{{ 'newsletter.placeholder' | t }}"
+        autocomplete="email"
+        autocapitalize="off"
+        spellcheck="false"
+        required
+      >
+      <button type="submit" class="button {{ button_class }}">{{ 'newsletter.button' | t }}</button>
+    </div>
+  {%- endif -%}
+{%- endform -%}

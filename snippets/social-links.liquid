@@ -1,0 +1,60 @@
+{% doc %}
+  Social media icon links from the "Social media" theme settings.
+
+  @param {string} [class] - Extra classes for the list
+{% enddoc %}
+{%- liquid
+  assign networks = 'instagram:Instagram,facebook:Facebook,tiktok:TikTok,youtube:YouTube,x:X,pinterest:Pinterest' | split: ','
+  assign has_links = false
+  for network in networks
+    assign key = network | split: ':' | first
+    assign setting_key = 'social_' | append: key | append: '_link'
+    if settings[setting_key] != blank
+      assign has_links = true
+    endif
+  endfor
+-%}
+{%- if has_links -%}
+  <ul class="social-links {{ class }}" role="list">
+    {%- for network in networks -%}
+      {%- liquid
+        assign parts = network | split: ':'
+        assign key = parts.first
+        assign name = parts.last
+        assign setting_key = 'social_' | append: key | append: '_link'
+        assign url = settings[setting_key]
+      -%}
+      {%- if url != blank -%}
+        <li>
+          <a
+            href="{{ url }}"
+            class="icon-button icon-button--outline social-links__link"
+            target="_blank"
+            rel="noopener"
+            aria-label="{{ 'general.social_link' | t: name: name }}"
+          >
+            {% render 'icon', name: key, size: 18 %}
+          </a>
+        </li>
+      {%- endif -%}
+    {%- endfor -%}
+  </ul>
+{%- endif -%}
+
+{% stylesheet %}
+  .social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .social-links__link {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: transparent;
+    color: inherit;
+  }
+{% endstylesheet %}

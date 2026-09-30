@@ -1,25 +1,46 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "type": "footer",
-  "name": "t:general.footer",
+  "name": "Footer group",
   "sections": {
     "footer": {
       "type": "footer",
+      "blocks": {
+        "brand": {
+          "type": "brand",
+          "settings": {
+            "text": "<p>Mineral-enriched natural skincare, straight from the earth.</p>",
+            "contact": "<p>info@teraclay.com<br/>73 Carol Place, Wayne, NJ 07470</p>",
+            "show_social": true
+          }
+        },
+        "shop": {
+          "type": "menu",
+          "settings": {
+            "heading": "Shop",
+            "menu": "main-menu"
+          }
+        },
+        "learn": {
+          "type": "menu",
+          "settings": {
+            "heading": "Learn",
+            "menu": "footer"
+          }
+        },
+        "affiliates": {
+          "type": "affiliates",
+          "settings": {
+            "heading": "Affiliates",
+            "terms_page": ""
+          }
+        }
+      },
+      "block_order": ["brand", "shop", "learn", "affiliates"],
       "settings": {
-        "menu": "",
+        "color_scheme": "scheme-6",
         "show_payment_icons": true
       }
     }
   },
-  "order": [
-    "footer"
-  ]
+  "order": ["footer"]
 }

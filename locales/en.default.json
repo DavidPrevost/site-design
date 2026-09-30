@@ -1,7 +1,141 @@
 {
+  "general": {
+    "close": "Close",
+    "menu": "Menu",
+    "open_menu": "Open menu",
+    "main_menu": "Main",
+    "search": "Search",
+    "open_search": "Search the store",
+    "account": "Account",
+    "log_in": "Log in",
+    "cart_link": "Cart, {{ count }} items",
+    "shop_all": "Shop all",
+    "social_link": "{{ name }} (opens in a new tab)",
+    "new_tab": "(opens in a new tab)",
+    "view": "View",
+    "read_more": "Read more",
+    "previous": "Previous",
+    "next": "Next",
+    "page": "Page {{ page }}",
+    "loading": "Loading…"
+  },
+  "accessibility": {
+    "skip_to_content": "Skip to content",
+    "rating": "Rated {{ rating }} out of 5",
+    "slide": "Show image {{ index }}"
+  },
+  "newsletter": {
+    "label": "Email address",
+    "placeholder": "Your email address",
+    "button": "Subscribe",
+    "success": "Thanks for subscribing!"
+  },
+  "footer": {
+    "copyright": "© {{ year }} {{ shop }}",
+    "payment_methods": "Payment methods",
+    "policies": "Policies",
+    "become_affiliate": "Become an affiliate",
+    "affiliate_login": "Affiliate login",
+    "program_terms": "Program terms"
+  },
+  "search": {
+    "title": "Search",
+    "placeholder": "Search products and pages",
+    "submit": "Search",
+    "clear": "Clear search",
+    "no_results_html": "No results found for “{{ terms }}”. Try a different word.",
+    "results_for_html": "{{ count }} results for “{{ terms }}”",
+    "search_for_html": "Search for “{{ terms }}”",
+    "products": "Products",
+    "pages": "Pages",
+    "articles": "Articles",
+    "collections": "Collections",
+    "empty": "Find a product or page"
+  },
+  "cart": {
+    "title": "Your cart",
+    "checkout": "Check out",
+    "update": "Update",
+    "remove": "Remove",
+    "remove_item": "Remove {{ product }}",
+    "quantity": "Quantity",
+    "decrease_quantity": "Decrease quantity for {{ product }}",
+    "increase_quantity": "Increase quantity for {{ product }}",
+    "subtotal": "Subtotal",
+    "total": "Total",
+    "taxes_and_shipping": "Taxes and shipping are calculated at checkout.",
+    "empty": "Your cart is empty.",
+    "continue_shopping": "Continue shopping",
+    "view_cart": "View cart",
+    "note": "Order note",
+    "discount": "Discount",
+    "error": "Something went wrong. Please try again.",
+    "item_count": {
+      "one": "{{ count }} item",
+      "other": "{{ count }} items"
+    }
+  },
+  "product": {
+    "add_to_cart": "Add to cart",
+    "sold_out": "Sold out",
+    "unavailable": "Unavailable",
+    "quick_add": "Quick add {{ product }}",
+    "added": "Added to cart",
+    "choose_option": "Choose {{ option }}",
+    "sale": "Sale",
+    "from_price_html": "From {{ price }}",
+    "regular_price": "Regular price",
+    "sale_price": "Sale price",
+    "unit_price": "Unit price",
+    "reviews": "Reviews",
+    "view_product": "View {{ product }}",
+    "media": "Product images",
+    "best_for": "Best for",
+    "compare_link": "Compare our creams"
+  },
+  "collections": {
+    "title": "Collections",
+    "empty": "No products here yet.",
+    "filter": "Filter",
+    "filters": "Filters",
+    "sort_by": "Sort by",
+    "apply": "Apply",
+    "clear_all": "Clear all",
+    "remove_filter": "Remove filter {{ filter }}",
+    "product_count": {
+      "one": "{{ count }} product",
+      "other": "{{ count }} products"
+    },
+    "price_from": "From",
+    "price_to": "To"
+  },
+  "discount_banner": {
+    "applied_html": "<strong>{{ amount }} off applied.</strong> Code {{ code }} is saved for checkout.",
+    "applied_no_amount_html": "<strong>Discount applied.</strong> Code {{ code }} is saved for checkout.",
+    "dismiss": "Dismiss"
+  },
+  "forms": {
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "message": "Message",
+    "send": "Send",
+    "sent": "Thanks! We’ll get back to you soon.",
+    "required": "Required"
+  },
+  "affiliates": {
+    "platform": "Main platform",
+    "handle": "Handle or URL",
+    "audience": "Audience size",
+    "why": "Why Teraclay?",
+    "agree_html": "I agree to the <a href=\"{{ url }}\">affiliate program terms</a>.",
+    "agree_plain": "I agree to the affiliate program terms.",
+    "submit": "Submit application",
+    "success": "Thank you! Your application is in. We’ll email you soon."
+  },
   "404": {
-    "title": "404",
-    "not_found": "Page not found.",
+    "title": "Page not found",
+    "not_found": "We couldn’t find that page.",
     "back_to_shopping": "Back to shopping"
   },
   "blog": {
@@ -13,12 +147,6 @@
     "comment_form_submit": "Post",
     "comment_form_title": "Add a comment"
   },
-  "cart": {
-    "checkout": "Checkout",
-    "title": "Cart",
-    "update": "Update",
-    "remove": "Remove"
-  },
   "customers": {
     "login": {
       "email": "Email",
@@ -27,29 +155,20 @@
       "title": "Login"
     }
   },
-  "collections": {
-    "title": "Collections"
-  },
   "gift_card": {
     "add_to_apple_wallet": "Add to Apple Wallet",
     "card": "Gift card",
     "expired": "This gift card has expired",
     "expires_on": "Expires on {{ expires_on }}",
-    "use_at_checkout": "Use this gift card at checkout"
+    "use_at_checkout": "Use this gift card at checkout",
+    "copy_code": "Copy code",
+    "print": "Print"
   },
   "password": {
-    "title": "This shop is private",
+    "title": "Opening soon",
     "password": "Password",
-    "enter": "Enter"
-  },
-  "search": {
-    "title": "Search",
-    "placeholder": "Search articles, pages, or products",
-    "submit": "Search",
-    "no_results_html": "No results found for {{ terms }}",
-    "results_for_html": "{{ count }} results found for {{ terms }}"
-  },
-  "accessibility": {
-    "skip_to_content": "Skip to content"
+    "enter": "Enter",
+    "store_owner": "Are you the store owner?",
+    "log_in": "Log in here"
   }
 }

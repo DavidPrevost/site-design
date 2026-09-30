@@ -1,0 +1,63 @@
+{% doc %}
+  Cart totals, cart-level discounts, optional note and the checkout button.
+
+  @param {boolean} [show_view_cart] - Show a "View cart" link (for the drawer)
+{% enddoc %}
+<div class="cart-summary stack">
+  {%- if cart.cart_level_discount_applications.size > 0 -%}
+    <ul class="cart-summary__discounts" role="list">
+      {%- for discount in cart.cart_level_discount_applications -%}
+        <li class="cart-summary__row">
+          <span class="badge badge--accent">
+            {%- render 'icon', name: 'tag', size: 14 -%}
+            {{ discount.title | escape }}
+          </span>
+          <span>−{{ discount.total_allocated_amount | money }}</span>
+        </li>
+      {%- endfor -%}
+    </ul>
+  {%- endif -%}
+
+  <div class="cart-summary__row cart-summary__total">
+    <span>{{ 'cart.subtotal' | t }}</span>
+    <span>{{ cart.total_price | money_with_currency }}</span>
+  </div>
+  <p class="text-small text-muted">{{ 'cart.taxes_and_shipping' | t }}</p>
+
+  <form action="{{ routes.cart_url }}" method="post" class="stack" style="--stack-gap: 0.75rem">
+    {%- if settings.cart_show_note -%}
+      <div class="field">
+        <label class="field__label" for="CartNote-{{ show_view_cart | default: 'page' }}">{{ 'cart.note' | t }}</label>
+        <textarea class="input" name="note" id="CartNote-{{ show_view_cart | default: 'page' }}" rows="2" data-cart-note>{{ cart.note }}</textarea>
+      </div>
+    {%- endif -%}
+    <button type="submit" name="checkout" class="button button--full">{{ 'cart.checkout' | t }}</button>
+  </form>
+
+  {%- if show_view_cart -%}
+    <a href="{{ routes.cart_url }}" class="text-small text-center">{{ 'cart.view_cart' | t }}</a>
+  {%- endif -%}
+</div>
+
+{% stylesheet %}
+  .cart-summary__discounts {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .cart-summary__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .cart-summary__total {
+    font-size: 1.125rem;
+    font-weight: var(--font-body-weight-bold);
+  }
+{% endstylesheet %}

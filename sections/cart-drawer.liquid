@@ -1,0 +1,70 @@
+{% comment %}
+  The slide-out cart. Rendered once in layout/theme.liquid and re-rendered
+  through the Section Rendering API after cart changes (see assets/theme.js).
+{% endcomment %}
+<cart-drawer class="drawer drawer--right" id="CartDrawer" data-cart-count="{{ cart.item_count }}">
+  <div class="drawer__overlay" data-close-cart></div>
+  <div
+    class="drawer__panel color-{{ section.settings.color_scheme | default: 'scheme-1' }}"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="CartDrawerTitle"
+    tabindex="-1"
+  >
+    <div class="drawer__header">
+      <h2 class="h3" id="CartDrawerTitle">
+        {{ 'cart.title' | t }}
+        {%- if cart.item_count > 0 %}
+          <span class="text-muted">({{ cart.item_count }})</span>
+        {%- endif -%}
+      </h2>
+      <button type="button" class="icon-button" data-close-cart aria-label="{{ 'general.close' | t }}">
+        {% render 'icon', name: 'close' %}
+      </button>
+    </div>
+
+    {%- if cart.item_count > 0 -%}
+      <cart-items class="drawer__body" data-sections="cart-drawer">
+        <ul class="cart-lines" role="list">
+          {%- for item in cart.items -%}
+            {% render 'cart-line', item: item, index: forloop.index %}
+          {%- endfor -%}
+        </ul>
+        <p class="form-message form-message--error" role="alert" data-cart-error hidden></p>
+      </cart-items>
+      <div class="drawer__footer">
+        {% render 'cart-summary', show_view_cart: true %}
+      </div>
+    {%- else -%}
+      <div class="drawer__body cart-drawer__empty">
+        <p>{{ 'cart.empty' | t }}</p>
+        <a href="{{ routes.all_products_collection_url }}" class="button">{{ 'general.shop_all' | t }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</cart-drawer>
+
+{% stylesheet %}
+  .cart-drawer__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    text-align: center;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Cart drawer",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    }
+  ]
+}
+{% endschema %}
