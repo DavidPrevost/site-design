@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Teraclay — Style guide</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&amp;family=Karla:wght@400;500;700&amp;family=Quicksand:wght@500;600;700&amp;family=Nunito+Sans:wght@400;600;700&amp;family=Josefin+Sans:wght@400;600;700&amp;family=Work+Sans:wght@400;500;600&amp;display=swap">
+<style>
+body{margin:0;background:#FBF5EE}
+a{color:#A9503E}a:hover{color:#8A3F30}
+button{font:inherit;cursor:pointer}
+input{font:inherit}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid #366677;outline-offset:2px}
+.speckle{background-image:radial-gradient(circle at 30% 40%,rgba(106,94,77,.16) 0.8px,transparent 1.5px),radial-gradient(circle at 70% 25%,rgba(169,80,62,.12) 0.9px,transparent 1.6px),radial-gradient(circle at 45% 80%,rgba(106,94,77,.10) 0.7px,transparent 1.4px);background-size:17px 19px,29px 23px,41px 37px}
+</style>
+</helmet>
+<div class="{{tex}}" style="width: 1440px; height: 3240px; box-sizing: border-box; padding: 88px 120px; display: flex; flex-direction: column; gap: 80px; background-color: #FBF5EE; color: #3B2E25; font-family: {{bf}}">
+
+<div style="display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; align-items: center; gap: 20px">
+<img src="/_blob/403b7136a2294aec116647b7cc64b56c" alt="Teraclay" style="height: 40px; width: auto">
+<div style="width: 1px; height: 28px; background-color: #D9C6B2"></div>
+<div style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #6A5E4D">Theme direction · v1</div>
+</div>
+<h1 style="margin: 0; max-width: 980px; font-family: {{hf}}; font-weight: {{hw}}; font-size: 60px; line-height: 1.05; letter-spacing: -0.02em">Warm clay and soft pastels, with mineral blues only for contrast.</h1>
+<p style="margin: 0; max-width: 760px; font-size: 19px; line-height: 1.6; color: #6A5E4D">Every color, font, button shape and corner radius on this board becomes a setting in Shopify’s theme editor, so it can all change later without code.</p>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; align-items: baseline; justify-content: space-between">
+<h2 style="margin: 0; font-family: {{hf}}; font-weight: {{hw}}; font-size: 36px; letter-spacing: -0.01em">Your brand colors</h2>
+<div style="font-size: 14px; color: #6A5E4D">Converted from your CMYK values. Swap in exact hex codes if you have them.</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px">
+<div style="display: flex; flex-direction: column; border-radius: 20px; overflow: hidden; background-color: #FFFFFF; border: 1px solid #EADBCB">
+<div style="height: 180px; background-color: #FFD1B5"></div>
+<div style="padding: 20px 22px 24px; display: flex; flex-direction: column; gap: 6px">
+<div style="font-family: {{hf}}; font-weight: {{hw}}; font-size: 22px">Peach</div>
+<div style="font-size: 14px; font-weight: 700">#FFD1B5 · CMYK 0/18/29/0</div>
+<div style="font-size: 14px; line-height: 1.5; color: #6A5E4D">Highlight bands, newsletter, promo and badge backgrounds.</div>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; border-radius: 20px; overflow: hidden; background-color: #FFFFFF; border: 1px solid #EADBCB">
+<div style="height: 180px; background-color: #CD6E5A"></div>
+<div style="padding: 20px 22px 24px; display: flex; flex-direction: column; gap: 6px">
+<div style="font-family: {{hf}}; font-weight: {{hw}}; font-size: 22px">Terracotta</div>
+<div style="font-size: 14px; font-weight: 700">#CD6E5A · CMYK 18/56/64/2</div>
+<div style="font-size: 14px; line-height: 1.5; color: #6A5E4D">Accents, review stars, illustrations, large display type.</div>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; border-radius: 20px; overflow: hidden; background-color: #FFFFFF; border: 1px solid #EADBCB">
+<div style="height: 180px; background-color: #786B58"></div>
+<div style="padding: 20px 22px 24px; display: flex; flex-direction: column; gap: 6px">
+<div style="font-family: {{hf}}; font-weight: {{hw}}; font-size: 22px">Taupe</div>
+<div style="font-size: 14px; font-weight: 700">#786B58 · CMYK 44/50/59/16</div>
+<div style="font-size: 14px; line-height: 1.5; color: #6A5E4D">Borders, dividers, icons and secondary accents.</div>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; border-radius: 20px; overflow: hidden; background-color: #FFFFFF; border: 1px solid #EADBCB">
+<div style="height: 180px; background-color: #366677"></div>
+<div style="padding: 20px 22px 24px; display: flex; flex-direction: column; gap: 6px">
+<div style="font-family: {{hf}}; font-weight: {{hw}}; font-size: 22px">Denim</div>
+<div style="font-size: 14px; font-weight: 700">#366677 · CMYK 74/51/43/18</div>
+<div style="font-size: 14px; line-height: 1.5; color: #6A5E4D">Contrast only: info badges, focus rings, the “mineral” accent.</div>
+</div>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 28px">
+<h2 style="margin: 0; font-family: {{hf}}; font-weight: {{hw}}; font-size: 36px; letter-spacing: -0.01em">Supporting clay neutrals, pastels and working colors</h2>
+<div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 28px 24px">
+<div style="display: flex; align-items: center; gap: 14px"><div style="width: 64px; height: 64px; flex-shrink: 0; border-radius: 50%; background-color: #FBF5EE; border: 1px solid #D9C6B2"></div><div style="display: flex; flex-direction: column; gap: 2px"><div style="font-weight: 700; font-size: 15px">Cream</div><div style="font-size: 13px; color: #6A5E4D">#FBF5EE · page</div></div></div>
+<div style="display: flex; align-items: center; gap: 14px"><div style="width: 64px; height: 64px; flex-shrink: 0; border-radius: 50%; background-color: #F3E6D8"></div><div style="display: flex; flex-direction: column; gap: 2px"><div style="font-weight: 700; font-size: 15px">Sand</div><div style="font-size: 13px; color: #6A5E4D">#F3E6D8 · bands</div></div></div>
+<div style="display: flex; align-items: center; gap: 14px"><div style="width: 64px; height: 64px; flex-shrink: 0; border-radius: 50%; background-color: #EFE2D3"></div><div style="display: flex; flex-direction: column; gap: 2px"><div style="font-weight: 700; font-size: 15px">Linen</div><div style="font-size: 13px; color: #6A5E4D">#EFE2D3 · wells</div></div></div>
+<div style="display: flex; align-items: center; gap: 14px"><div style="width: 64px; height: 64px; flex-shrink: 0; border-radius: 50%; background-color: #F4D8CF"></div><div style="display: flex; flex-direction: column; gap: 2px"><div style="font-weight: 700; font-size: 15px">Blush</div><div style="font-size: 13px; color: #6A5E4D">#F4D8CF · soft pink</div></div></div>
+<div style="display: flex; align-items: center; gap: 14px"><div style="width: 64px; height: 64px; flex-shrink: 0; border-radius: 50%; background-color: #D9A195"></div><div style="display: flex; flex-direction: column; gap: 2px"><div style="font-weight: 700; font-size: 15px">Dusty rose</div><div style="font-size: 13px; color: #6A5E4D">#D9A195 · decor</div></div></div>
+<div style="display: flex; align-items: center; gap: 14px"><div style="width: 64px; height: 64px; flex-shrink: 0; border-radius: 50%; background-color: #E3E7D9"></div><div style="display: flex; flex-direction: column; gap: 2px"><div style="font-weight: 700; font-size: 15px">Sage mist</div><div style="font-size: 13px; color: #6A5E4D">#E3E7D9 · calm band</div></div></div>
+<div style="display: flex; align-items: center; gap: 14px"><div style="width: 64px; height: 64px; flex-shrink: 0; border-radius: 50%; background-color: #8A9A7B"></div><div style="display: flex; flex-direction: column; gap: 2px"><div style="font-weight: 700; font-size: 15px">Sage clay</div><div style="font-size: 13px; color: #6A5E4D">#8A9A7B · icons</div></div></div>
+<div style="display: flex; align-items: center; gap: 14px"><div style="width: 64px; height: 64px; flex-shrink: 0; border-radius: 50%; background-color: #DDE7E8"></div><div style="display: flex; flex-direction: column; gap: 2px"><div style="font-weight: 700; font-size: 15px">Mist</div><div style="font-size: 13px; color: #6A5E4D">#DDE7E8 · contrast band</div></div></div>
+<div style="display: flex; align-items: center; gap: 14px"><div style="width: 64px; height: 64px; flex-shrink: 0; border-radius: 50%; background-color: #A9503E"></div><div style="display: flex; flex-direction: column; gap: 2px"><div style="font-weight: 700; font-size: 15px">Kiln</div><div style="font-size: 13px; color: #6A5E4D">#A9503E · buttons, links</div></div></div>
+<div style="display: flex; align-items: center; gap: 14px"><div style="width: 64px; height: 64px; flex-shrink: 0; border-radius: 50%; background-color: #3B2E25"></div><div style="display: flex; flex-direction: column; gap: 2px"><div style="font-weight: 700; font-size: 15px">Umber</div><div style="font-size: 13px; color: #6A5E4D">#3B2E25 · text, dark</div></div></div>
+<div style="display: flex; align-items: center; gap: 14px"><div style="width: 64px; height: 64px; flex-shrink: 0; border-radius: 50%; background-color: #6A5E4D"></div><div style="display: flex; flex-direction: column; gap: 2px"><div style="font-weight: 700; font-size: 15px">Taupe ink</div><div style="font-size: 13px; color: #6A5E4D">#6A5E4D · muted text</div></div></div>
+<div style="display: flex; align-items: center; gap: 14px"><div style="width: 64px; height: 64px; flex-shrink: 0; border-radius: 50%; background-color: #FFFFFF; border: 1px solid #D9C6B2"></div><div style="display: flex; flex-direction: column; gap: 2px"><div style="font-weight: 700; font-size: 15px">White</div><div style="font-size: 13px; color: #6A5E4D">#FFFFFF · cards</div></div></div>
+</div>
+<div style="font-size: 14px; line-height: 1.6; color: #6A5E4D; max-width: 900px">Kiln is a deeper terracotta used wherever white text sits on it, or where terracotta is small text. Your brand terracotta is too light for small text to pass accessibility contrast, so it stays for accents and large type.</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; align-items: baseline; justify-content: space-between">
+<h2 style="margin: 0; font-family: {{hf}}; font-weight: {{hw}}; font-size: 36px; letter-spacing: -0.01em">Color schemes</h2>
+<div style="font-size: 14px; color: #6A5E4D">Each section in the editor picks one of these.</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px">
+<div style="height: 220px; box-sizing: border-box; padding: 28px; border-radius: 20px; background-color: #FBF5EE; border: 1px solid #E6D6C5; display: flex; flex-direction: column; gap: 12px">
+<div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #A9503E">Scheme 1 · default</div>
+<div style="font-family: {{hf}}; font-weight: {{hw}}; font-size: 26px; color: #3B2E25">Cream</div>
+<div style="font-size: 15px; color: #6A5E4D">Body text sits comfortably on the page ground.</div>
+<div style="display: flex; align-items: center; gap: 18px; margin-top: auto"><button type="button" style="border: 0; border-radius: 999px; padding: 12px 22px; background-color: #A9503E; color: #FFFFFF; font-weight: 700; font-size: 14px">Shop now</button><a href="#" style="font-size: 14px; font-weight: 700">Learn more</a></div>
+</div>
+<div style="height: 220px; box-sizing: border-box; padding: 28px; border-radius: 20px; background-color: #F3E6D8; display: flex; flex-direction: column; gap: 12px">
+<div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #3B2E25">Scheme 2</div>
+<div style="font-family: {{hf}}; font-weight: {{hw}}; font-size: 26px; color: #3B2E25">Sand</div>
+<div style="font-size: 15px; color: #6A5E4D">Alternating bands and story sections.</div>
+<div style="display: flex; align-items: center; gap: 18px; margin-top: auto"><button type="button" style="border: 0; border-radius: 999px; padding: 12px 22px; background-color: #A9503E; color: #FFFFFF; font-weight: 700; font-size: 14px">Shop now</button><a href="#" style="font-size: 14px; font-weight: 700; color: #3B2E25">Learn more</a></div>
+</div>
+<div style="height: 220px; box-sizing: border-box; padding: 28px; border-radius: 20px; background-color: #FFD1B5; display: flex; flex-direction: column; gap: 12px">
+<div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #3B2E25">Scheme 3</div>
+<div style="font-family: {{hf}}; font-weight: {{hw}}; font-size: 26px; color: #3B2E25">Peach</div>
+<div style="font-size: 15px; color: #4A3B30">Newsletter, promos, announcement highlights.</div>
+<div style="display: flex; align-items: center; gap: 18px; margin-top: auto"><button type="button" style="border: 0; border-radius: 999px; padding: 12px 22px; background-color: #3B2E25; color: #FFF8F2; font-weight: 700; font-size: 14px">Subscribe</button><a href="#" style="font-size: 14px; font-weight: 700; color: #3B2E25">Learn more</a></div>
+</div>
+<div style="height: 220px; box-sizing: border-box; padding: 28px; border-radius: 20px; background-color: #F4D8CF; display: flex; flex-direction: column; gap: 12px">
+<div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #3B2E25">Scheme 4</div>
+<div style="font-family: {{hf}}; font-weight: {{hw}}; font-size: 26px; color: #3B2E25">Blush</div>
+<div style="font-size: 15px; color: #4A3B30">Softer feature tiles and testimonials.</div>
+<div style="display: flex; align-items: center; gap: 18px; margin-top: auto"><button type="button" style="border: 0; border-radius: 999px; padding: 12px 22px; background-color: #A9503E; color: #FFFFFF; font-weight: 700; font-size: 14px">Shop now</button><a href="#" style="font-size: 14px; font-weight: 700; color: #3B2E25">Learn more</a></div>
+</div>
+<div style="height: 220px; box-sizing: border-box; padding: 28px; border-radius: 20px; background-color: #DDE7E8; display: flex; flex-direction: column; gap: 12px">
+<div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #274C59">Scheme 5 · contrast</div>
+<div style="font-family: {{hf}}; font-weight: {{hw}}; font-size: 26px; color: #22343B">Mist</div>
+<div style="font-size: 15px; color: #33474E">A cool break: ingredients, science and info.</div>
+<div style="display: flex; align-items: center; gap: 18px; margin-top: auto"><button type="button" style="border: 0; border-radius: 999px; padding: 12px 22px; background-color: #366677; color: #FFFFFF; font-weight: 700; font-size: 14px">Explore</button><a href="#" style="font-size: 14px; font-weight: 700; color: #274C59">Learn more</a></div>
+</div>
+<div style="height: 220px; box-sizing: border-box; padding: 28px; border-radius: 20px; background-color: #3B2E25; display: flex; flex-direction: column; gap: 12px">
+<div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #FFD1B5">Scheme 6 · dark</div>
+<div style="font-family: {{hf}}; font-weight: {{hw}}; font-size: 26px; color: #FBF5EE">Umber</div>
+<div style="font-size: 15px; color: #E9DCCD">Footer, affiliate band, bold statements.</div>
+<div style="display: flex; align-items: center; gap: 18px; margin-top: auto"><button type="button" style="border: 0; border-radius: 999px; padding: 12px 22px; background-color: #FFD1B5; color: #3B2E25; font-weight: 700; font-size: 14px">Join now</button><a href="#" style="font-size: 14px; font-weight: 700; color: #FFD1B5">Learn more</a></div>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; align-items: baseline; justify-content: space-between">
+<h2 style="margin: 0; font-family: {{hf}}; font-weight: {{hw}}; font-size: 36px; letter-spacing: -0.01em">Typography</h2>
+<div style="font-size: 14px; color: #6A5E4D">Try the other pairings with the Tweaks button. All are in Shopify’s built-in font picker.</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px">
+<div style="padding: 36px; border-radius: 20px; background-color: #FFFFFF; border: 1px solid #EADBCB; display: flex; flex-direction: column; gap: 18px">
+<div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #A9503E">Headings · {{hName}}</div>
+<div style="font-family: {{hf}}; font-weight: {{hw}}; font-size: 64px; line-height: 1.05; letter-spacing: -0.02em">Straight from the earth.</div>
+<div style="font-family: {{hf}}; font-weight: {{hw}}; font-size: 44px; line-height: 1.1; letter-spacing: -0.01em">Our best sellers</div>
+<div style="font-family: {{hf}}; font-weight: {{hw}}; font-size: 28px; line-height: 1.2">Advanced Hydration Facial Cream</div>
+<div style="font-size: 13px; color: #6A5E4D">H1 64 / H2 44 / H3 28. These scale down on mobile.</div>
+</div>
+<div style="padding: 36px; border-radius: 20px; background-color: #FFFFFF; border: 1px solid #EADBCB; display: flex; flex-direction: column; gap: 18px">
+<div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #A9503E">Body · {{bName}}</div>
+<p style="margin: 0; font-size: 17px; line-height: 1.65">For the dry-skinned, cold-weather warriors who want to hydrate their skin naturally. Mineral enriched to absorb moisture from the atmosphere and hold it on your skin.</p>
+<p style="margin: 0; font-size: 14px; line-height: 1.55; color: #6A5E4D">Small text is used for captions, sizes and helper notes. It stays taupe ink for contrast.</p>
+<div style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700">Eyebrow label · mineral enriched</div>
+<div style="font-size: 13px; color: #6A5E4D">Body 17 / Small 14 / Eyebrow 13, all caps, spaced.</div>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 28px">
+<h2 style="margin: 0; font-family: {{hf}}; font-weight: {{hw}}; font-size: 36px; letter-spacing: -0.01em">Components</h2>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px">
+
+<div style="padding: 32px; border-radius: 20px; background-color: #FFFFFF; border: 1px solid #EADBCB; display: flex; flex-direction: column; gap: 22px">
+<div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #6A5E4D">Buttons &amp; badges</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px">
+<button type="button" style="border: 0; border-radius: 999px; padding: 15px 28px; background-color: #A9503E; color: #FFFFFF; font-weight: 700; font-size: 15px">Add to cart</button>
+<button type="button" style="border: 1.5px solid #3B2E25; border-radius: 999px; padding: 13.5px 26px; background-color: transparent; color: #3B2E25; font-weight: 700; font-size: 15px">Our story</button>
+</div>
+<div style="display: flex; align-items: center; gap: 18px">
+<a href="#" style="font-weight: 700; font-size: 15px">Shop all skincare →</a>
+<button type="button" style="border: 1.5px solid #D9C6B2; border-radius: 999px; padding: 8px 16px; background-color: #FFFFFF; color: #3B2E25; font-weight: 700; font-size: 13px">Quick add</button>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<span style="padding: 6px 12px; border-radius: 999px; background-color: #FFE6D6; color: #7A3A2C; font-size: 12px; font-weight: 700">Hypoallergenic</span>
+<span style="padding: 6px 12px; border-radius: 999px; background-color: #F3E6D8; color: #3B2E25; font-size: 12px; font-weight: 700">Nut free</span>
+<span style="padding: 6px 12px; border-radius: 999px; background-color: #DDE7E8; color: #274C59; font-size: 12px; font-weight: 700">Mineral enriched</span>
+<span style="padding: 6px 12px; border-radius: 999px; background-color: #CD6E5A; color: #FFFFFF; font-size: 12px; font-weight: 700">Sale</span>
+</div>
+</div>
+
+<div style="padding: 32px; border-radius: 20px; background-color: #FFFFFF; border: 1px solid #EADBCB; display: flex; flex-direction: column; gap: 16px">
+<div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #6A5E4D">Product card, with review stars</div>
+<div style="display: flex; gap: 18px; align-items: stretch">
+<div style="width: 150px; height: 150px; flex-shrink: 0; border-radius: 16px; background-color: #F6ECE1; overflow: hidden"><img src="/_blob/6dbd85d602b35e0ead72ae57cdd84436" alt="Advanced Hydration Facial Cream jar" style="width: 150px; height: 150px; object-fit: cover; mix-blend-mode: multiply"></div>
+<div style="display: flex; flex-direction: column; gap: 8px; justify-content: center">
+<div style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; color: #6A5E4D">Dry to normal skin</div>
+<div style="font-family: {{hf}}; font-weight: {{hw}}; font-size: 19px; line-height: 1.25">Advanced Hydration Facial Cream</div>
+<div style="display: flex; align-items: center; gap: 8px"><span role="img" aria-label="Rated 5 out of 5" style="display: inline-flex; gap: 1px"><sc-for list="{{stars}}" as="s" hint-placeholder-count="5"><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z" fill="#CD6E5A"></path></svg></sc-for></span><span style="font-size: 13px; color: #6A5E4D">(n)</span></div>
+<div style="font-size: 16px; font-weight: 700">From $26.00</div>
+</div>
+</div>
+<div style="font-size: 13px; line-height: 1.5; color: #6A5E4D">Stars come from your reviews service and only appear once a product has reviews.</div>
+</div>
+
+<div style="padding: 32px; border-radius: 20px; background-color: #FFFFFF; border: 1px solid #EADBCB; display: flex; flex-direction: column; gap: 16px">
+<div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #6A5E4D">Form field</div>
+<label for="sg-email" style="font-size: 14px; font-weight: 700">Email address</label>
+<div style="display: flex; gap: 10px">
+<input id="sg-email" type="email" placeholder="you@example.com" style="flex-grow: 1; min-width: 0; box-sizing: border-box; height: 50px; padding: 0 18px; border-radius: 999px; border: 1.5px solid #D9C6B2; background-color: #FFFFFF; color: #3B2E25; font-size: 15px">
+<button type="button" style="border: 0; border-radius: 999px; padding: 0 24px; height: 50px; background-color: #A9503E; color: #FFFFFF; font-weight: 700; font-size: 15px">Subscribe</button>
+</div>
+<div style="font-size: 13px; color: #6A5E4D">Focus rings use denim so they stand out on every scheme.</div>
+</div>
+
+<div style="grid-column: span 2; padding: 32px; border-radius: 20px; background-color: #FFFFFF; border: 1px solid #EADBCB; display: flex; flex-direction: column; gap: 18px">
+<div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #6A5E4D">Reviews widget, restyled to match the theme</div>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-bottom: 18px; border-bottom: 1px solid #EADBCB">
+<div style="display: flex; align-items: center; gap: 16px">
+<div style="font-family: {{hf}}; font-weight: {{hw}}; font-size: 26px">Customer reviews</div>
+<span role="img" aria-label="Average rating" style="display: inline-flex; gap: 2px"><sc-for list="{{stars}}" as="s" hint-placeholder-count="5"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z" fill="#CD6E5A"></path></svg></sc-for></span>
+<span style="font-size: 14px; color: #6A5E4D">[n] reviews</span>
+</div>
+<button type="button" style="border: 0; border-radius: 999px; padding: 12px 22px; background-color: #A9503E; color: #FFFFFF; font-weight: 700; font-size: 14px">Write a review</button>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; align-items: center; gap: 10px"><span role="img" aria-label="Rated 5 out of 5" style="display: inline-flex; gap: 1px"><sc-for list="{{stars}}" as="s" hint-placeholder-count="5"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z" fill="#CD6E5A"></path></svg></sc-for></span><span style="font-weight: 700; font-size: 15px">[Review title]</span><span style="padding: 3px 9px; border-radius: 999px; background-color: #E3E7D9; color: #3F4A35; font-size: 11px; font-weight: 700">Verified buyer</span></div>
+<div style="font-size: 15px; line-height: 1.6; color: #4A3B30">[A customer’s review appears here in the theme’s body font and colors, so the widget looks built in rather than bolted on.]</div>
+<div style="font-size: 13px; color: #6A5E4D">[Customer name] · [Date]</div>
+</div>
+</div>
+
+<div style="padding: 32px; border-radius: 20px; background-color: #FFFFFF; border: 1px solid #EADBCB; display: flex; flex-direction: column; gap: 16px">
+<div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #6A5E4D">Referral banner (affiliate links)</div>
+<div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 14px; background-color: #FFE6D6; color: #3B2E25">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A9503E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"></path><circle cx="7.5" cy="7.5" r="1.5"></circle></svg>
+<div style="flex-grow: 1; font-size: 14px; line-height: 1.4"><strong>10% off applied.</strong> Code SARAH is saved for checkout.</div>
+<button type="button" aria-label="Dismiss" style="border: 0; background-color: transparent; padding: 4px; color: #3B2E25; display: flex"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+</div>
+<div style="font-size: 13px; line-height: 1.5; color: #6A5E4D">Shows when a shopper arrives from a promo.teraclay.com link.</div>
+</div>
+
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"fonts":{"editor":"enum","options":["Jost + Karla","Quicksand + Nunito Sans","Josefin Sans + Work Sans"],"default":"Jost + Karla","section":"Look"},"texture":{"editor":"boolean","default":true,"section":"Look"},"$preview":{"width":1440,"height":3240}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const pairs = {
+      'Jost + Karla': ["'Jost', ui-sans-serif, system-ui, sans-serif", "'Karla', ui-sans-serif, system-ui, sans-serif", 500, 'Jost', 'Karla'],
+      'Quicksand + Nunito Sans': ["'Quicksand', ui-sans-serif, system-ui, sans-serif", "'Nunito Sans', ui-sans-serif, system-ui, sans-serif", 600, 'Quicksand', 'Nunito Sans'],
+      'Josefin Sans + Work Sans': ["'Josefin Sans', ui-sans-serif, system-ui, sans-serif", "'Work Sans', ui-sans-serif, system-ui, sans-serif", 600, 'Josefin Sans', 'Work Sans']
+    };
+    const p = pairs[this.props.fonts] || pairs['Jost + Karla'];
+    return {
+      hf: p[0], bf: p[1], hw: p[2], hName: p[3], bName: p[4],
+      tex: this.props.texture === false ? '' : 'speckle',
+      stars: [1, 2, 3, 4, 5]
+    };
+  }
+}
+</script>
+</body>
+</html>

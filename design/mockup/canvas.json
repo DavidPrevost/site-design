@@ -1,0 +1,78 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "Affiliates.dc.html": {
+      "h": 3500,
+      "title": "Become an affiliate — desktop",
+      "w": 1440,
+      "x": 4560,
+      "y": 0
+    },
+    "Home.dc.html": {
+      "h": 4400,
+      "title": "Home — desktop",
+      "w": 1440,
+      "x": 1520,
+      "y": 0
+    },
+    "HomeMobile.dc.html": {
+      "h": 4900,
+      "title": "Home — mobile",
+      "w": 390,
+      "x": 6080,
+      "y": 0
+    },
+    "Main.dc.html": {
+      "h": 3240,
+      "title": "Style guide",
+      "w": 1440,
+      "x": 0,
+      "y": 0
+    },
+    "Product.dc.html": {
+      "h": 4000,
+      "is_interactive": true,
+      "title": "Product — desktop",
+      "w": 1440,
+      "x": 3040,
+      "y": 0
+    },
+    "ProductMobile.dc.html": {
+      "h": 4100,
+      "is_interactive": true,
+      "title": "Product — mobile",
+      "w": 390,
+      "x": 6550,
+      "y": 0
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-09-30T15:05:00Z",
+    "v": 1
+  },
+  "designSystems": [],
+  "launch": {
+    "view": "canvas"
+  },
+  "notes": {
+    "title": {
+      "kind": "title1",
+      "maxW": 6940,
+      "text": "Teraclay theme — design direction v1",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "Home.dc.html",
+    "Product.dc.html",
+    "Affiliates.dc.html",
+    "HomeMobile.dc.html",
+    "ProductMobile.dc.html"
+  ],
+  "pages": [],
+  "title": "Teraclay Theme Mockup"
+}
