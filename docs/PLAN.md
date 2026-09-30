@@ -1,5 +1,13 @@
 # Teraclay custom Shopify theme: plan
 
+## Status (2026-09-30)
+The theme is built on this branch. See the root `README.md` for the guides.
+
+What remains is on the owner's side:
+- Connect the branch as an unpublished theme and share a preview link, so the checks under "Verification" can run in a
+  real browser.
+- Work through `docs/launch-checklist.md`.
+
 ## Context
 teraclay.com sells natural mineral skincare. It runs the paid "Trademark" theme (v1.7.3, jQuery-era, with leftover broken Yotpo
 blocks). The owner wants a custom Online Store 2.0 theme that they own, in their warm clay/pastel palette, and editable in the

@@ -19,4 +19,15 @@ npm run dev        # live preview against a store (needs a store login)
 
 Shopify commits theme editor changes back to the connected branch, so run `git pull` before you push.
 
-See [`docs/install.md`](docs/install.md) to connect the theme to a store.
+## Guides
+
+| Guide | What it covers |
+|---|---|
+| [Install and preview](docs/install.md) | Connect this repository to Shopify as an unpublished theme, preview, publish, roll back |
+| [Customizing](docs/customizing.md) | Color schemes, the two font pairings, logo, menus, page templates, sections |
+| [Product fields and ingredients](docs/custom-data.md) | The metafields and Ingredient metaobject the theme reads, with suggested values |
+| [Reviews](docs/reviews.md) | How the reviews widget is placed and styled, campaign pages, domain change |
+| [Affiliate program](docs/affiliates.md) | Affiliate pages, application emails, the discount banner, portal branding |
+| [Product photography](docs/product-photography.md) | Image specs and a shot list for the new packaging |
+| [Launch checklist](docs/launch-checklist.md) | Everything to set up and test before publishing |
+| [Plan](docs/PLAN.md) | Design decisions and build plan |
