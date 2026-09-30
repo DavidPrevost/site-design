@@ -1,0 +1,9 @@
+# Files excluded from Shopify CLI push/pull/dev. (The GitHub integration ignores
+# any folder that isn't part of the theme structure on its own.)
+docs/
+design/
+scripts/
+node_modules/
+package.json
+package-lock.json
+README.md

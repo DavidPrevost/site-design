@@ -1,0 +1,20 @@
+name: Theme checks
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    name: Theme Check and contrast
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Theme Check
+        run: npx shopify theme check --fail-level error
+      - name: Color contrast of default schemes
+        run: npm run contrast

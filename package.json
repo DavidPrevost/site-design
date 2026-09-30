@@ -1,0 +1,19 @@
+{
+  "name": "teraclay-theme",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Custom Shopify Online Store 2.0 theme for Teraclay",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "scripts": {
+    "check": "shopify theme check --fail-level error",
+    "contrast": "node scripts/check-contrast.mjs",
+    "test": "npm run check && npm run contrast",
+    "dev": "shopify theme dev"
+  },
+  "devDependencies": {
+    "@shopify/cli": "^4.8.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
