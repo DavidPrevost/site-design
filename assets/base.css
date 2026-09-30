@@ -189,6 +189,10 @@ a:hover {
   max-width: 45rem;
 }
 
+.section-header--center .section-header__text {
+  align-items: center;
+}
+
 .stack {
   display: flex;
   flex-direction: column;
@@ -204,6 +208,9 @@ a:hover {
 
 .grid {
   display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
   gap: var(--grid-gap, 1.5rem);
   grid-template-columns: repeat(var(--grid-mobile, 1), minmax(0, 1fr));
 }
@@ -230,6 +237,7 @@ a:hover {
     scroll-snap-type: x mandatory;
     margin-inline: calc(var(--page-margin) * -1);
     padding-inline: var(--page-margin);
+    scroll-padding-inline: var(--page-margin);
     scrollbar-width: none;
   }
 

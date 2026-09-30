@@ -89,8 +89,9 @@
     </div>
 
     <div class="footer__bottom">
+      {%- assign current_year = 'now' | date: '%Y' -%}
       <p class="footer__copyright">
-        {{- 'footer.copyright' | t: year: 'now' | date: '%Y', shop: shop.name -}}
+        {{- 'footer.copyright' | t: year: current_year, shop: shop.name -}}
       </p>
 
       {%- if shop.policies.size > 0 -%}

@@ -59,7 +59,7 @@
       <h3 class="product-card__title">
         <a href="{{ product.url }}">{{ product.title | escape }}</a>
       </h3>
-      {%- if subtitle != blank -%}
+      {%- if subtitle != blank and subtitle != best_for -%}
         <p class="product-card__subtitle">{{ subtitle | escape }}</p>
       {%- endif -%}
       {%- if settings.card_show_rating -%}
@@ -164,8 +164,8 @@
     flex-shrink: 0;
   }
 
-  /* Reserve space for aggregate stars so cards don't jump when they load. */
-  .product-card .tc-reviews--aggregate {
-    min-height: 1.25rem;
+  /* Hide the stars row until the reviews widget fills it (no reviews = no row). */
+  .product-card .tc-reviews--aggregate:has(> [data-reviews-widget]:empty) {
+    display: none;
   }
 {% endstylesheet %}
