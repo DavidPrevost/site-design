@@ -1,0 +1,245 @@
+{% doc %}
+  Filter and sort form for collection and search results. Works without
+  JavaScript (Apply button); theme.js submits automatically on change.
+
+  @param {object} results - The collection or search object
+  @param {string} results_url - Base URL of the results (without filters)
+  @param {string} [terms] - Search terms (search page only)
+  @param {number} [count] - Number of results
+{% enddoc %}
+{%- liquid
+  assign sort_by = results.sort_by | default: results.default_sort_by
+  assign active_count = 0
+  for filter in results.filters
+    if filter.type == 'price_range'
+      if filter.min_value.value != null or filter.max_value.value != null
+        assign active_count = active_count | plus: 1
+      endif
+    else
+      assign active_count = active_count | plus: filter.active_values.size
+    endif
+  endfor
+-%}
+<form class="facets" action="{{ results_url }}" method="get" data-auto-submit>
+  {%- if terms != blank -%}
+    <input type="hidden" name="q" value="{{ terms | escape }}">
+    <input type="hidden" name="options[prefix]" value="last">
+  {%- endif -%}
+
+  <div class="facets__bar">
+    {%- if results.filters.size > 0 -%}
+      <details class="facets__panel">
+        <summary class="button button--secondary button--small facets__toggle">
+          {{- 'collections.filter' | t -}}
+          {%- if active_count > 0 %} ({{ active_count }}){% endif -%}
+          {%- render 'icon', name: 'chevron-down', size: 16 -%}
+        </summary>
+        <div class="facets__dropdown card card--bordered">
+          {%- for filter in results.filters -%}
+            <fieldset class="facets__group">
+              <legend class="facets__legend">{{ filter.label | escape }}</legend>
+              {%- case filter.type -%}
+                {%- when 'price_range' -%}
+                  <div class="facets__price">
+                    <label class="field">
+                      <span class="field__label">{{ 'collections.price_from' | t }} ({{ cart.currency.symbol }})</span>
+                      <input
+                        class="input"
+                        type="number"
+                        name="{{ filter.min_value.param_name }}"
+                        {% if filter.min_value.value %}
+                          value="{{ filter.min_value.value | money_without_currency | replace: ',', '' }}"
+                        {% endif %}
+                        placeholder="0"
+                        min="0"
+                        inputmode="decimal"
+                      >
+                    </label>
+                    <label class="field">
+                      <span class="field__label">{{ 'collections.price_to' | t }} ({{ cart.currency.symbol }})</span>
+                      <input
+                        class="input"
+                        type="number"
+                        name="{{ filter.max_value.param_name }}"
+                        {% if filter.max_value.value %}
+                          value="{{ filter.max_value.value | money_without_currency | replace: ',', '' }}"
+                        {% endif %}
+                        placeholder="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+                        min="0"
+                        inputmode="decimal"
+                      >
+                    </label>
+                  </div>
+                {%- else -%}
+                  <ul class="facets__values" role="list">
+                    {%- for value in filter.values -%}
+                      <li>
+                        <label class="checkbox{% if value.count == 0 and value.active == false %} is-disabled{% endif %}">
+                          <input
+                            type="checkbox"
+                            name="{{ value.param_name }}"
+                            value="{{ value.value }}"
+                            {% if value.active %}
+                              checked
+                            {% endif %}
+                            {% if value.count == 0 and value.active == false %}
+                              disabled
+                            {% endif %}
+                          >
+                          <span>{{ value.label | escape }} <span class="text-muted">({{ value.count }})</span></span>
+                        </label>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+              {%- endcase -%}
+            </fieldset>
+          {%- endfor -%}
+          <div class="cluster">
+            <button type="submit" class="button button--small">{{ 'collections.apply' | t }}</button>
+            <a href="{{ results_url }}{% if terms != blank %}?q={{ terms | url_encode }}{% endif %}" class="text-small">{{ 'collections.clear_all' | t }}</a>
+          </div>
+        </div>
+      </details>
+    {%- endif -%}
+
+    {%- if count -%}
+      <p class="facets__count text-small text-muted">{{ 'collections.product_count' | t: count: count }}</p>
+    {%- endif -%}
+
+    {%- if results.sort_options.size > 0 -%}
+      <label class="facets__sort">
+        <span class="text-small">{{ 'collections.sort_by' | t }}</span>
+        <select name="sort_by" class="input facets__select">
+          {%- for option in results.sort_options -%}
+            <option value="{{ option.value | escape }}" {% if option.value == sort_by %}selected{% endif %}>
+              {{- option.name | escape -}}
+            </option>
+          {%- endfor -%}
+        </select>
+      </label>
+    {%- endif -%}
+  </div>
+
+  {%- if active_count > 0 -%}
+    <ul class="facets__active cluster" role="list">
+      {%- for filter in results.filters -%}
+        {%- for value in filter.active_values -%}
+          <li>
+            <a href="{{ value.url_to_remove }}" class="badge badge--outline" aria-label="{{ 'collections.remove_filter' | t: filter: value.label | escape }}">
+              {{- value.label | escape -}}
+              {%- render 'icon', name: 'close', size: 14 -%}
+            </a>
+          </li>
+        {%- endfor -%}
+        {%- if filter.type == 'price_range' -%}
+          {%- if filter.min_value.value != null or filter.max_value.value != null -%}
+            <li>
+              <a href="{{ filter.url_to_remove }}" class="badge badge--outline">
+                {{- filter.min_value.value | default: 0 | money }}–{{ filter.max_value.value | default: filter.range_max | money -}}
+                {%- render 'icon', name: 'close', size: 14 -%}
+              </a>
+            </li>
+          {%- endif -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+  {%- endif -%}
+</form>
+
+{% stylesheet %}
+  .facets {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .facets__bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .facets__panel {
+    position: relative;
+  }
+
+  .facets__toggle {
+    list-style: none;
+  }
+
+  .facets__toggle::-webkit-details-marker {
+    display: none;
+  }
+
+  .facets__dropdown {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: min(22rem, 90vw);
+    padding: 1.25rem;
+    box-shadow: 0 18px 40px -20px rgba(59, 46, 37, 0.35);
+  }
+
+  .facets__group {
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .facets__legend {
+    margin-bottom: 0.625rem;
+    font-weight: var(--font-body-weight-bold);
+  }
+
+  .facets__values {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .facets__price {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .checkbox.is-disabled {
+    opacity: 0.5;
+  }
+
+  .facets__count {
+    margin-right: auto;
+  }
+
+  .facets__sort {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+  }
+
+  .facets__select {
+    min-height: 2.75rem;
+    width: auto;
+    padding-block: 0.375rem;
+  }
+
+  .facets__active {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .facets__active a {
+    color: inherit;
+    text-decoration: none;
+  }
+{% endstylesheet %}

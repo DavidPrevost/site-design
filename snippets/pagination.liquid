@@ -1,0 +1,70 @@
+{% doc %}
+  Page links for a paginated list.
+
+  @param {object} paginate - The paginate object
+{% enddoc %}
+{%- if paginate.pages > 1 -%}
+  <nav class="pagination" aria-label="Pagination">
+    <ul class="pagination__list" role="list">
+      {%- if paginate.previous -%}
+        <li>
+          <a href="{{ paginate.previous.url }}" class="icon-button icon-button--outline" aria-label="{{ 'general.previous' | t }}">
+            {%- render 'icon', name: 'chevron-left', size: 18 -%}
+          </a>
+        </li>
+      {%- endif -%}
+      {%- for part in paginate.parts -%}
+        <li>
+          {%- if part.is_link -%}
+            <a href="{{ part.url }}" class="pagination__page" aria-label="{{ 'general.page' | t: page: part.title }}">{{ part.title }}</a>
+          {%- elsif part.title == paginate.current_page -%}
+            <span class="pagination__page is-current" aria-current="page">{{ part.title }}</span>
+          {%- else -%}
+            <span class="pagination__page">{{ part.title }}</span>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+      {%- if paginate.next -%}
+        <li>
+          <a href="{{ paginate.next.url }}" class="icon-button icon-button--outline" aria-label="{{ 'general.next' | t }}">
+            {%- render 'icon', name: 'chevron-right', size: 18 -%}
+          </a>
+        </li>
+      {%- endif -%}
+    </ul>
+  </nav>
+{%- endif -%}
+
+{% stylesheet %}
+  .pagination {
+    margin-top: 3rem;
+  }
+
+  .pagination__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .pagination__page {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 999px;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .pagination__page.is-current {
+    background-color: var(--color-foreground);
+    color: var(--color-background);
+    font-weight: var(--font-body-weight-bold);
+  }
+{% endstylesheet %}

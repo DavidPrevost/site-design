@@ -630,6 +630,29 @@ select.input {
   color: #7a3e2a;
 }
 
+/* ---------- Search form ---------- */
+  .search-form {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .search-form__icon {
+    position: absolute;
+    left: 1.125rem;
+    color: var(--color-muted);
+  }
+
+  .search-form__input {
+    width: 100%;
+    min-height: 3.5rem;
+    padding: 0.75rem 1.25rem 0.75rem 3.25rem;
+    border: 1.5px solid var(--color-border);
+    border-radius: 999px;
+    background-color: color-mix(in srgb, var(--color-background) 40%, #fff);
+    font-size: 1.0625rem;
+  }
+
 /* ---------- Cards and media ---------- */
 .card {
   border-radius: var(--radius-card);

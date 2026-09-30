@@ -1,0 +1,64 @@
+<section
+  class="section main-collection color-{{ section.settings.color_scheme }}"
+  style="--section-pt: {{ section.settings.padding_top }}px; --section-pb: {{ section.settings.padding_bottom }}px;"
+>
+  <div class="page-width">
+    <div class="section-header">
+      <div class="section-header__text">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {%- endif -%}
+        <h1 class="h1">{{ collection.title | escape }}</h1>
+        {%- if section.settings.show_description and collection.description != blank -%}
+          <div class="rte lead">{{ collection.description }}</div>
+        {%- endif -%}
+      </div>
+    </div>
+
+    {%- paginate collection.products by section.settings.products_per_page -%}
+      {%- if section.settings.show_filters -%}
+        {% render 'facets', results: collection, results_url: collection.url, count: collection.products_count %}
+      {%- endif -%}
+
+      {%- if collection.products.size > 0 -%}
+        <ul class="grid" role="list" style="--grid-desktop: {{ section.settings.columns }};">
+          {%- for product in collection.products -%}
+            <li>
+              {%- liquid
+                assign eager = false
+                if forloop.index <= 3
+                  assign eager = true
+                endif
+              -%}
+              {% render 'product-card', product: product, eager: eager %}
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- else -%}
+        <p class="text-muted">{{ 'collections.empty' | t }}</p>
+      {%- endif -%}
+
+      {% render 'pagination', paginate: paginate %}
+    {%- endpaginate -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product grid",
+  "class": "section-main-collection",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Label", "default": "Shop" },
+    { "type": "checkbox", "id": "show_description", "label": "Show collection description", "default": true },
+    { "type": "checkbox", "id": "show_filters", "label": "Show filters and sorting", "default": true },
+    { "type": "range", "id": "products_per_page", "label": "Products per page", "min": 6, "max": 48, "step": 3, "default": 24 },
+    { "type": "range", "id": "columns", "label": "Columns on desktop", "min": 2, "max": 4, "step": 1, "default": 3 },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 64 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 104 }
+  ],
+  "enabled_on": {
+    "templates": ["collection"]
+  }
+}
+{% endschema %}

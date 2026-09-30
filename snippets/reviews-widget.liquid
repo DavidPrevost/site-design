@@ -1,0 +1,53 @@
+{% doc %}
+  Placeholder for the Teraclay reviews widget (reviews.teraclay.com/widget.js,
+  loaded once in layout/theme.liquid). The widget fills the inner div.
+
+  - mode "full": the review list, summary and "Write a review" (product page)
+  - mode "aggregate": stars + count (product cards, near the product title);
+    renders nothing until a product has reviews
+
+  The widget never re-reads attributes after it initializes, so assets/product.js
+  swaps in a fresh div when the shopper picks another variant.
+
+  @param {product} product - The product
+  @param {string} mode - "full" or "aggregate"
+  @param {variant} [variant] - Selected variant (full mode)
+
+  @example
+  {% render 'reviews-widget', product: product, mode: 'aggregate' %}
+{% enddoc %}
+{%- if settings.reviews_enabled and product != blank -%}
+  {%- liquid
+    if variant == blank
+      assign variant = product.selected_or_first_available_variant
+    endif
+
+    assign default_scheme = settings.color_schemes['scheme-1'].settings
+
+    assign logo_url = ''
+    if shop.brand.logo
+      assign logo_url = shop.brand.logo | image_url: width: 400 | prepend: 'https:'
+    elsif settings.logo
+      assign logo_url = settings.logo | image_url: width: 400 | prepend: 'https:'
+    endif
+  -%}
+  <div class="tc-reviews tc-reviews--{{ mode }}">
+    <div
+      data-reviews-widget="{{ mode }}"
+      data-product-id="{{ product.id }}"
+      {% if mode == 'full' %}
+        data-variant-id="{{ variant.id }}"
+        data-customer-id="{{ customer.id }}"
+        {% if settings.reviews_send_theme_colors %}
+          data-brand-primary-bg="{{ default_scheme.button }}"
+          data-brand-primary-fg="{{ default_scheme.button_label }}"
+          data-brand-secondary-bg="{{ settings.reviews_star_color }}"
+          data-brand-secondary-fg="#FFFFFF"
+          {% if logo_url != blank %}
+            data-brand-logo="{{ logo_url }}"
+          {% endif %}
+        {% endif %}
+      {% endif %}
+    ></div>
+  </div>
+{%- endif -%}

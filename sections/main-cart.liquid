@@ -1,0 +1,76 @@
+<section
+  class="section main-cart color-{{ section.settings.color_scheme }}"
+  style="--section-pt: {{ section.settings.padding_top }}px; --section-pb: {{ section.settings.padding_bottom }}px;"
+>
+  <div class="page-width">
+    <div class="section-header">
+      <h1 class="h1">{{ 'cart.title' | t }}</h1>
+      {%- if cart.item_count > 0 -%}
+        <a href="{{ routes.all_products_collection_url }}" class="link-arrow">{{ 'cart.continue_shopping' | t }}</a>
+      {%- endif -%}
+    </div>
+
+    {%- if cart.item_count > 0 -%}
+      <div class="main-cart__grid">
+        <cart-items data-sections="{{ section.id }}">
+          <ul class="cart-lines" role="list">
+            {%- for item in cart.items -%}
+              {% render 'cart-line', item: item, index: forloop.index %}
+            {%- endfor -%}
+          </ul>
+          <p class="form-message form-message--error" role="alert" data-cart-error hidden></p>
+        </cart-items>
+        <div class="card card--padded main-cart__summary">
+          {% render 'cart-summary' %}
+        </div>
+      </div>
+    {%- else -%}
+      <div class="main-cart__empty stack">
+        <p class="lead">{{ 'cart.empty' | t }}</p>
+        <a href="{{ routes.all_products_collection_url }}" class="button">{{ 'general.shop_all' | t }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% stylesheet %}
+  .main-cart__grid {
+    display: grid;
+    gap: 2rem;
+  }
+
+  @media (min-width: 990px) {
+    .main-cart__grid {
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .main-cart__summary {
+      position: sticky;
+      top: 7rem;
+    }
+  }
+
+  .main-cart .cart-line {
+    grid-template-columns: 7rem minmax(0, 1fr);
+  }
+
+  .main-cart__empty {
+    align-items: flex-start;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Cart",
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 64 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 104 }
+  ],
+  "enabled_on": {
+    "templates": ["cart"]
+  }
+}
+{% endschema %}

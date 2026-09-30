@@ -1,0 +1,51 @@
+{% doc %}
+  The "Not sure? Compare our creams" link card shown after recommended products.
+
+  @param {object} options - The recommendations section's settings
+{% enddoc %}
+{%- if options.show_compare_card and options.compare_heading != blank -%}
+  <li>
+    <a
+      href="{{ options.compare_link | default: '/' }}"
+      class="compare-card color-{{ options.compare_color_scheme }}"
+    >
+      <span class="stack" style="--stack-gap: 0.75rem;">
+        {%- if options.compare_eyebrow != blank -%}
+          <span class="eyebrow">{{ options.compare_eyebrow | escape }}</span>
+        {%- endif -%}
+        <span class="h3 compare-card__heading">{{ options.compare_heading | escape }}</span>
+        {%- if options.compare_text != blank -%}
+          <span class="text-muted">{{ options.compare_text | escape }}</span>
+        {%- endif -%}
+      </span>
+      {%- if options.compare_link_label != blank -%}
+        <span class="link-arrow compare-card__link">{{ options.compare_link_label | escape }}</span>
+      {%- endif -%}
+    </a>
+  </li>
+{%- endif -%}
+
+{% stylesheet %}
+  .compare-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
+    height: 100%;
+    min-height: 18rem;
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    border-radius: var(--radius-card);
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    text-decoration: none;
+  }
+
+  .compare-card__heading {
+    font-size: calc(var(--font-heading-scale) * 1.875rem);
+    line-height: 1.15;
+  }
+
+  .compare-card:hover .compare-card__link {
+    text-decoration: underline;
+  }
+{% endstylesheet %}

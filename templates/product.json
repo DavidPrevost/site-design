@@ -1,20 +1,117 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
-      "type": "product",
-      "settings": {}
+      "type": "main-product",
+      "blocks": {
+        "eyebrow": { "type": "eyebrow", "settings": { "metafield": "custom.eyebrow", "text": "" } },
+        "title": { "type": "title", "settings": {} },
+        "rating": { "type": "rating", "settings": {} },
+        "price": { "type": "price", "settings": { "note": "" } },
+        "description": { "type": "description", "settings": {} },
+        "badges": { "type": "badges", "settings": {} },
+        "variant_picker": { "type": "variant_picker", "settings": {} },
+        "buy_buttons": { "type": "buy_buttons", "settings": { "show_quantity": true, "show_dynamic_checkout": true } },
+        "trust_line": {
+          "type": "trust_line",
+          "settings": { "item_1": "100% natural ingredients", "item_2": "No parabens, silicones or sulfates" }
+        },
+        "tab_features": {
+          "type": "collapsible_tab",
+          "settings": { "heading": "Key features", "metafield": "custom.key_features", "content": "", "page": "", "use_legacy_tag": false, "open": true }
+        },
+        "tab_how": {
+          "type": "collapsible_tab",
+          "settings": { "heading": "How to apply", "metafield": "custom.how_to_use", "content": "", "page": "", "use_legacy_tag": false, "open": false }
+        },
+        "tab_ingredients": {
+          "type": "collapsible_tab",
+          "settings": { "heading": "All ingredients", "metafield": "custom.ingredients_list", "content": "", "page": "", "use_legacy_tag": false, "open": false }
+        },
+        "tab_legacy": {
+          "type": "collapsible_tab",
+          "settings": { "heading": "Product details", "metafield": "", "content": "", "page": "", "use_legacy_tag": true, "open": false }
+        },
+        "tab_shipping": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Shipping & returns",
+            "metafield": "",
+            "content": "<p>Questions about shipping or returns? See our <a href=\"/policies/refund-policy\" title=\"Refund Policy\">Refund Policy</a> or email info@teraclay.com.</p>",
+            "page": "",
+            "use_legacy_tag": false,
+            "open": false
+          }
+        }
+      },
+      "block_order": [
+        "eyebrow",
+        "title",
+        "rating",
+        "price",
+        "description",
+        "badges",
+        "variant_picker",
+        "buy_buttons",
+        "trust_line",
+        "tab_features",
+        "tab_how",
+        "tab_ingredients",
+        "tab_legacy",
+        "tab_shipping"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "show_breadcrumbs": true,
+        "media_fit": "contain",
+        "padding_top": 28,
+        "padding_bottom": 104
+      }
+    },
+    "ingredients": {
+      "type": "key-ingredients",
+      "settings": {
+        "eyebrow": "What’s inside",
+        "heading": "Key ingredients",
+        "ingredients_page": "",
+        "link_label": "See all ingredients",
+        "made_without_heading": "Made without",
+        "color_scheme": "scheme-2",
+        "padding_top": 88,
+        "padding_bottom": 88
+      }
+    },
+    "reviews": {
+      "type": "product-reviews",
+      "settings": {
+        "heading": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "heading": "Also from Teraclay",
+        "products": [
+          "hypoallergenic-facial-cream",
+          "advanced-hydration-facial-cream",
+          "ultra-mineral-facial-cleanser"
+        ],
+        "intent": "related",
+        "max_products": 2,
+        "show_compare_card": true,
+        "compare_eyebrow": "Not sure?",
+        "compare_heading": "Compare our two creams",
+        "compare_text": "See skin type, ingredients and scent side by side, then pick the one that suits you.",
+        "compare_link_label": "Compare creams",
+        "compare_link": "/#compare",
+        "compare_color_scheme": "scheme-5",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 104
+      }
     }
   },
-  "order": [
-    "main"
-  ]
+  "order": ["main", "ingredients", "reviews", "recommendations"]
 }

@@ -336,3 +336,17 @@ class ProductForm extends HTMLElement {
   }
 }
 customElements.define('product-form', ProductForm);
+
+/* ---------- Filter/sort forms: submit on change, drop empty fields ---------- */
+document.addEventListener('change', (event) => {
+  const form = event.target.closest('form[data-auto-submit]');
+  if (!form) return;
+  if (event.target.matches('select, input[type="checkbox"]')) form.requestSubmit();
+});
+document.addEventListener('submit', (event) => {
+  const form = event.target.closest('form[data-auto-submit]');
+  if (!form) return;
+  form.querySelectorAll('input').forEach((input) => {
+    if (input.value === '') input.disabled = true;
+  });
+});

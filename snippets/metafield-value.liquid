@@ -1,0 +1,33 @@
+{% doc %}
+  Outputs a metafield's value as display-ready HTML, looked up by a
+  "namespace.key" string (for example "custom.how_to_use"). Outputs nothing
+  when the metafield is empty or missing.
+
+  @param {object} resource - A product, collection, page or shop
+  @param {string} key - "namespace.key"
+
+  @example
+  {% render 'metafield-value', resource: product, key: 'custom.how_to_use' %}
+{% enddoc %}
+{%- liquid
+  assign parts = key | split: '.'
+  if parts.size == 2
+    assign field = resource.metafields[parts[0]][parts[1]]
+  endif
+-%}
+{%- if field != blank -%}
+  {%- case field.type -%}
+    {%- when 'multi_line_text_field' -%}
+      <p>{{ field.value | escape | newline_to_br }}</p>
+    {%- when 'single_line_text_field' -%}
+      {{ field.value | escape }}
+    {%- when 'list.single_line_text_field' -%}
+      <ul>
+        {%- for item in field.value -%}
+          <li>{{ item | escape }}</li>
+        {%- endfor -%}
+      </ul>
+    {%- else -%}
+      {{ field | metafield_tag }}
+  {%- endcase -%}
+{%- endif -%}
